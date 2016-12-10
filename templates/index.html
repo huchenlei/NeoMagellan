@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>Neo-Magellan</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    </head>
+    <body ng-app="magellan-top" ng-controller="ctrl">
+        <h1>Neo-Magellan</h1>
+        <form ng-submit="getProfileList()">
+            username:<input type="text" ng-model="username"/>
+            password:<input type="password" ng-model="password"/>
+            <input type="submit"/>
+        </form>
+        <form ng-show="readyToSelectProfile" ng-submit="getProfile()">
+            <label ng-repeat="profile in profileList">
+                <input type="radio" ng-model="$parent.profileName" ng-value="profile"/> {{profile}}
+            </label>
+            <input type="submit" value="submit_select"/>
+        </form>
+        <table>
+            <tr>
+                <td ng-bind="username"></td>
+            </tr>
+            <tr ng-repeat="(year, courses) in courseTable">
+                <td>{{year}}</td>
+                <td ng-repeat="course in courses">
+                    {{course}}
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr ng-repeat="(criteria, info) in CEABRequirement">
+                <td>{{criteria}}</td>
+                <td>
+                    <ul>
+                        <li ng-repeat="(name, status) in info">{{name}}-{{status}}</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <script type="text/javascript">
+            const magellan = angular.module('magellan-top', [])
+            magellan.controller("ctrl", function($scope, $http) {
+                // initialize everything
+                $scope.readyToSelectProfile = false;
+                $scope.getProfileList = function() {
+                    $http({
+                        method: 'POST',
+                        url: '/profile_list',
+                        data: {
+                            "username": $scope.username,
+                            "password": $scope.password
+                        },
+                        headers: {
+                            'Content-Type': "application/json"
+                        }
+                    }).then((response) => {
+                        $scope.profileList = response.data["profileList"];
+                        $scope.readyToSelectProfile = true;
+                    }, (response) => {
+                        alert("something wrong");
+                    })
+                };
+
+                $scope.getProfile = function() {
+                    $http({
+                        method: 'POST',
+                        url: '/profile',
+                        data: {
+                            "profileName": $scope.profileName
+                        },
+                        headers: {
+                            'Content-Type': "application/json"
+                        }
+                    }).then((response) => {
+                        $scope.courseTable = response.data["course_table"];
+                        $scope.CEABRequirement = response.data["CEAB_requirement"];
+                        console.log($scope.CEABRequirement);
+                        $scope.readyToSelectProfile = false;
+                    }, (response) => {
+                        alert("something wrong getting profile details")
+                    })
+                };
+            });
+        </script>
+    </body>
+</html>
