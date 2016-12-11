@@ -74,7 +74,7 @@
                     }).then((response) => {
                         $scope.courseTable = response.data["course_table"];
                         $scope.CEABRequirement = response.data["CEAB_requirement"];
-                        console.log($scope.CEABRequirement);
+                        // console.log($scope.CEABRequirement);
                         $scope.readyToSelectProfile = false;
                     }, (response) => {
                         alert("something wrong getting profile details")

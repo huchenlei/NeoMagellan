@@ -155,9 +155,9 @@ def parse_info_page(page):
 #         j.write(table_info)
 
 # Test parse profile
-# page = requests.get("https://***REMOVED***@magellan.ece.toronto.edu/profile_menu.php").text
+# page = requests.get("https://username:password@magellan.ece.toronto.edu/profile_menu.php").text
 # print(parse_profile_list_page(page))
 
 # Test parse info page
-# page = requests.get("https://***REMOVED***@magellan.ece.toronto.edu/student_view.php").text
+# page = requests.get("https://username:password@magellan.ece.toronto.edu/student_view.php").text
 # print(parse_info_page(page))
