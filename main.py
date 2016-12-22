@@ -54,6 +54,12 @@ def get_profile():
     # return send_from_directory('static', 'info.json')
 
 
+@app.route("/course_select", methods=['GET'])
+def course_select():
+    """go to course selecting page"""
+    return send_from_directory('templates', 'course_select.html')
+
+
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 if __name__ == "__main__":
     app.run()

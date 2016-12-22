@@ -1,6 +1,9 @@
 # config files
 config/*
 
+# tempepory files
+temp/*
+
 # pyCharm
 .idea/*
 
