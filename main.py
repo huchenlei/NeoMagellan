@@ -47,8 +47,10 @@ def get_profile():
     print(request.data)
     profile_name = (json.loads(request.data.decode('utf-8')))["profileName"]
     # the POST data to official Magellan server
-    data = {"view_personid": session["student_id"], "profile_name": profile_name}
-    page = requests.post(session["base_url"] + "/profile_view_report.php", data=data).text
+    data = {"view_personid": session[
+        "student_id"], "profile_name": profile_name}
+    page = requests.post(session["base_url"] +
+                         "/profile_view_report.php", data=data).text
     course_table = ProfileReportParser(page).parse()
     return course_table
     # return send_from_directory('static', 'info.json')
@@ -58,6 +60,12 @@ def get_profile():
 def course_select():
     """go to course selecting page"""
     return send_from_directory('templates', 'course_select.html')
+
+
+@app.route("/test_profile", methods=['GET'])
+def get_test_profile():
+    """for testing"""
+    return send_from_directory('static', 'info.json')
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

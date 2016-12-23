@@ -1,0 +1,1373 @@
+{
+    "main": [
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Electronic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE335"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Photonic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE427"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "VLSI Technology",
+                    "course_length": "H1",
+                    "course_code": "ECE437"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Micro- and Nano-Fabrication Technologies",
+                    "course_length": "H1",
+                    "course_code": "ECE442"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Photonic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE527"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Advanced Electronic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE535"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Fundamentals of Optics",
+                    "course_length": "H1",
+                    "course_code": "ECE318"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Quantum and Semiconductor Physics",
+                    "course_length": "H1",
+                    "course_code": "ECE330"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Semiconductor & Device Physics",
+                    "course_length": "H1",
+                    "course_code": "ECE330"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optical Communications and Networks",
+                    "course_length": "H1",
+                    "course_code": "ECE469"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Lasers and Detectors",
+                    "course_length": "H1",
+                    "course_code": "ECE525"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Introduction to Quantum Mechanics",
+                    "course_length": "H1",
+                    "course_code": "PHY335"
+                }
+            ],
+            "area_name": "Photonics & Semiconductor Physics"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Fundamentals of Electrical Energy Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE314"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Fields and Waves",
+                    "course_length": "H1",
+                    "course_code": "ECE320"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Microwave Circuits (formerly ECE524H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE424"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Lighting Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE510"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Power Electronics: Converter Topologies",
+                    "course_length": "H1",
+                    "course_code": "ECE514"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Microwave Circuits",
+                    "course_length": "H1",
+                    "course_code": "ECE524"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Medical Imaging",
+                    "course_length": "H1",
+                    "course_code": "BME595"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Energy Systems and Distributed Generation",
+                    "course_length": "H1",
+                    "course_code": "ECE413"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Radio and Microwave Wireless Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE422"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Electric Drives",
+                    "course_length": "H1",
+                    "course_code": "ECE463"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Power Electronics: Switch-mode Power Supplies",
+                    "course_length": "H1",
+                    "course_code": "ECE533"
+                }
+            ],
+            "area_name": "Electromagnetics & Energy Systems"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Analog Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE331"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Digital Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE334"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Microwave Circuits (formerly ECE524H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE424"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Analog Integrated Circuits (formerly ECE530H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE430"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "VLSI Technology",
+                    "course_length": "H1",
+                    "course_code": "ECE437"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Sensory Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE446"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Analog Integrated Circuits",
+                    "course_length": "H1",
+                    "course_code": "ECE530"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Integrated Circuit Engineering",
+                    "course_length": "H1",
+                    "course_code": "ECE534"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Analog Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE331"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE334"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Analog Signal Processing Circuits (formerly ECE512H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE412"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "VLSI Systems and Design",
+                    "course_length": "H1",
+                    "course_code": "ECE451"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Analog Signal Processing Circuits",
+                    "course_length": "H1",
+                    "course_code": "ECE512"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Systems Design",
+                    "course_length": "H1",
+                    "course_code": "ECE532"
+                }
+            ],
+            "area_name": "Analog & Digital Electronics"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Dynamic Systems & Control",
+                    "course_length": "H1",
+                    "course_code": "ECE311"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Communication Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE316"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Control Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE410"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Digital Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE417"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Digital Signal Processing",
+                    "course_length": "H1",
+                    "course_code": "ECE431"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Neural Bioelectricity",
+                    "course_length": "H1",
+                    "course_code": "ECE445"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Sensory Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE446"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Robot Modeling and Control",
+                    "course_length": "H1",
+                    "course_code": "ECE470"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Random Processes",
+                    "course_length": "H1",
+                    "course_code": "ECE537"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Dynamic Systems and Control",
+                    "course_length": "H1",
+                    "course_code": "ECE311"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Communication Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE316"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Medical Imaging",
+                    "course_length": "H1",
+                    "course_code": "BME595"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Real-Time Computer Control",
+                    "course_length": "H1",
+                    "course_code": "ECE411"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE417"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Radio and Microwave Wireless Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE422"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Multimedia Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE462"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Wireless Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE464"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optical Communications and Networks",
+                    "course_length": "H1",
+                    "course_code": "ECE469"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Robot Modeling and Control",
+                    "course_length": "H1",
+                    "course_code": "ECE470"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Intelligent Image Processing",
+                    "course_length": "H1",
+                    "course_code": "ECE516"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Inference Algorithms and Machine Learning",
+                    "course_length": "H1",
+                    "course_code": "ECE521"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Physiological Control Systems",
+                    "course_length": "H1",
+                    "course_code": "MIE331"
+                }
+            ],
+            "area_name": "Control, Communications & Signal Processing"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Networks I",
+                    "course_length": "H1",
+                    "course_code": "ECE361"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Internetworking",
+                    "course_length": "H1",
+                    "course_code": "ECE461"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Architecture",
+                    "course_length": "H1",
+                    "course_code": "ECE552"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Hardware",
+                    "course_length": "H1",
+                    "course_code": "ECE342"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Networks I",
+                    "course_length": "H1",
+                    "course_code": "ECE361"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "VLSI Systems and Design",
+                    "course_length": "H1",
+                    "course_code": "ECE451"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Networks II",
+                    "course_length": "H1",
+                    "course_code": "ECE466"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optical Communications and Networks",
+                    "course_length": "H1",
+                    "course_code": "ECE469"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Systems Design",
+                    "course_length": "H1",
+                    "course_code": "ECE532"
+                }
+            ],
+            "area_name": "Computer Hardware & Computer Networks"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Operating Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE344"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Algorithms & Data Structures",
+                    "course_length": "H1",
+                    "course_code": "ECE345"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Programming Languages",
+                    "course_length": "H1",
+                    "course_code": "CSC326"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Databases",
+                    "course_length": "H1",
+                    "course_code": "CSC343"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Graphics",
+                    "course_length": "H1",
+                    "course_code": "CSC418"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Software Engineering",
+                    "course_length": "H1",
+                    "course_code": "CSC444"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Software Engineering I",
+                    "course_length": "H1",
+                    "course_code": "CSC444"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Compilers and Interpreters",
+                    "course_length": "H1",
+                    "course_code": "CSC467"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Systems Programming",
+                    "course_length": "H1",
+                    "course_code": "ECE454"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Internetworking",
+                    "course_length": "H1",
+                    "course_code": "ECE461"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Security",
+                    "course_length": "H1",
+                    "course_code": "ECE568"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Operating Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE344"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Algorithms & Data Structures",
+                    "course_length": "H1",
+                    "course_code": "ECE345"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Introduction to Databases",
+                    "course_length": "H1",
+                    "course_code": "CSC343"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Graphics",
+                    "course_length": "H1",
+                    "course_code": "CSC418"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Distributed Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE419"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Software Engineering II",
+                    "course_length": "H1",
+                    "course_code": "ECE450"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optimizing Compilers",
+                    "course_length": "H1",
+                    "course_code": "ECE540"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Security",
+                    "course_length": "H1",
+                    "course_code": "ECE568"
+                }
+            ],
+            "area_name": "Software"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Partial Differential Equations",
+                    "course_length": "H1",
+                    "course_code": "APM384"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Biomaterials and Biomedical Engineering",
+                    "course_length": "H1",
+                    "course_code": "BME440"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Cellular and Molecular Bioengineering II",
+                    "course_length": "H1",
+                    "course_code": "BME455"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Engineering Biology",
+                    "course_length": "H1",
+                    "course_code": "CHE353"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Urban Engineering Ecology",
+                    "course_length": "H1",
+                    "course_code": "CIV220"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Terrestrial Energy Systems",
+                    "course_length": "H1",
+                    "course_code": "CIV300"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Cellular and Molecular Biology",
+                    "course_length": "H1",
+                    "course_code": "CHE354"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Terrestrial Energy Systems",
+                    "course_length": "H1",
+                    "course_code": "CIV300"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Evolution and Adaptation",
+                    "course_length": "H1",
+                    "course_code": "EEB214"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Evolution and Adaptation",
+                    "course_length": "H1",
+                    "course_code": "EEB214"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Physiological Control Systems",
+                    "course_length": "H1",
+                    "course_code": "MIE331"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Materials Physics",
+                    "course_length": "H1",
+                    "course_code": "MSE235"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Introduction to Quantum Mechanics",
+                    "course_length": "H1",
+                    "course_code": "PHY335"
+                }
+            ],
+            "area_name": "Science/Math Electives"
+        }
+    ],
+    "elective": [],
+    "main_areas": [
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Electronic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE335"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Photonic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE427"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "VLSI Technology",
+                    "course_length": "H1",
+                    "course_code": "ECE437"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Micro- and Nano-Fabrication Technologies",
+                    "course_length": "H1",
+                    "course_code": "ECE442"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Photonic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE527"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Advanced Electronic Devices",
+                    "course_length": "H1",
+                    "course_code": "ECE535"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Fundamentals of Optics",
+                    "course_length": "H1",
+                    "course_code": "ECE318"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Quantum and Semiconductor Physics",
+                    "course_length": "H1",
+                    "course_code": "ECE330"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Semiconductor & Device Physics",
+                    "course_length": "H1",
+                    "course_code": "ECE330"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optical Communications and Networks",
+                    "course_length": "H1",
+                    "course_code": "ECE469"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Lasers and Detectors",
+                    "course_length": "H1",
+                    "course_code": "ECE525"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Introduction to Quantum Mechanics",
+                    "course_length": "H1",
+                    "course_code": "PHY335"
+                }
+            ],
+            "area_name": "Photonics & Semiconductor Physics"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Fundamentals of Electrical Energy Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE314"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Fields and Waves",
+                    "course_length": "H1",
+                    "course_code": "ECE320"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Microwave Circuits (formerly ECE524H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE424"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Lighting Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE510"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Power Electronics: Converter Topologies",
+                    "course_length": "H1",
+                    "course_code": "ECE514"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Microwave Circuits",
+                    "course_length": "H1",
+                    "course_code": "ECE524"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Medical Imaging",
+                    "course_length": "H1",
+                    "course_code": "BME595"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Energy Systems and Distributed Generation",
+                    "course_length": "H1",
+                    "course_code": "ECE413"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Radio and Microwave Wireless Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE422"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Electric Drives",
+                    "course_length": "H1",
+                    "course_code": "ECE463"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Power Electronics: Switch-mode Power Supplies",
+                    "course_length": "H1",
+                    "course_code": "ECE533"
+                }
+            ],
+            "area_name": "Electromagnetics & Energy Systems"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Analog Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE331"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Digital Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE334"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Microwave Circuits (formerly ECE524H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE424"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Analog Integrated Circuits (formerly ECE530H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE430"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "VLSI Technology",
+                    "course_length": "H1",
+                    "course_code": "ECE437"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Sensory Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE446"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Analog Integrated Circuits",
+                    "course_length": "H1",
+                    "course_code": "ECE530"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Integrated Circuit Engineering",
+                    "course_length": "H1",
+                    "course_code": "ECE534"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Analog Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE331"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Electronics",
+                    "course_length": "H1",
+                    "course_code": "ECE334"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Analog Signal Processing Circuits (formerly ECE512H1)",
+                    "course_length": "H1",
+                    "course_code": "ECE412"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "VLSI Systems and Design",
+                    "course_length": "H1",
+                    "course_code": "ECE451"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Analog Signal Processing Circuits",
+                    "course_length": "H1",
+                    "course_code": "ECE512"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Systems Design",
+                    "course_length": "H1",
+                    "course_code": "ECE532"
+                }
+            ],
+            "area_name": "Analog & Digital Electronics"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Dynamic Systems & Control",
+                    "course_length": "H1",
+                    "course_code": "ECE311"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Communication Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE316"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Control Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE410"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Digital Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE417"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Digital Signal Processing",
+                    "course_length": "H1",
+                    "course_code": "ECE431"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Neural Bioelectricity",
+                    "course_length": "H1",
+                    "course_code": "ECE445"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Sensory Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE446"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Robot Modeling and Control",
+                    "course_length": "H1",
+                    "course_code": "ECE470"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Random Processes",
+                    "course_length": "H1",
+                    "course_code": "ECE537"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Dynamic Systems and Control",
+                    "course_length": "H1",
+                    "course_code": "ECE311"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Communication Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE316"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Medical Imaging",
+                    "course_length": "H1",
+                    "course_code": "BME595"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Real-Time Computer Control",
+                    "course_length": "H1",
+                    "course_code": "ECE411"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE417"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Radio and Microwave Wireless Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE422"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Multimedia Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE462"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Wireless Communication",
+                    "course_length": "H1",
+                    "course_code": "ECE464"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optical Communications and Networks",
+                    "course_length": "H1",
+                    "course_code": "ECE469"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Robot Modeling and Control",
+                    "course_length": "H1",
+                    "course_code": "ECE470"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Intelligent Image Processing",
+                    "course_length": "H1",
+                    "course_code": "ECE516"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Inference Algorithms and Machine Learning",
+                    "course_length": "H1",
+                    "course_code": "ECE521"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Physiological Control Systems",
+                    "course_length": "H1",
+                    "course_code": "MIE331"
+                }
+            ],
+            "area_name": "Control, Communications & Signal Processing"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Networks I",
+                    "course_length": "H1",
+                    "course_code": "ECE361"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Internetworking",
+                    "course_length": "H1",
+                    "course_code": "ECE461"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Architecture",
+                    "course_length": "H1",
+                    "course_code": "ECE552"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Hardware",
+                    "course_length": "H1",
+                    "course_code": "ECE342"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Networks I",
+                    "course_length": "H1",
+                    "course_code": "ECE361"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "VLSI Systems and Design",
+                    "course_length": "H1",
+                    "course_code": "ECE451"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Networks II",
+                    "course_length": "H1",
+                    "course_code": "ECE466"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optical Communications and Networks",
+                    "course_length": "H1",
+                    "course_code": "ECE469"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Digital Systems Design",
+                    "course_length": "H1",
+                    "course_code": "ECE532"
+                }
+            ],
+            "area_name": "Computer Hardware & Computer Networks"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Operating Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE344"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Algorithms & Data Structures",
+                    "course_length": "H1",
+                    "course_code": "ECE345"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Programming Languages",
+                    "course_length": "H1",
+                    "course_code": "CSC326"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Introduction to Databases",
+                    "course_length": "H1",
+                    "course_code": "CSC343"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Graphics",
+                    "course_length": "H1",
+                    "course_code": "CSC418"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Software Engineering",
+                    "course_length": "H1",
+                    "course_code": "CSC444"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Software Engineering I",
+                    "course_length": "H1",
+                    "course_code": "CSC444"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Compilers and Interpreters",
+                    "course_length": "H1",
+                    "course_code": "CSC467"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Systems Programming",
+                    "course_length": "H1",
+                    "course_code": "ECE454"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Internetworking",
+                    "course_length": "H1",
+                    "course_code": "ECE461"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Computer Security",
+                    "course_length": "H1",
+                    "course_code": "ECE568"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Operating Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE344"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Algorithms & Data Structures",
+                    "course_length": "H1",
+                    "course_code": "ECE345"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Introduction to Databases",
+                    "course_length": "H1",
+                    "course_code": "CSC343"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Graphics",
+                    "course_length": "H1",
+                    "course_code": "CSC418"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Distributed Systems",
+                    "course_length": "H1",
+                    "course_code": "ECE419"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Software Engineering II",
+                    "course_length": "H1",
+                    "course_code": "ECE450"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Optimizing Compilers",
+                    "course_length": "H1",
+                    "course_code": "ECE540"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Computer Security",
+                    "course_length": "H1",
+                    "course_code": "ECE568"
+                }
+            ],
+            "area_name": "Software"
+        },
+        {
+            "course_list": [
+                {
+                    "course_time": "F",
+                    "course_name": "Partial Differential Equations",
+                    "course_length": "H1",
+                    "course_code": "APM384"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Biomaterials and Biomedical Engineering",
+                    "course_length": "H1",
+                    "course_code": "BME440"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Cellular and Molecular Bioengineering II",
+                    "course_length": "H1",
+                    "course_code": "BME455"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Engineering Biology",
+                    "course_length": "H1",
+                    "course_code": "CHE353"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Urban Engineering Ecology",
+                    "course_length": "H1",
+                    "course_code": "CIV220"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Terrestrial Energy Systems",
+                    "course_length": "H1",
+                    "course_code": "CIV300"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "F",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Cellular and Molecular Biology",
+                    "course_length": "H1",
+                    "course_code": "CHE354"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Terrestrial Energy Systems",
+                    "course_length": "H1",
+                    "course_code": "CIV300"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Probability and Applications",
+                    "course_length": "H1",
+                    "course_code": "ECE302"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Biocomputation",
+                    "course_length": "H1",
+                    "course_code": "ECE448"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Evolution and Adaptation",
+                    "course_length": "H1",
+                    "course_code": "EEB214"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Evolution and Adaptation",
+                    "course_length": "H1",
+                    "course_code": "EEB214"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Physiological Control Systems",
+                    "course_length": "H1",
+                    "course_code": "MIE331"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Materials Physics",
+                    "course_length": "H1",
+                    "course_code": "MSE235"
+                },
+                {
+                    "course_time": "S",
+                    "course_name": "Introduction to Quantum Mechanics",
+                    "course_length": "H1",
+                    "course_code": "PHY335"
+                }
+            ],
+            "area_name": "Science/Math Electives"
+        }
+    ]
+}
