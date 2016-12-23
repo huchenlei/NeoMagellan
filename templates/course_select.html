@@ -43,67 +43,53 @@
                 <div class="col s3" id="navigator" ng-controller="navigator">
                     <!-- later there would be specifically designed icons for each course area -->
                     <ul class="collapsible" data-collapsible="accordion">
-                        <li>
+                        <li ng-repeat="mainArea in mainAreas">
                             <div class="collapsible-header">
-                                <i class="material-icons">filter_drama</i>Photonics &amp; Semiconductor Physics</div>
+                                <i class="material-icons">filter_drama</i>{{mainArea.area_name}}</div>
                             <div class="collapsible-body">
-                                <p>Lorem ipsum dolor sit amet.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">place</i>Electromagnetics &amp; Energy Systems</div>
-                            <div class="collapsible-body">
-                                <p>Lorem ipsum dolor sit amet.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">whatshot</i>Analog &amp; Digital Electronics</div>
-                            <div class="collapsible-body">
-                                <p>Lorem ipsum dolor sit amet.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">whatshot</i>Control, Communications &amp; Signal Processing</div>
-                            <div class="collapsible-body">
-                                <p>Lorem ipsum dolor sit amet.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">whatshot</i>Computer Hardware &amp; Computer Networks</div>
-                            <div class="collapsible-body">
-                                <p>Lorem ipsum dolor sit amet.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">whatshot</i>Software</div>
-                            <div class="collapsible-body">
-                                <p>Lorem ipsum dolor sit amet.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">whatshot</i>Science/Math Electives</div>
-                            <div class="collapsible-body">
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <ul>
+                                    <li ng-repeat="course in mainArea.course_list">
+                                        <div
+                                            class="waves-effect waves-light btn"
+                                            data-drag="true"
+                                            data-jqyoui-options="{resert: 'invalid'}"
+                                            ng-model="list1"
+                                            jqyoui-draggable="{animate:true}"
+                                            ng-hide="false"
+                                            aria-disabled="false"
+                                            style="position: relative; z-index: auto; left: 0px; top: 0px">
+                                            {{course.course_code}}
+                                        </div>
+                                        <!-- <p>{{course.course_name}}</p> -->
+                                    </li>
+                                </ul>
                             </div>
                         </li>
                     </ul>
-                    <div
-                        class="waves-effect waves-light btn"
-                        data-drag="true"
-                        data-jqyoui-options="{resert: 'invalid'}"
-                        ng-model="list1"
-                        jqyoui-draggable="{animate:true}"
-                        ng-hide="false"
-                        aria-disabled="false"
-                        style="position: relative; z-index: auto; left: 0px; top: 0px">
-                        ECE297H1
-                    </div>
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li ng-repeat="elecArea in elecAreas">
+                            <div class="collapsible-header">
+                                <i class="material-icons">filter_drama</i>{{elecArea.area_code}}</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li ng-repeat="course in elecArea.course_list">
+                                        <div
+                                            class="waves-effect waves-light btn"
+                                            data-drag="true"
+                                            data-jqyoui-options="{resert: 'invalid'}"
+                                            ng-model="list1"
+                                            jqyoui-draggable="{animate:true}"
+                                            ng-hide="false"
+                                            aria-disabled="false"
+                                            style="position: relative; z-index: auto; left: 0px; top: 0px">
+                                            {{course.course_code}}
+                                        </div>
+                                        <p>{{course.course_name}}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                     area lists: click area: drop down class list(double colum/single colum) course lists: draggable="true" mouse over course: display course info in card
                 </div>
                 <div class="col s8">

@@ -30,7 +30,6 @@ def parse(page, elec_txt):
     # get all areas of elective
     for elec in elec_list:
         elec_area.add(elec[:3])
-    elec_data = {}
     for area in elec_area:
         course_list = []
         for elec in elec_list:
@@ -43,7 +42,7 @@ def parse(page, elec_txt):
                                     "course_length": elec[6:8],
                                     "course_name": elec[9:-5].strip(),
                                     "course_category": course_info[-1]})
-        elec_data.update({"area_code": area, "course_list": course_list})
+        elec_areas.append({"area_code": area, "course_list": course_list})
 
     json_result.update({"main": main_areas, "elective": elec_areas})
     return json.dumps(json_result, indent=4, separators=(',', ': '))

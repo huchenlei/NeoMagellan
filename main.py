@@ -68,6 +68,12 @@ def get_test_profile():
     return send_from_directory('static', 'info.json')
 
 
+@app.route("/course_list", methods=['GET'])
+def get_course_list():
+    """return the course list json"""
+    return send_from_directory('static', 'course_list.json')
+
+
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 if __name__ == "__main__":
     app.run()
