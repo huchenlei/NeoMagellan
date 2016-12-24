@@ -11,12 +11,15 @@
         <!-- Import angularjs -->
         <script type="text/javascript" src="static/bower_components/angular/angular.min.js" charset="utf-8"></script>
         <script type="text/javascript" src="static/bower_components/angular-dragdrop/src/angular-dragdrop.min.js" charset="utf-8"></script>
+        <!-- import Materialize.js(depend on jquery) -->
+        <script type="text/javascript" src="static/bower_components/materialize/dist/js/materialize.min.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-materialize/src/angular-materialize.js"></script>
 
         <!-- css part -->
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="static/bower_components/materialize/dist/css/materialize.min.css" media="screen,projection"/>
         <!-- Import css -->
         <link rel="stylesheet" href="static/css/course_select.css">
         <!--Let browser know website is optimized for mobile-->
@@ -25,7 +28,7 @@
     <body>
         <div class="navbar-fixed">
             <nav>
-                <div class="nav-wrapper" id="header_bar">
+                <div class="nav-wrapper" id="header-bar">
                     <a href="#" class="brand-logo">Neo Magellan Project</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
@@ -41,6 +44,24 @@
         <div ng-app="CourseTable">
             <div class="row">
                 <div class="col s3" id="navigator" ng-controller="navigator">
+                    <!-- course_detail_modal -->
+                    <div id="course-detail-modal" class="modal bottom-sheet">
+                        <div class="modal-content">
+                            <h5>{{courseDetail.course_code}}: {{courseDetail.course_name}}</h5>
+                            <p>{{courseDetail.course_description}}</p>
+                            <table>
+                                <tr>
+                                    <th ng-repeat="(field, au) in courseDetail.au_info">{{field}}</th>
+                                </tr>
+                                <tr>
+                                    <th ng-repeat="(field, au) in courseDetail.au_info">{{au}}</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                    </div>
                     <!-- later there would be specifically designed icons for each course area -->
                     <ul class="collapsible" data-collapsible="accordion">
                         <li ng-repeat="mainArea in mainAreas">
@@ -49,7 +70,7 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li ng-repeat="course in mainArea.course_list">
-                                        <div
+                                        <a
                                             class="waves-effect waves-light btn"
                                             data-drag="true"
                                             data-jqyoui-options="{resert: 'invalid'}"
@@ -57,9 +78,11 @@
                                             jqyoui-draggable="{animate:true}"
                                             ng-hide="false"
                                             aria-disabled="false"
-                                            style="position: relative; z-index: auto; left: 0px; top: 0px">
+                                            style="position: relative; z-index: auto; left: 0px; top: 0px"
+                                            href="#course-detail-modal"
+                                            ng-click="getCourseDetail(course.course_code, course.course_length)">
                                             {{course.course_code}}
-                                        </div>
+                                        </a>
                                         <!-- <p>{{course.course_name}}</p> -->
                                     </li>
                                 </ul>
@@ -90,14 +113,13 @@
                             </div>
                         </li>
                     </ul>
-                    area lists: click area: drop down class list(double colum/single colum) course lists: draggable="true" mouse over course: display course info in card
                 </div>
                 <div class="col s8">
-                    <div class="*" id="info_panel" ng-controller="infoPanel">
+                    <div class="*" id="info-panel" ng-controller="infoPanel">
                         display the how much the current course selection meet the creteria 4 areas, 4 depth in 2 areas, etc... (x/y)
                     </div>
                     <div class="divider"></div>
-                    <div class="*" id="main_table" ng-controller="mainTable">
+                    <div class="*" id="main-table" ng-controller="mainTable">
                         course table: shall be a table to accept draggable items
                         <table>
                             <tr ng-repeat="(year, courses) in courseTable">
@@ -118,17 +140,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="divider"></div>
-        <div ng-app="CommentPanel" id="comment_management" ng-controller="commentManagement">comment panel</div>
+        <div ng-app="CommentPanel" id="comment-management" ng-controller="commentManagement">comment panel</div>
         <footer class="page-footer">
-            <!-- <div class="container">
-                <div class="row">
-                    <div class="col 16 s12">
-
-                    </div>
-                </div>
-            </div> -->
             <div class="footer-copyright">
                 <div class="container">
                     &copy;2016 Pretend there is copy right
@@ -138,15 +154,17 @@
 
         <script type="text/javascript">
             // initialize apps modules
-            angular.module('CourseTable', ['ngDragDrop'])
+            angular.module('CourseTable', ['ngDragDrop', 'ui.materialize'])
             angular.module('CommentPannel', [])
+            // make modals operate
+            $(document).ready(function() {
+                $('.modal').modal();
+            });
         </script>
         <!-- import controllers -->
-        <script type="text/javascript" src="static/js/controllers/navigator.js" charset="utf-8"></script>
-        <script type="text/javascript" src="static/js/controllers/main_table.js" charset="utf-8"></script>
-        <script type="text/javascript" src="static/js/controllers/info_panel.js" charset="utf-8"></script>
-        <script type="text/javascript" src="static/js/controllers/comment_management.js" charset="utf-8"></script>
-        <!-- import Materialize.js(depend on jquery) -->
-        <script type="text/javascript" src="static/js/materialize.min.js"></script>
+        <script type="text/javascript" src="static/js/navigator.js" charset="utf-8"></script>
+        <script type="text/javascript" src="static/js/main_table.js" charset="utf-8"></script>
+        <script type="text/javascript" src="static/js/info_panel.js" charset="utf-8"></script>
+        <script type="text/javascript" src="static/js/comment_management.js" charset="utf-8"></script>
     </body>
 </html>
