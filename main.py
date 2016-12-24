@@ -109,10 +109,10 @@ def get_test_profile():
     return send_from_directory('static', 'info.json')
 
 
-@app.route("/test_modal", methods=['GET'])
-def test_modal():
-    """for testing"""
-    return send_from_directory('temp', 'modal.html')
+# @app.route("/test_modal", methods=['GET'])
+# def test_modal():
+#     """for testing"""
+#     return send_from_directory('temp', 'modal.html')
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

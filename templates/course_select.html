@@ -47,14 +47,14 @@
                     <!-- course_detail_modal -->
                     <div id="course-detail-modal" class="modal bottom-sheet">
                         <div class="modal-content">
-                            <h5>{{courseDetail.course_code}}: {{courseDetail.course_name}}</h5>
-                            <p>{{courseDetail.course_description}}</p>
+                            <h5>{{courseDetail.courseCode}}: {{courseDetail.courseName}}</h5>
+                            <p>{{courseDetail.courseDescription}}</p>
                             <table>
                                 <tr>
-                                    <th ng-repeat="(field, au) in courseDetail.au_info">{{field}}</th>
+                                    <th ng-repeat="(field, au) in courseDetail.auInfo">{{field}}</th>
                                 </tr>
                                 <tr>
-                                    <th ng-repeat="(field, au) in courseDetail.au_info">{{au}}</th>
+                                    <th ng-repeat="(field, au) in courseDetail.auInfo">{{au}}</th>
                                 </tr>
                             </table>
                         </div>
@@ -66,10 +66,10 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <li ng-repeat="mainArea in mainAreas">
                             <div class="collapsible-header">
-                                <i class="material-icons">filter_drama</i>{{mainArea.area_name}}</div>
+                                <i class="material-icons">filter_drama</i>{{mainArea.areaName}}</div>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li ng-repeat="course in mainArea.course_list">
+                                    <li ng-repeat="course in mainArea.courseList">
                                         <a
                                             class="waves-effect waves-light btn"
                                             data-drag="true"
@@ -80,8 +80,8 @@
                                             aria-disabled="false"
                                             style="position: relative; z-index: auto; left: 0px; top: 0px"
                                             href="#course-detail-modal"
-                                            ng-click="getCourseDetail(course.course_code, course.course_length)">
-                                            {{course.course_code}}
+                                            ng-click="getCourseDetail(course.courseCode, course.courseLength)">
+                                            {{course.courseCode}}
                                         </a>
                                         <!-- <p>{{course.course_name}}</p> -->
                                     </li>
@@ -92,10 +92,10 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <li ng-repeat="elecArea in elecAreas">
                             <div class="collapsible-header">
-                                <i class="material-icons">filter_drama</i>{{elecArea.area_code}}</div>
+                                <i class="material-icons">filter_drama</i>{{elecArea.areaCode}}</div>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li ng-repeat="course in elecArea.course_list">
+                                    <li ng-repeat="course in elecArea.courseList">
                                         <div
                                             class="waves-effect waves-light btn"
                                             data-drag="true"
@@ -105,9 +105,9 @@
                                             ng-hide="false"
                                             aria-disabled="false"
                                             style="position: relative; z-index: auto; left: 0px; top: 0px">
-                                            {{course.course_code}}
+                                            {{course.courseCode}}
                                         </div>
-                                        <p>{{course.course_name}}</p>
+                                        <p>{{course.courseName}}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -121,11 +121,11 @@
                     <div class="divider"></div>
                     <div class="*" id="main-table" ng-controller="mainTable">
                         course table: shall be a table to accept draggable items
-                        <table>
+                        <table id="main-table-dropzone">
                             <tr ng-repeat="(year, courses) in courseTable">
                                 <td>{{year}}</td>
                                 <td ng-repeat="course in courses">
-                                    <div
+                                    <!-- <div
                                         class="waves-effect waves-light btn"
                                         data-drag="true"
                                         data-jqyoui-options="{resert: 'invalid'}"
@@ -133,7 +133,7 @@
                                         jqyoui-draggable="{animate:true}"
                                         ng-hide="false"
                                         aria-disabled="false"
-                                        style="position: relative; z-index: auto; left: 0px; top: 0px">{{course}}</div>
+                                        style="position: relative; z-index: auto; left: 0px; top: 0px">{{course}}</div> -->
                                 </td>
                             </tr>
                         </table>

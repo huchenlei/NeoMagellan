@@ -1,4 +1,4 @@
-# coding=utf_8
+# coding=utf-8
 """
 Created on Dec 05, 2016
 
@@ -62,16 +62,16 @@ def parse_course_page(raw_page):
     full_course_code = info_list[0].split()[0]
     course_time = info_list[0].split()[1]
 
-    info_json = {"course_name": info_list[2],
-                 "course_description": course_description,
+    info_json = {"courseName": info_list[2],
+                 "courseDescription": course_description,
                  "prerequisites": info_list[-6],
-                 "co_requisites": info_list[-5],
+                 "coRequisites": info_list[-5],
                  "exclusions": info_list[-4],
-                 "credit_weight": info_list[-3],
-                 "au_info": au_json,
-                 "course_code": full_course_code[:-2],
-                 "course_length": full_course_code[-2:],
-                 "course_time": course_time}
+                 "creditWeight": info_list[-3],
+                 "auInfo": au_json,
+                 "courseCode": full_course_code[:-2],
+                 "courseLength": full_course_code[-2:],
+                 "courseTime": course_time}
     return info_json
 
 # test case 1

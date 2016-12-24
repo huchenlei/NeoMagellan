@@ -5,3 +5,13 @@
 #navigator {
     padding: 10px;
 }
+
+#main-table-dropzone {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 110%;
+}
+
+#main-table-dropzone tr td {
+    border: 1px solid #66ccff;
+}
