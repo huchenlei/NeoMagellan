@@ -49,10 +49,10 @@ def parse(page, elec_txt):
     return json.dumps(json_result, indent=4, separators=(',', ': '))
 
 
-with open("cached_pages/main_page.html", 'r') as f:
-    with open("cached_pages/hss_cs.txt", 'r') as t:
+with open("../cached_pages/main_page.html", 'r') as f:
+    with open("../cached_pages/hss_cs.txt", 'r') as t:
         page = etree.HTML(f.read())
         elec_txt = t.read()
         json_data = parse(page, elec_txt)
-        with open("static/course_list.json", 'w') as j:
+        with open("../static/course_list.json", 'w') as j:
             j.write(json_data)

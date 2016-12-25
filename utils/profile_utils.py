@@ -11,9 +11,9 @@ from lxml import etree
 import json
 
 
-def cache_page(name, html):
-    with open("cached_pages/" + name + ".html", 'w') as f:
-        f.write(html)
+# def cache_page(name, html):
+#     with open("../cached_pages/" + name + ".html", 'w') as f:
+#         f.write(html)
 
 
 class ProfileReportParser(object):
@@ -77,7 +77,17 @@ class ProfileReportParser(object):
         row_list = table.xpath('.//table[@id = "s_course"]/tr[position() > 1]')
         for row in row_list:
             session = row.xpath('./td[1]/text()')
-            course_list = row.xpath('.//a[starts-with(@href, "javascript:course_popup")]/text()')
+            course_full_code_list = row.xpath('.//a[starts-with(@href, "javascript:course_popup")]/text()')
+            course_name_list = row.xpath('.//font[@style = "font-size:7pt;"]/text()')
+            course_list = []
+            for i, full_code in enumerate(course_full_code_list):
+                course_list.append({
+                    "courseName": course_name_list[i],
+                    "courseCode": full_code[0:6],
+                    "courseTime": full_code[-1],
+                    "courseLength": full_code[6:8]
+                })
+            # there is a empty session
             if session:
                 json_result.update({session[0]: course_list})
         # print(json_result)
@@ -146,11 +156,11 @@ def parse_info_page(page):
 #                      data={"view_personid": "utorid",
 #                            "profile_name": "profile_name"}).text
 # cache_page("profile", page)
-# with open("cached_pages/profile.html", 'r') as f:
+# with open("../cached_pages/profile.html", 'r') as f:
 #     page = f.read()
 #     p = ProfileReportParser(page)
 #     table_info = p.parse()
-#     with open("static/info.json", 'w') as j:
+#     with open("../static/info.json", 'w') as j:
 #         j.write(table_info)
 
 # Test parse profile

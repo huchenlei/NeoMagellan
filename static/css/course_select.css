@@ -6,12 +6,11 @@
     padding: 10px;
 }
 
-#main-table-dropzone {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 110%;
+#course-table ul, #course-table ul li{
+    position: relative;
 }
 
-#main-table-dropzone tr td {
-    border: 1px solid #66ccff;
+#course-table ul li {
+    display: inline;
+    margin: 5px;
 }

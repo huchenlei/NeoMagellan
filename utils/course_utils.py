@@ -82,5 +82,5 @@ def parse_course_page(raw_page):
 # get_course_info("ECE244H1", db, base_url)
 
 # test case 2
-# with open('cached_pages/CIV300H1.html', 'r') as f:
+# with open('../cached_pages/CIV300H1.html', 'r') as f:
 #     print(parse_course_page(f.read()))
