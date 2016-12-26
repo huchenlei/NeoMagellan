@@ -14,7 +14,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         courseArrange['HSS and CS'].forEach((elective) => {
             courseCode = elective.split(' ')[0];
             courseCategory = elective.split(' ')[1];
-            // find the course in courseTable
+            // find the elective in courseTable
             // and inject 'courseCategory' field
             for (const year of Object.keys(courseTable)) {
                 courseTable[year].forEach((course) => {
@@ -34,7 +34,6 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
             alert("something wrong getting profile");
         }
     )
-
 
     // initialize courseDetail
     $scope.courseDetail = {
@@ -59,6 +58,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         }
     }
 
-
-
+    $scope.dragControlListeners = {
+        allowDuplications: false
+    }
 })

@@ -16,13 +16,18 @@ def parse(page, elec_txt):
         course_code_list = area.xpath('.//table[@style = "width:100%;"]//a/text()')
         course_name_list = [text[2:].strip() for text in
                             area.xpath('.//table[@style = "width:100%;"]//a/../node()[last()]')]
-        course_list = []
+        fall_course_list = []
+        winter_course_list = []
         for i, course_code in enumerate(course_code_list):
-            course_list.append({"courseCode": course_code[:6],
-                                "courseLength": course_code[6:8],
-                                "courseTime": course_code[-1],
-                                "courseName": course_name_list[i]})
-        main_areas.append({"areaName": area_name, "courseList": course_list})
+            course_info = {"courseCode": course_code[:6],
+                           "courseLength": course_code[6:8],
+                           "courseTime": course_code[-1],
+                           "courseName": course_name_list[i]}
+            if course_info["courseTime"] == "F":
+                fall_course_list.append(course_info)
+            else:
+                winter_course_list.append(course_info)
+        main_areas.append({"areaName": area_name, "courseLists": [fall_course_list, winter_course_list]})
     json_result.update({"mainAreas": main_areas})
 
     elec_areas = []

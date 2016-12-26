@@ -100,11 +100,18 @@ def get_course_detail(course_code):
 @app.route("/test_profile", methods=['GET'])
 def get_test_profile():
     """for testing"""
-    with open('config/account.txt', 'r') as f:
-        username = f.readline().split()[0]  # get rid of \n at the end of the string
-        password = f.readline()
+    with open('config/account.json', 'r') as f:
+        account = json.loads(f.read())
+        username = account["username"]
+        password = account["password"]
+        print(username, password)
         session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
     return send_from_directory('static', 'info.json')
+
+
+@app.route("/components/<component_name>")
+def get_component(component_name):
+    return send_from_directory('templates', component_name)
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

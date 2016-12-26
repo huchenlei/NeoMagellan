@@ -29,7 +29,7 @@ def get_course_info(full_course_code, db, base_url):
 
     if course_info is None:
         url = base_url + '/courses_detail_popup.php?popup_acad_act_cd=' \
-              + full_course_code + '&popup_offered=' + str(datetime.datetime.now().year - 1)
+              + full_course_code + '&popup_offered=' + '2015'  # TODO need to xpath the year info from page
         print("[Getting from Magellan]" + url)
         info_page = requests.get(url).text
         course_info = parse_course_page(info_page)

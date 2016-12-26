@@ -1,0 +1,32 @@
+{
+  "name": "NeoMagellan",
+  "homepage": "https://github.com/CharlieUofT/NeoMagellan",
+  "authors": [
+    "Charlie<chenlei.hu@mail.utoronto.ca>"
+  ],
+  "description": "Neo Magellan Project",
+  "main": "course_select.js",
+  "keywords": [
+    "angular",
+    "flask",
+    "materialize",
+    "mongodb"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-materialize": "^0.2.1",
+    "angular-drag-and-drop-lists": "^1.4.0",
+    "jquery-ui": "*"
+  },
+  "resolutions": {
+    "angular-drag-and-drop-lists": "^1.4.0"
+  }
+}
