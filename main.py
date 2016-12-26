@@ -11,8 +11,8 @@ from flask import Flask, send_from_directory, request, session
 from pymongo import MongoClient
 from bson import json_util
 
-from profile_utils import ProfileReportParser, parse_info_page, parse_profile_list_page
-from course_utils import get_course_info
+from utils.profile_utils import ProfileReportParser, parse_info_page, parse_profile_list_page
+from utils.course_utils import get_course_info
 
 app = Flask(__name__)
 app.debug = True
@@ -51,26 +51,24 @@ def get_profile_list():
     return json.dumps({"studentId": student_id, "profileList": profile_list})
 
 
+@app.route("/course_select/<profile_name>", methods=['GET'])
+def course_select(profile_name):
+    """go to course selecting page, returns HTML"""
+    session["profile_name"] = profile_name
+    return send_from_directory('templates', 'course_select.html')
+
+
 # choose profile
-@app.route("/profile", methods=['POST'])
+@app.route("/profile", methods=['GET'])
 def get_profile():
-    """ get user profile details based on student_id and profile name """
-    print(request.data)
-    profile_name = (json.loads(request.data.decode('utf-8')))["profileName"]
+    """ get user profile details based on student_id and profile name, returns json """
     # the POST data to official Magellan server
-    data = {"view_personid": session[
-        "student_id"], "profile_name": profile_name}
+    data = {"view_personid": session["student_id"], "profile_name": session["profile_name"]}
     page = requests.post(session["base_url"] +
                          "/profile_view_report.php", data=data).text
     course_table = ProfileReportParser(page).parse()
     return course_table
     # return send_from_directory('static', 'info.json')
-
-
-@app.route("/course_select", methods=['GET'])
-def course_select():
-    """go to course selecting page"""
-    return send_from_directory('templates', 'course_select.html')
 
 
 @app.route("/course_list", methods=['GET'])
@@ -102,17 +100,18 @@ def get_course_detail(course_code):
 @app.route("/test_profile", methods=['GET'])
 def get_test_profile():
     """for testing"""
-    with open('config/account.txt', 'r') as f:
-        username = f.readline().split()[0]  # get rid of \n at the end of the string
-        password = f.readline()
+    with open('config/account.json', 'r') as f:
+        account = json.loads(f.read())
+        username = account["username"]
+        password = account["password"]
+        print(username, password)
         session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
     return send_from_directory('static', 'info.json')
 
 
-# @app.route("/test_modal", methods=['GET'])
-# def test_modal():
-#     """for testing"""
-#     return send_from_directory('temp', 'modal.html')
+@app.route("/components/<component_name>")
+def get_component(component_name):
+    return send_from_directory('templates', component_name)
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

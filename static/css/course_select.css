@@ -6,12 +6,55 @@
     padding: 10px;
 }
 
-#main-table-dropzone {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 110%;
+#main-areas {
+    font-size: 10px;
 }
 
-#main-table-dropzone tr td {
-    border: 1px solid #66ccff;
+#course-table ul, #course-table ul li{
+    position: relative;
+    display: block;
 }
+
+#course-table ul li {
+    display: block;
+    /*important*/
+    float: left;
+    margin: 5px;
+}
+
+/*the dnd-list should always have a min-height/min-width,
+otherwise you can't drop to it once it's empty*/
+ul[dnd-list] {
+    margin: 0px;
+    min-height: 30px;
+    min-width: 50px;
+}
+
+/**
+ * Reduce opacity of elements during the drag operation. This allows the user
+ * to see where he is dropping his element, even if the element is huge. The
+ * .dndDragging class is automatically set during the drag operation.
+ */
+ .dndDragging {
+     opacity: 0.8;
+ }
+
+ /**
+ * The dndDraggingSource class will be applied to the source element of a drag
+ * operation. It makes sense to hide it to give the user the feeling that he's
+ * actually moving it. Note that the source element has also .dndDragging class.
+ */
+ .dndDraggingSource {
+     display: none;
+ }
+
+ /**
+ * An element with .dndPlaceholder class will be added as child of the dnd-list
+ * while the user is dragging over it.
+ */
+ .dndPlaceholder {
+     background-color: #66ccff;
+     display: block;
+     min-width: 100px;
+     min-height: 35px;
+ }
