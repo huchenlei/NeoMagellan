@@ -34,7 +34,6 @@ def get_profile_list():
     session["base_url"]
     session["student_id"]
     """
-
     data = json.loads(request.data.decode("utf-8"))
     username = data["username"]
     password = data["password"]
@@ -55,11 +54,13 @@ def get_profile_list():
 
 @app.route("/course_select", methods=['POST'])
 def course_select():
-    """go to course selecting page, returns HTML, handles new profile action
-    session["profile_name"]"""
-    data = json.loads(request.data.decode("utf-8"))
-    new_profile = data["newProfile"]
-    profile_name = data["profileName"]
+    """
+    go to course selecting page, returns HTML,
+    handles new profile action
+    session["profile_name"]
+    """
+    new_profile = request.form["newProfile"]
+    profile_name = request.form["profileName"]
     if new_profile == 'true':
         data = {
             "profile_name": profile_name,
@@ -164,8 +165,14 @@ def get_test_profile():
     return send_from_directory('static', 'info.json')
 
 
+@app.route("/test_course_select", methods=["GET"])
+def get_test_course_select():
+    return send_from_directory('templates', 'course_select.html')
+
+
 @app.route("/components/<component_name>")
 def get_component(component_name):
+    session['profile_name'] = "Test_1"
     return send_from_directory('templates', component_name)
 
 
