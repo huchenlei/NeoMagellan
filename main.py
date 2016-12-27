@@ -30,7 +30,10 @@ def root():
 @app.route("/profile_list", methods=['POST'])
 def get_profile_list():
     """ with username and password posted
-    return the user profile list """
+    return the user profile list
+    session["base_url"]
+    session["student_id"]
+    """
 
     data = json.loads(request.data.decode("utf-8"))
     username = data["username"]
@@ -47,18 +50,36 @@ def get_profile_list():
     student_id = parse_info_page(info_page)
     session["student_id"] = student_id
     profile_list = parse_profile_list_page(profile_list_page)
-
     return json.dumps({"studentId": student_id, "profileList": profile_list})
 
 
-@app.route("/course_select/<profile_name>", methods=['GET'])
-def course_select(profile_name):
-    """go to course selecting page, returns HTML"""
+@app.route("/course_select", methods=['POST'])
+def course_select():
+    """go to course selecting page, returns HTML, handles new profile action
+    session["profile_name"]"""
+    data = json.loads(request.data.decode("utf-8"))
+    new_profile = data["newProfile"]
+    profile_name = data["profileName"]
+    if new_profile == 'true':
+        data = {
+            "profile_name": profile_name,
+            "profile_action": "Create New",
+            "profile_new": "new"
+        }
+        m_session = requests.session()
+        requests.post(session["base_url"] + "/profile_edit.php", data=data)
+        data = {
+            "profile_name": profile_name,
+            "profile_action": "Create New",
+            "view_personid": session["student_id"]
+        }
+        m_session.post(session["base_url"] + "/profile_view_report.php", data=data)
+        m_session.post(session["base_url"] + "/profile_edit_save.php", data=data)
+
     session["profile_name"] = profile_name
-    return send_from_directory('templates', 'course_select.html')
+    return send_from_directory('templates', 'course_select.html')  # choose profile
 
 
-# choose profile
 @app.route("/profile", methods=['GET'])
 def get_profile():
     """ get user profile details based on student_id and profile name, returns json """
@@ -87,7 +108,7 @@ def submit_profile():
 
     m_session = requests.session()
     m_session.post(session["base_url"] + "/profile_edit_save.php", student_info)
-    return json.loads({"status": "200"})
+    return json.dumps({"status": "200"})
 
 
 @app.route("/check_profile", methods=['POST'])

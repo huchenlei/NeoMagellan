@@ -45,6 +45,7 @@ ul[dnd-list] {
  * actually moving it. Note that the source element has also .dndDragging class.
  */
  .dndDraggingSource {
+     /*little display problem here*/
      display: none;
  }
 

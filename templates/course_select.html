@@ -2,20 +2,17 @@
 <!-- after loging in, and selecting the profile, the user would be directed to this page to manipulate his/her profile-->
 <html>
     <head>
-        <meta >
         <title>Neo Magellan</title>
         <!-- might be a bug of flask, since changed "/course_select" to "/course_select/<profile_name>" -->
         <!-- the base path changed from top to "templates" folder -->
-        <base href="../static/bower_components/">
+        <base href="static/bower_components/">
 
         <!-- Import Jquery and Jquery-UI -->
         <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
         <!-- Import angularjs -->
         <script type="text/javascript" src="angular/angular.min.js"></script>
         <!-- Import ng-angular-drag-and-drop-lists -->
         <script type="text/javascript" src="angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
-
         <!-- import Materialize.js(depend on jquery) -->
         <script type="text/javascript" src="materialize/dist/js/materialize.min.js"></script>
         <script type="text/javascript" src="angular-materialize/src/angular-materialize.js"></script>
@@ -70,6 +67,8 @@
                             <li>This is a trash can</li>
                         </ul>
                     </div>
+                    <div class="btn" ng-click="checkProfile()">CHECK PROFILE</div>
+                    <div class="btn" ng-click="submitProfile()">SUBMIT PROFILE</div>
                 </div>
             </div>
         </div>

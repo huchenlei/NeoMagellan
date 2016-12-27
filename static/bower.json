@@ -24,7 +24,6 @@
   "dependencies": {
     "angular-materialize": "^0.2.1",
     "angular-drag-and-drop-lists": "^1.4.0",
-    "jquery-ui": "*"
   },
   "resolutions": {
     "angular-drag-and-drop-lists": "^1.4.0"
