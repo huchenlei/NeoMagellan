@@ -66,9 +66,44 @@ def get_profile():
     data = {"view_personid": session["student_id"], "profile_name": session["profile_name"]}
     page = requests.post(session["base_url"] +
                          "/profile_view_report.php", data=data).text
-    course_table = ProfileReportParser(page).parse()
-    return course_table
-    # return send_from_directory('static', 'info.json')
+    return ProfileReportParser(page).parse()
+
+
+@app.route("/submit_profile", methods=['POST'])
+def submit_profile():
+    """
+    submit the profile to Magellan Server
+    :return: json
+    """
+    data = json.loads(request.data.decode("utf-8"))
+    student_info = {
+        "view_personid": session["student_id"],
+        "profile_name": session["profile_name"],
+        "profile_action": "Edit Profile"
+    }
+    data.update(student_info)
+    # submit to view page
+    requests.post(session["base_url"] + "/profile_view_report.php", data)
+
+    m_session = requests.session()
+    m_session.post(session["base_url"] + "/profile_edit_save.php", student_info)
+    return json.loads({"status": "200"})
+
+
+@app.route("/check_profile", methods=['POST'])
+def check_profile():
+    """
+    validate of profile
+    :return: json(the same structure as get profile)
+    """
+    data = json.loads(request.data.decode("utf-8"))
+    data.update({
+        "view_personid": session["student_id"],
+        "profile_name": session["profile_name"],
+        "profile_action": "Edit Profile"
+    })
+    page = requests.post(session["base_url"] + "/profile_view_report.php").text
+    return ProfileReportParser(page).parse()
 
 
 @app.route("/course_list", methods=['GET'])
@@ -104,7 +139,6 @@ def get_test_profile():
         account = json.loads(f.read())
         username = account["username"]
         password = account["password"]
-        print(username, password)
         session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
     return send_from_directory('static', 'info.json')
 

@@ -32,28 +32,10 @@
     <body ng-app="NeoMagellan">
         <div ng-include="'/components/header.html'"></div>
         <div ng-controller="courseSelect">
-            <drag-and-drop-example></drag-and-drop-example>
             <div class="row">
                 <div class="col s3" id="navigator">
                     <!-- course_detail_modal -->
-                    <div id="course-detail-modal" class="modal bottom-sheet">
-                        <div class="modal-content">
-                            <h5>{{courseDetail.courseCode}}:
-                                {{courseDetail.courseName}}</h5>
-                            <p>{{courseDetail.courseDescription}}</p>
-                            <table>
-                                <tr>
-                                    <th ng-repeat="(field, au) in courseDetail.auInfo">{{field}}</th>
-                                </tr>
-                                <tr>
-                                    <th ng-repeat="(field, au) in courseDetail.auInfo">{{au}}</th>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="modal-action modal-close waves-effect waves-green btn-flat">Close</div>
-                        </div>
-                    </div>
+                    <div ng-include="'/components/course_detail_modal.html'"></div>
                     <!-- later there would be specifically designed icons for each course area -->
                     <ul id="main-areas" class="collapsible" data-collapsible="accordion">
                         <li ng-repeat="mainArea in mainAreas">
@@ -81,6 +63,13 @@
                         <div ng-include="'table_course_list.html'"></div>
                         <br><br><br>
                     </div>
+                    <!-- trash can -->
+                    <div class="trashcan box">
+                        <h3>trash can</h3>
+                        <ul dnd-list="[]">
+                            <li>This is a trash can</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,16 +78,12 @@
         <div ng-include="'/components/footer.html'"></div>
         <script type="text/javascript">
             // initialize apps modules
-            angular.module('NeoMagellan', ['ui.materialize', 'dndLists'])
-            // make modals operate
-            $(document).ready(function() {
-                $('.modal').modal();
-            });
+            angular.module('NeoMagellan', ['ui.materialize', 'dndLists']);
         </script>
         <!-- import controllers -->
         <script type="text/javascript" src="../js/course_select.js"></script>
         <script type="text/javascript" src="../js/comment_panel.js"></script>
-        <!-- course list  model in course table-->
+        <!-- course list model in course table-->
         <script type="text/ng-template" id="table_course_list.html">
             <ul dnd-list="course_list" dnd-horizontal-list="true">
                 <li ng-repeat="course in course_list" dnd-draggable="course" dnd-moved="course_list.splice($index, 1)" dnd-effect-allowed="move" ng-include="'course_item.html'"></li>
