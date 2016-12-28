@@ -7,7 +7,7 @@ Created on Nov 02, 2016
 
 from lxml import etree
 
-# import requests
+import requests
 import json
 
 
@@ -151,6 +151,7 @@ def parse_info_page(page):
     """ returns the student number string"""
     return etree.HTML(page).xpath('//table[@style="width:100%; margin-top:30px;"]/tr[3]/td[2]/text()')[0].strip()
 
+
 # Test ProfileReportParser
 # page = requests.post("https://username:password@magellan.ece.toronto.edu/profile_view_report.php",
 #                      data={"view_personid": "utorid",
@@ -170,4 +171,3 @@ def parse_info_page(page):
 # Test parse info page
 # page = requests.get("https://username:password@magellan.ece.toronto.edu/student_view.php").text
 # print(parse_info_page(page))
-

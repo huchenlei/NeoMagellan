@@ -12,10 +12,11 @@
             password:<input type="password" ng-model="password"/>
             <input type="submit"/>
         </form>
-        <form ng-show="readyToSelectProfile" ng-submit="getProfile()">
+        <form ng-show="readyToSelectProfile" action="/course_select" method="post">
             <label ng-repeat="profile in profileList">
-                <input type="radio" ng-model="$parent.profileName" ng-value="profile"/> {{profile}}
+                <input type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile"/> {{profile}}
             </label>
+            <input type="hidden" name="newProfile" value="false">
             <input type="submit" value="submit_select"/>
         </form>
         <table>
@@ -39,11 +40,11 @@
                 </td>
             </tr>
         </table>
-        <a href="course_select">go to course select</a><br>
+        <!-- <button ng-click="newProfile()">new Profile</button><br> -->
         <!-- <a href="test_modal">go to test modal</a> -->
         <script type="text/javascript">
             const magellan = angular.module('magellan-top', [])
-            magellan.controller("ctrl", function($scope, $http) {
+            magellan.controller("ctrl", function($scope, $location, $window, $http) {
                 // initialize everything
                 $scope.readyToSelectProfile = false;
                 $scope.getProfileList = function() {
@@ -65,24 +66,28 @@
                     })
                 };
 
-                $scope.getProfile = function() {
-                    $http({
-                        method: 'POST',
-                        url: '/profile',
-                        data: {
-                            "profileName": $scope.profileName
+                $scope.getProfile = function(){
+                    console.log("getting profile");
+                    $http.post('/course_select', {"profileName": $scope.profileName, "newProfile": "false"}).then(
+                        (response) => {
+                            $window.location.href = '/course_select';
                         },
-                        headers: {
-                            'Content-Type': "application/json"
+                        (response) => {
+                            console.log("something wrong getting profile");
                         }
-                    }).then((response) => {
-                        $scope.courseTable = response.data["courseTable"];
-                        $scope.CEABRequirement = response.data["CEABRequirement"];
-                        // console.log($scope.CEABRequirement);
-                        $scope.readyToSelectProfile = false;
-                    }, (response) => {
-                        alert("something wrong getting profile details");
-                    })
+                    );
+                };
+
+                $scope.newProfile = function() {
+                    console.log("creating new profile");
+                    $http.post('/course_select', {"profileName": "TestNew", "newProfile": "true"}).then(
+                        (response) => {
+                            $location.path('/course_select')
+                        },
+                        (response) => {
+                            console.log("something wrong");
+                        }
+                    );
                 };
             });
         </script>

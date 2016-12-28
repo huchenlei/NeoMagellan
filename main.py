@@ -30,8 +30,10 @@ def root():
 @app.route("/profile_list", methods=['POST'])
 def get_profile_list():
     """ with username and password posted
-    return the user profile list """
-
+    return the user profile list
+    session["base_url"]
+    session["student_id"]
+    """
     data = json.loads(request.data.decode("utf-8"))
     username = data["username"]
     password = data["password"]
@@ -47,18 +49,38 @@ def get_profile_list():
     student_id = parse_info_page(info_page)
     session["student_id"] = student_id
     profile_list = parse_profile_list_page(profile_list_page)
-
     return json.dumps({"studentId": student_id, "profileList": profile_list})
 
 
-@app.route("/course_select/<profile_name>", methods=['GET'])
-def course_select(profile_name):
-    """go to course selecting page, returns HTML"""
+@app.route("/course_select", methods=['POST'])
+def course_select():
+    """
+    go to course selecting page, returns HTML,
+    handles new profile action
+    session["profile_name"]
+    """
+    new_profile = request.form["newProfile"]
+    profile_name = request.form["profileName"]
+    if new_profile == 'true':
+        data = {
+            "profile_name": profile_name,
+            "profile_action": "Create New",
+            "profile_new": "new"
+        }
+        m_session = requests.session()
+        requests.post(session["base_url"] + "/profile_edit.php", data=data)
+        data = {
+            "profile_name": profile_name,
+            "profile_action": "Create New",
+            "view_personid": session["student_id"]
+        }
+        m_session.post(session["base_url"] + "/profile_view_report.php", data=data)
+        m_session.post(session["base_url"] + "/profile_edit_save.php", data=data)
+
     session["profile_name"] = profile_name
-    return send_from_directory('templates', 'course_select.html')
+    return send_from_directory('templates', 'course_select.html')  # choose profile
 
 
-# choose profile
 @app.route("/profile", methods=['GET'])
 def get_profile():
     """ get user profile details based on student_id and profile name, returns json """
@@ -66,9 +88,44 @@ def get_profile():
     data = {"view_personid": session["student_id"], "profile_name": session["profile_name"]}
     page = requests.post(session["base_url"] +
                          "/profile_view_report.php", data=data).text
-    course_table = ProfileReportParser(page).parse()
-    return course_table
-    # return send_from_directory('static', 'info.json')
+    return ProfileReportParser(page).parse()
+
+
+@app.route("/submit_profile", methods=['POST'])
+def submit_profile():
+    """
+    submit the profile to Magellan Server
+    :return: json
+    """
+    data = json.loads(request.data.decode("utf-8"))
+    student_info = {
+        "view_personid": session["student_id"],
+        "profile_name": session["profile_name"],
+        "profile_action": "Edit Profile"
+    }
+    data.update(student_info)
+    # submit to view page
+    requests.post(session["base_url"] + "/profile_view_report.php", data)
+
+    m_session = requests.session()
+    m_session.post(session["base_url"] + "/profile_edit_save.php", student_info)
+    return json.dumps({"status": "200"})
+
+
+@app.route("/check_profile", methods=['POST'])
+def check_profile():
+    """
+    validate of profile
+    :return: json(the same structure as get profile)
+    """
+    data = json.loads(request.data.decode("utf-8"))
+    data.update({
+        "view_personid": session["student_id"],
+        "profile_name": session["profile_name"],
+        "profile_action": "Edit Profile"
+    })
+    page = requests.post(session["base_url"] + "/profile_view_report.php").text
+    return ProfileReportParser(page).parse()
 
 
 @app.route("/course_list", methods=['GET'])
@@ -104,13 +161,18 @@ def get_test_profile():
         account = json.loads(f.read())
         username = account["username"]
         password = account["password"]
-        print(username, password)
         session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
     return send_from_directory('static', 'info.json')
 
 
+@app.route("/test_course_select", methods=["GET"])
+def get_test_course_select():
+    return send_from_directory('templates', 'course_select.html')
+
+
 @app.route("/components/<component_name>")
 def get_component(component_name):
+    session['profile_name'] = "Test_1"
     return send_from_directory('templates', component_name)
 
 

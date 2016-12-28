@@ -2,20 +2,17 @@
 <!-- after loging in, and selecting the profile, the user would be directed to this page to manipulate his/her profile-->
 <html>
     <head>
-        <meta >
         <title>Neo Magellan</title>
         <!-- might be a bug of flask, since changed "/course_select" to "/course_select/<profile_name>" -->
         <!-- the base path changed from top to "templates" folder -->
-        <base href="../static/bower_components/">
+        <base href="static/bower_components/">
 
         <!-- Import Jquery and Jquery-UI -->
         <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
         <!-- Import angularjs -->
         <script type="text/javascript" src="angular/angular.min.js"></script>
         <!-- Import ng-angular-drag-and-drop-lists -->
         <script type="text/javascript" src="angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
-
         <!-- import Materialize.js(depend on jquery) -->
         <script type="text/javascript" src="materialize/dist/js/materialize.min.js"></script>
         <script type="text/javascript" src="angular-materialize/src/angular-materialize.js"></script>
@@ -32,28 +29,10 @@
     <body ng-app="NeoMagellan">
         <div ng-include="'/components/header.html'"></div>
         <div ng-controller="courseSelect">
-            <drag-and-drop-example></drag-and-drop-example>
             <div class="row">
                 <div class="col s3" id="navigator">
                     <!-- course_detail_modal -->
-                    <div id="course-detail-modal" class="modal bottom-sheet">
-                        <div class="modal-content">
-                            <h5>{{courseDetail.courseCode}}:
-                                {{courseDetail.courseName}}</h5>
-                            <p>{{courseDetail.courseDescription}}</p>
-                            <table>
-                                <tr>
-                                    <th ng-repeat="(field, au) in courseDetail.auInfo">{{field}}</th>
-                                </tr>
-                                <tr>
-                                    <th ng-repeat="(field, au) in courseDetail.auInfo">{{au}}</th>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="modal-action modal-close waves-effect waves-green btn-flat">Close</div>
-                        </div>
-                    </div>
+                    <div ng-include="'/components/course_detail_modal.html'"></div>
                     <!-- later there would be specifically designed icons for each course area -->
                     <ul id="main-areas" class="collapsible" data-collapsible="accordion">
                         <li ng-repeat="mainArea in mainAreas">
@@ -81,6 +60,15 @@
                         <div ng-include="'table_course_list.html'"></div>
                         <br><br><br>
                     </div>
+                    <!-- trash can -->
+                    <div class="trashcan box">
+                        <h3>trash can</h3>
+                        <ul dnd-list="[]">
+                            <li>This is a trash can</li>
+                        </ul>
+                    </div>
+                    <div class="btn" ng-click="checkProfile()">CHECK PROFILE</div>
+                    <div class="btn" ng-click="submitProfile()">SUBMIT PROFILE</div>
                 </div>
             </div>
         </div>
@@ -89,16 +77,12 @@
         <div ng-include="'/components/footer.html'"></div>
         <script type="text/javascript">
             // initialize apps modules
-            angular.module('NeoMagellan', ['ui.materialize', 'dndLists'])
-            // make modals operate
-            $(document).ready(function() {
-                $('.modal').modal();
-            });
+            angular.module('NeoMagellan', ['ui.materialize', 'dndLists']);
         </script>
         <!-- import controllers -->
         <script type="text/javascript" src="../js/course_select.js"></script>
         <script type="text/javascript" src="../js/comment_panel.js"></script>
-        <!-- course list  model in course table-->
+        <!-- course list model in course table-->
         <script type="text/ng-template" id="table_course_list.html">
             <ul dnd-list="course_list" dnd-horizontal-list="true">
                 <li ng-repeat="course in course_list" dnd-draggable="course" dnd-moved="course_list.splice($index, 1)" dnd-effect-allowed="move" ng-include="'course_item.html'"></li>

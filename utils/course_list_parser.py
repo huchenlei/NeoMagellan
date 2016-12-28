@@ -16,13 +16,15 @@ def parse(page, elec_txt):
         course_code_list = area.xpath('.//table[@style = "width:100%;"]//a/text()')
         course_name_list = [text[2:].strip() for text in
                             area.xpath('.//table[@style = "width:100%;"]//a/../node()[last()]')]
+        course_id_list = area.xpath('.//table[@style = "width:100%;"]//select/@id')
         fall_course_list = []
         winter_course_list = []
         for i, course_code in enumerate(course_code_list):
             course_info = {"courseCode": course_code[:6],
                            "courseLength": course_code[6:8],
                            "courseTime": course_code[-1],
-                           "courseName": course_name_list[i]}
+                           "courseName": course_name_list[i],
+                           "courseId": course_id_list[i]}
             if course_info["courseTime"] == "F":
                 fall_course_list.append(course_info)
             else:
