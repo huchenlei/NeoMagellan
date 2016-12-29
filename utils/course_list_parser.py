@@ -7,7 +7,6 @@ import json
 
 
 def parse(page, elec_txt):
-    json_result = {}
 
     main_areas = []
     area_list = page.xpath('//table[@style = "width:100%; margin-top:10px;"]')
@@ -30,21 +29,26 @@ def parse(page, elec_txt):
             else:
                 winter_course_list.append(course_info)
         main_areas.append({"areaName": area_name, "courseLists": [fall_course_list, winter_course_list]})
-    json_result.update({"mainAreas": main_areas})
 
     elec_areas = []
     elec_list = elec_txt.split('|')
     elec_area = set()
+    elec_courses_pool = set()
     # get all areas of elective
     for elec in elec_list:
         elec_area.add(elec[:3])
+        elec_courses_pool.add(elec[:6])
+
     for area in elec_area:
         course_list = []
         for elec in elec_list:
             if area == elec[:3]:
-                # print(elec)
                 course_info = elec.split()
                 if len(course_info) == 0:
+                    break
+                if elec[:6] in elec_courses_pool:
+                    elec_courses_pool.remove(elec[:6])
+                else:
                     break
                 course_list.append({"courseCode": course_info[0][:6],
                                     "courseLength": elec[6:8],
@@ -52,8 +56,9 @@ def parse(page, elec_txt):
                                     "courseCategory": course_info[-1]})
         elec_areas.append({"areaCode": area, "courseList": course_list})
 
-    json_result.update({"main": main_areas, "elective": elec_areas})
-    return json.dumps(json_result, indent=4, separators=(',', ': '))
+    main_areas_json = json.dumps(main_areas, indent=4, separators=(',', ': '))
+    elec_areas_json = json.dumps(elec_areas, indent=4, separators=(',', ': '))
+    return main_areas_json, elec_areas_json
 
 
 with open("../cached_pages/main_page.html", 'r') as f:
@@ -61,5 +66,6 @@ with open("../cached_pages/main_page.html", 'r') as f:
         page = etree.HTML(f.read())
         elec_txt = t.read()
         json_data = parse(page, elec_txt)
-        with open("../static/course_list.json", 'w') as j:
-            j.write(json_data)
+        with open("../static/main_course_list.json", 'w') as m:
+            with open("../static/elec_course_list.json", 'w') as e:
+                

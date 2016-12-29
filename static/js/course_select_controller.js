@@ -12,7 +12,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
 
     }, (response) => {
         alert("something wrong getting course list");
-    })
+    });
 
     //initialize profile
     function processCourseTable(response) {
