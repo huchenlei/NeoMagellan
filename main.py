@@ -167,7 +167,10 @@ def get_test_profile():
 
 @app.route("/test_course_select", methods=['GET'])
 def get_test_course_select():
+<<<<<<< HEAD
+=======
     """ for testing """
+>>>>>>> master
     session['profile_name'] = "Test_1"
     return send_from_directory('templates', 'course_select.html')
 
