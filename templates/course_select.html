@@ -3,15 +3,14 @@
 <html>
     <head>
         <title>Neo Magellan</title>
-        <!-- might be a bug of flask, since changed "/course_select" to "/course_select/<profile_name>" -->
-        <!-- the base path changed from top to "templates" folder -->
         <base href="static/bower_components/">
 
         <!-- Import Jquery and Jquery-UI -->
         <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
         <!-- Import angularjs -->
         <script type="text/javascript" src="angular/angular.min.js"></script>
-        <!-- Import ng-angular-drag-and-drop-lists -->
+        <!-- Import angular-drag-and-drop-lists -->
         <script type="text/javascript" src="angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
         <!-- import Materialize.js(depend on jquery) -->
         <script type="text/javascript" src="materialize/dist/js/materialize.min.js"></script>
@@ -29,36 +28,68 @@
     <body ng-app="NeoMagellan">
         <div ng-include="'/components/header.html'"></div>
         <div ng-controller="courseSelect">
+            <!-- course_detail_modal -->
+            <div ng-include="'/components/course_detail_modal.html'"></div>
             <div class="row">
                 <div class="col s3" id="navigator">
-                    <!-- course_detail_modal -->
-                    <div ng-include="'/components/course_detail_modal.html'"></div>
-                    <!-- later there would be specifically designed icons for each course area -->
+                    <ul class="tabs">
+                        <li class="tab col s6">
+                            <a href="#main-areas">Main</a>
+                        </li>
+                        <li class="tab col s6">
+                            <a href="#elective-areas">Elective</a>
+                        </li>
+                    </ul>
                     <ul id="main-areas" class="collapsible" data-collapsible="accordion">
                         <li ng-repeat="mainArea in mainAreas">
-                            <div class="collapsible-header">
-                                <i class="material-icons">filter_drama</i>{{mainArea.areaName}}</div>
+                            <div class="collapsible-header">{{mainArea.areaName}}</div>
                             <div class="collapsible-body">
-                                <div class="row">
-                                    <!-- courseLists contains fallcourses and wintercourses -->
-                                    <div class="col s6" ng-repeat="course_list in mainArea.courseLists">
-                                        <div ng-include="'navigator_course_list.html'"></div>
-                                    </div>
+                                <ul class="tabs">
+                                    <li class="tab col s6" ng-repeat="sessionName in ['Fall', 'Winter']">
+                                        <a href="#{{$index | idFormat : $parent.mainArea.areaName}}">{{sessionName}}</a>
+                                    </li>
+                                </ul>
+                                <!-- courseLists contains fallcourses and wintercourses -->
+                                <div ng-repeat="courseList in mainArea.courseLists" id="{{$index | idFormat : mainArea.areaName}}">
+                                    <div ng-include="'navigator_course_list.html'"></div>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <div id="elective-areas">
+                        <div id="elective-search-bar">
+                            a search bar //TODO
+                        </div>
+                        <ul>
+                            <!-- TODO scrollale list and lazy load-->
+                            <li ng-repeat="elecArea in elecAreas | limitTo : 8">
+                                <ul>
+                                    <li ng-repeat="course in elecArea.courseList" dnd-draggable="course" dnd-effect-allowed="copy" ng-include="'navigator_course_item.html'"></li>
+                                </ul>
+                                <div class="divider"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col s8">
-                    <div id="info-panel">
-                        display the how much the current course selection meet the creteria 4 areas, 4 depth in 2 areas, etc... (x/y)
+                    <div id="profile-status">
+                        <h5>profile status</h5>
+                        TODO......
                     </div>
                     <br>
                     <div class="divider"></div>
-                    <div id="course-table" ng-repeat="(year, course_list) in courseTable">
-                        {{year}}
-                        <div ng-include="'table_course_list.html'"></div>
-                        <br><br><br>
+                    <div id="course-table">
+                        <ul class="collapsible col s12" data-collapsible="expandable">
+                            <li ng-repeat="year in yearArray">
+                                <div class="collapsible-header">
+                                    {{year.fallSession | sessionFormat}}
+                                    -
+                                    {{year.winterSession | sessionFormat}}</div>
+                                <div class="collapsible-body" ng-repeat="(sessionName, sessionTime) in year">
+                                    <div ng-include="'table_course_list.html'"></div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <!-- trash can -->
                     <div class="trashcan box">
@@ -72,34 +103,53 @@
                 </div>
             </div>
         </div>
+
         <div class="divider"></div>
         <div id="comment-management" ng-controller="commentPanel">comment panel</div>
         <div ng-include="'/components/footer.html'"></div>
+
         <script type="text/javascript">
             // initialize apps modules
             angular.module('NeoMagellan', ['ui.materialize', 'dndLists']);
         </script>
         <!-- import controllers -->
-        <script type="text/javascript" src="../js/course_select.js"></script>
-        <script type="text/javascript" src="../js/comment_panel.js"></script>
+        <script type="text/javascript" src="../js/course_select_controller.js"></script>
+        <script type="text/javascript" src="../js/format_filter.js"></script>
+        <script type="text/javascript" src="../js/comment_panel_controller.js"></script>
+
         <!-- course list model in course table-->
         <script type="text/ng-template" id="table_course_list.html">
-            <ul dnd-list="course_list" dnd-horizontal-list="true">
-                <li ng-repeat="course in course_list" dnd-draggable="course" dnd-moved="course_list.splice($index, 1)" dnd-effect-allowed="move" ng-include="'course_item.html'"></li>
+            <ul dnd-list="courseTable[sessionTime]" dnd-horizontal-list="true" id="session-course-list">
+                <li ng-repeat="course in courseTable[sessionTime]" dnd-draggable="course" dnd-moved="courseTable[sessionTime].splice($index, 1)" dnd-effect-allowed="move" ng-include="'course_item.html'"></li>
             </ul>
+            <br><br><br>
         </script>
         <!-- course list model in nav bar -->
         <script type="text/ng-template" id="navigator_course_list.html">
             <ul>
-                <li ng-repeat="course in course_list" dnd-draggable="course" dnd-effect-allowed="copy" ng-include="'course_item.html'"></li>
+                <li ng-repeat="course in courseList" dnd-draggable="course" dnd-effect-allowed="copy" ng-include="'navigator_course_item.html'"></li>
             </ul>
         </script>
         <!-- course unit model -->
         <script type="text/ng-template" id="course_item.html">
-            <button class="btn" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
+            <button tooltipped class="btn" data-position="top" data-delay="1000" data-tooltip="{{course.courseName}}" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
                 {{course.courseCode}}
                 {{course.courseTime}}
             </button>
+        </script>
+        <!-- course unit model in nav bar -->
+        <script type="text/ng-template" id="navigator_course_item.html">
+            <div class="row">
+                <div class="col s5">
+                    <button class="btn" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
+                        {{course.courseCode}}
+                        {{course.courseTime}}
+                    </button>
+                </div>
+                <div class="col s7">
+                    {{course.courseName}}
+                </div>
+            </div>
         </script>
     </body>
 </html>

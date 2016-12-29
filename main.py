@@ -17,7 +17,7 @@ from utils.course_utils import get_course_info
 app = Flask(__name__)
 app.debug = True
 
-db_client = MongoClient()
+db_client = MongoClient()  # default max 100 connections good enough for ECEs
 
 
 @app.route("/")
@@ -142,7 +142,7 @@ def get_course_detail(course_code):
     :return: json
     """
     db = db_client.NeoMagellan
-    print("[Get course detail] " + course_code)  # log each request
+    # print("[Get course detail] " + course_code)  # log each request
     try:
         result = get_course_info(course_code, db, session["base_url"])
     except ValueError:
@@ -156,24 +156,27 @@ def get_course_detail(course_code):
 
 @app.route("/test_profile", methods=['GET'])
 def get_test_profile():
-    """for testing"""
+    """ for testing """
     with open('config/account.json', 'r') as f:
         account = json.loads(f.read())
         username = account["username"]
         password = account["password"]
         session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
-    return send_from_directory('static', 'info.json')
+    return send_from_directory('static', 'info_blank.json')
 
 
-@app.route("/test_course_select", methods=["GET"])
+@app.route("/test_course_select", methods=['GET'])
 def get_test_course_select():
+<<<<<<< HEAD
+=======
+    """ for testing """
+>>>>>>> master
     session['profile_name'] = "Test_1"
     return send_from_directory('templates', 'course_select.html')
 
 
 @app.route("/components/<component_name>")
 def get_component(component_name):
-    session['profile_name'] = "Test_1"
     return send_from_directory('templates', component_name)
 
 
