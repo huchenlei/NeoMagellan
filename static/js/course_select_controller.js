@@ -5,10 +5,16 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         $scope.mainAreas = response.data["main"];
         $scope.elecAreas = response.data["elective"];
         getProfile();
+        // initialize tabs after everything got initailized
+        $(document).ready(function() {
+            $('ul.tabs').tabs();
+        });
+
     }, (response) => {
         alert("something wrong getting course list");
     })
 
+    //initialize profile
     function processCourseTable(response) {
         let courseTable = response.data["courseTable"];
         let courseArrange = response.data["courseArrange"];
@@ -47,7 +53,37 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
                 }
             });
         }
+
+        // complete the year options
+        // find the min session sessions are in form (e.g. 20159, 20161)
+        let minYear = null;
+        // build a year array for the convenience of course table display
+        // in the form (e.g. [{"fallSession": "20159", "winterSession": "20161"} ...])
+        yearArray = [];
+        for (const year of Object.keys(courseTable)) {
+            intYear = parseInt(year);
+            if (minYear === null)
+                minYear = intYear;
+            if (minYear > intYear)
+                minYear = intYear;
+        }
+        minYear = Math.floor(minYear / 10);
+
+        for (let i = 0; i < 5; i++) { // max 10 sessions
+            fallSession = (minYear + i).toString() + "9";
+            winterSession = (minYear + i + 1).toString() + "1";
+            yearArray.push({
+                "fallSession": fallSession,
+                "winterSession": winterSession
+            });
+            if (!(courseTable.hasOwnProperty(fallSession)))
+                courseTable[fallSession] = [];
+            if (!(courseTable.hasOwnProperty(winterSession)))
+                courseTable[winterSession] = [];
+        }
+
         $scope.courseTable = courseTable;
+        $scope.yearArray = yearArray;
     }
 
     function getProfile() {
@@ -60,6 +96,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         )
     }
 
+    // course detail search
     // initialize courseDetail
     $scope.courseDetail = {
         "courseCode": null
@@ -83,6 +120,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         }
     }
 
+    // submitting and checking profile
     function buildPayload() {
         let payload = {};
         let electiveIndex = 1;
@@ -97,12 +135,11 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
                     payload[prefix] = course.courseCode + course.courseLength;
                     payload['dd_' + prefix + '_session_cd_'] = year;
                     electiveIndex++;
-                } else if (course.courseCode === 'ECE472'){
+                } else if (course.courseCode === 'ECE472') {
                     // ECE 472 Engineering Economics
                     payload['dd_ECE472H1_'] = year;
-                } else if (['ECE496', 'APS490', 'BME498'].includes(course.courseCode)){
+                } else if (['ECE496', 'APS490', 'BME498'].includes(course.courseCode)) {
                     // Design Project(Capstone)
-                    console.log("designing project");
                     payload['capstone_type'] = course.courseCode + course.courseLength;
                     payload['dd_capstone_'] = year;
                 }
@@ -128,12 +165,13 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
     $scope.submitProfile = function() {
         $http.post('/submit_profile', buildPayload()).then(
             (response) => {
-                if(response.data["status"] === "200")
-                    console.log("Submit SUCCESS");
+                if (response.data["status"] === "200")
+                    console.log("Submit SUCCESS"); //TODO status bar
             },
             (response) => {
                 alert('something wrong submitting profile');
             }
         );
     }
+
 });

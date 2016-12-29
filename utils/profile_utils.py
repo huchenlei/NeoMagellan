@@ -9,23 +9,22 @@ from lxml import etree
 
 import requests
 import json
+import re
 
 
-# def cache_page(name, html):
-#     with open("../cached_pages/" + name + ".html", 'w') as f:
-#         f.write(html)
+def cache_page(name, html):
+    with open("../cached_pages/" + name + ".html", 'w') as f:
+        f.write(html)
+
+
+class ProfileException(Exception):
+    pass
 
 
 class ProfileReportParser(object):
     """
     this class parse the edit profile page(html) to a course table json object
-    the course table json object has following structure:
-    {
-      [{
-        "course_id": "ECE244H1",
-        "semester": "2016-9"
-      } ...]
-    }
+    the object is available at static/info.json
     """
 
     def __init__(self, page):
@@ -38,19 +37,30 @@ class ProfileReportParser(object):
     def parse(self):
         json_result = {}
         tables = self.page.xpath('//table[starts-with(@style, "width:100%;")]')
+        if len(tables) < 10:
+            raise ProfileException("Missing info tables in profile!:" + str(len(tables)))
+        if len(tables) > 11:
+            raise ProfileException("Unexpected tables in profile!:" + str(len(tables)))
+        # if there was prerequisite error, there would be 1 more table, and table after
+        # prerequisite table would be offset by 1
+        offset = 0 if len(tables) == 10 else 1
+
         json_result.update({"lastUpdated": self.get_update_info(tables[0])})
         json_result.update({"personalInfo": self.get_personal_info(tables[1])})
-        # tables[2] has no content in most case
         json_result.update({"courseTable": self.get_course_table(tables[3])})
-        # tables[4] and tables[5] has no useful content
-        json_result.update({"courseArrange": self.get_course_arrange(tables[6])})
-        json_result.update({"CEABRequirement": self.get_ceab_requirment(tables[7])})
-        # tables[8] has no useful content
-        json_result.update({"graduationEligibility": self.get_eligibility(tables[9])})
+        if offset == 1:
+            json_result.update({"prerequisiteErrors": self.get_prerequisite_errors(tables[4])})
+        json_result.update({"courseArrange": self.get_course_arrange(tables[6 + offset])})
+        json_result.update({"CEABRequirement": self.get_ceab_requirment(tables[7 + offset])})
+        json_result.update({"graduationEligibility": self.get_eligibility(tables[9 + offset])})
         return json.dumps(json_result, indent=4, separators=(',', ': '))
 
     def get_update_info(self, table):
-        return table.xpath('./tr/td[@colspan = "2"]/text()')[0].strip()
+        update_string = table.xpath('./tr/td[@colspan = "2"]/text()')
+        if (len(update_string) != 0) & hasattr(update_string[0], 'strip'):
+            return update_string[0].strip()
+        else:
+            raise ProfileException("Failed to get update info")
 
     def get_personal_info(self, table):
         """
@@ -61,11 +71,21 @@ class ProfileReportParser(object):
         json_result = {}
         row_list = table.xpath('./tr[position() > 1]')
         for row in row_list:
-            row_key = row.xpath('./td[1]/b/text()')[0]
-            row_value = row.xpath('./td[2]/text()')[0].strip()
-            # print(row_key, row_value)
+            row_key = row.xpath('./td[1]/b/text()')
+            if row_key:
+                row_key = row_key[0]
+            else:
+                raise ProfileException("Failed to get key of personal info")
+            row_value = row.xpath('./td[2]/text()')
+            if (len(row_value) != 0) & hasattr(row_value[0], 'strip'):
+                row_value = row_value[0].strip()
+            else:
+                raise ProfileException("Failed to get value of personal info")
             json_result.update({row_key: row_value})
-        return json_result
+        if json_result:
+            return json_result
+        else:
+            raise ProfileException("Failed to get personal info table(row list is empty)")
 
     def get_course_table(self, table):
         """
@@ -80,7 +100,13 @@ class ProfileReportParser(object):
             course_full_code_list = row.xpath('.//a[starts-with(@href, "javascript:course_popup")]/text()')
             course_name_list = row.xpath('.//font[@style = "font-size:7pt;"]/text()')
             course_list = []
+            if len(course_full_code_list) != len(course_name_list):
+                raise ProfileException(
+                    "Error: unmatched lists. course code list:" +
+                    course_full_code_list + "\n course name list:" + course_name_list)
             for i, full_code in enumerate(course_full_code_list):
+                if re.match(re.compile('\w{3}\d{3}[YH]1\s+[SF]'), full_code) is None:
+                    raise ProfileException("Illegal course code!:" + full_code)
                 course_list.append({
                     "courseName": course_name_list[i],
                     "courseCode": full_code[0:6],
@@ -90,27 +116,54 @@ class ProfileReportParser(object):
             # there is a empty session
             if session:
                 json_result.update({session[0]: course_list})
-        # print(json_result)
-        return json_result
+        if json_result:
+            return json_result
+        else:
+            raise ProfileException("Failed to get course_table table(row list is empty)")
+
+    def get_prerequisite_errors(self, table):
+        has_error = table.xpath('.//span[@style = "color:red;"]/text()')
+        errors = []
+        if has_error:
+            errors = table.xpath('.//table//td/text()')
+            errors = [error.strip() for error in errors]
+        return errors
 
     def get_course_arrange(self, table):
         json_result = {}
-        requirement_meet = table.xpath('./tr[1]//b/node()')[0]
+        requirement_meet = table.xpath('./tr[1]//b/node()')
+        if requirement_meet:
+            requirement_meet = requirement_meet[0]
+        else:
+            raise ProfileException("Failed to get course arrange conclusion")
+
         if hasattr(requirement_meet, "xpath"):
             requirement_meet = requirement_meet.xpath('./font/text()')
         json_result.update({"requirementMeet": requirement_meet})
 
-        sub_tables = table.xpath('./tr[position() < 3]//table[@id = "s_course"]')  # 2 tables
+        sub_tables = table.xpath('.//table[@id = "s_course"]')  # 2 tables
+
+        if len(sub_tables) != 2:
+            raise ProfileException("Failed to get course arrange sub tables:" + str(sub_tables))
+
         area_row_list = sub_tables[0].xpath('./tr[position() > 1]')
         for row in area_row_list:
-            area_name = row.xpath('./td[1]/text()')[0]
+            area_name = row.xpath('./td[1]/text()')
+            if area_name:
+                area_name = area_name[0]
+            else:
+                raise ProfileException("Failed to get area name when getting course arrange(main)")
             course_list = row.xpath('./td[position() > 1]/text()')
             json_result.update(
                 {area_name: course_list})  # the first course in course list is kernel, the lefts are depth
 
         other_row_list = sub_tables[1].xpath('./tr')
         for row in other_row_list:
-            area_name = row.xpath('./td[1]/b/text()')[0]
+            area_name = row.xpath('./td[1]/b/text()')
+            if area_name:
+                area_name = area_name[0]
+            else:
+                raise ProfileException("Failed to get area name when getting course arrange(others)")
             course_list = [text.strip() for text in row.xpath('./td[position() > 1]/text()')]
             json_result.update({area_name: course_list})
         return json_result
@@ -120,11 +173,14 @@ class ProfileReportParser(object):
         row_list = table.xpath('.//table[@id = "s_course"]/tr[position() > 1 and position() < 10]')
         for row in row_list:
             category = row.xpath('./td[1]/node()')
+            # contact nodes together to reform complete cate_name string
             cate_name = category[0]
             if len(category) == 3:
                 cate_name += ' ' + category[2]
 
             info_list = row.xpath('./td[position() > 1]/text()')
+            if len(info_list) != 4:
+                raise ProfileException("Unexpected CEAB table structure: " + str(len(info_list)) + "cols")
             info_obj = {"minRequirement": info_list[0],
                         "obtained": info_list[1],
                         "projected": info_list[2],
@@ -134,8 +190,11 @@ class ProfileReportParser(object):
 
     def get_eligibility(self, table):
         info_list = table.xpath('.//font/text()')
-        return {"eligibilityList": info_list[:-1],
-                "conclusion": info_list[-1]}
+        if info_list:
+            return {"eligibilityList": info_list[:-1],
+                    "conclusion": info_list[-1]}
+        else:
+            raise ProfileException("Failed to get eligibility info")
 
 
 def parse_profile_list_page(page):
@@ -153,15 +212,27 @@ def parse_info_page(page):
 
 
 # Test ProfileReportParser
-# page = requests.post("https://username:password@magellan.ece.toronto.edu/profile_view_report.php",
-#                      data={"view_personid": "utorid",
-#                            "profile_name": "profile_name"}).text
-# cache_page("profile", page)
-# with open("../cached_pages/profile.html", 'r') as f:
+# with open('../config/account.json', 'r') as f:
+#     data = json.loads(f.read())
+#     username = data["username"]
+#     password = data["password"]
+#     student_id = data["student_id"]
+#
+# page = requests.post("https://" + username + ":" + password + "@magellan.ece.toronto.edu/profile_view_report.php",
+#                      data={"view_personid": student_id,
+#                            "profile_name": "Test_4"}).text
+# cache_page("prerequisites_profile", page)
+
+# with open("../cached_pages/blank_profile.html", 'r') as f:
 #     page = f.read()
 #     p = ProfileReportParser(page)
-#     table_info = p.parse()
-#     with open("../static/info.json", 'w') as j:
+#     table_info = ''
+#     try:
+#         table_info = p.parse()
+#     except ProfileException as e:
+#         print(e)
+#
+#     with open("../static/info_b.json", 'w') as j:
 #         j.write(table_info)
 
 # Test parse profile
