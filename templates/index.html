@@ -3,26 +3,69 @@
     <head>
         <meta charset="utf-8">
         <title>Neo-Magellan</title>
+        <base href="static/bower_components/">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Import Jquery and Jquery-UI -->
+        <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
+        <!-- import Materialize.js(depend on jquery) -->
+        <script type="text/javascript" src="materialize/dist/js/materialize.min.js"></script>
+        <script type="text/javascript" src="angular-materialize/src/angular-materialize.js"></script>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="materialize/dist/css/materialize.min.css" media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body ng-app="magellan-top" ng-controller="ctrl">
-        <h1>Neo-Magellan</h1>
-        <form ng-submit="getProfileList()">
-            username:<input type="text" ng-model="username"/>
-            password:<input type="password" ng-model="password"/>
-            <input type="submit"/>
-        </form>
+
+    <body ng-app="magellan-top" ng-controller="ctrl" class="container">
+        <center>
+            <div class = "purple-text text-darken-2">
+                <h1>Neo-Magellan</h1>
+            </div>
+        <div ng-show="!readyToSelectProfile" class="card-panel" style="width: 40%">
+            <form ng-submit="getProfileList()">
+               <!--  <input type="text" placeholder="UTORid" ng-model="username" required>
+                <input type="password" placeholder="password" ng-model="password" required>
+                username:<input type="text" ng-model="username"/>
+                password:<input type="password" ng-model="password"/>
+     -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="text" class="validate" ng-model="username" required>
+                        <label for="text" style="text-align:left">UTORid</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate" ng-model="password" required>
+                        <label for="password" style="text-align:left">Password</label>
+                    </div>
+                </div>
+                    <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect purple darken-2'>Login</button>
+                
+            </form>
+            </center>
+        </div>
         <form ng-show="readyToSelectProfile" action="/course_select" method="post">
-            <label ng-repeat="profile in profileList">
+            <h6>Login Success, please select the profile and click "View Profile" to access the profile.</h6>
+            <p ng-repeat="profile in profileList">
+                <input type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile"/>
+                <label for="profileName">{{profile}}</label>
+            </p>
+            <input type="hidden" name="newProfile" value="false">
+            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect red darken-2'>View Profile</button>
+
+          <!--   <label ng-repeat="profile in profileList">
                 <input type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile"/> {{profile}}
             </label>
             <input type="hidden" name="newProfile" value="false">
-            <input type="submit" value="submit_select"/>
+            <input type="submit" value="submit_select"/> -->
         </form>
         <table>
-            <tr>
+<!--             <tr>
                 <td ng-bind="username"></td>
-            </tr>
+            </tr> -->
             <tr ng-repeat="(year, courses) in courseTable">
                 <td>{{year}}</td>
                 <td ng-repeat="course in courses">
