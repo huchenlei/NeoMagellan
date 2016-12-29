@@ -25,7 +25,7 @@ def get_course_info(full_course_code, db, base_url):
     """
     # the document collection courses
     courses = db.courses
-    course_info = courses.find_one({"course_code": full_course_code[:-2]})
+    course_info = courses.find_one({"courseCode": full_course_code[:-2]})
 
     if course_info is None:
         url = base_url + '/courses_detail_popup.php?popup_acad_act_cd=' \

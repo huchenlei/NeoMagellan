@@ -202,16 +202,24 @@ def parse_profile_list_page(page):
     page_tree = etree.HTML(page)
     profile_list = page_tree.xpath(
         '//table[@class="table_header"]/tr[position() > 4 and position() < (last() - 3)]/td/node()[1]')
-    profile_list[0] = "main"
-    return [text.strip() for text in profile_list]
+    if profile_list:
+        profile_list[0] = "main"
+        return [text.strip() for text in profile_list]
+    else:
+        raise ProfileException("Failed to get profile list")
 
 
 def parse_info_page(page):
     """ returns the student number string"""
-    return etree.HTML(page).xpath('//table[@style="width:100%; margin-top:30px;"]/tr[3]/td[2]/text()')[0].strip()
+    student_id = etree.HTML(page).xpath('//table[@style="width:100%; margin-top:30px;"]/tr[3]/td[2]/text()')
+    if student_id:
+        return student_id[0].strip()
+    else:
+        raise ProfileException("Failed to get student id")
 
 
 # Test ProfileReportParser
+
 # with open('../config/account.json', 'r') as f:
 #     data = json.loads(f.read())
 #     username = data["username"]

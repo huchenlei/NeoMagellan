@@ -65,7 +65,8 @@ with open("../cached_pages/main_page.html", 'r') as f:
     with open("../cached_pages/hss_cs.txt", 'r') as t:
         page = etree.HTML(f.read())
         elec_txt = t.read()
-        json_data = parse(page, elec_txt)
+        main_data, elec_data = parse(page, elec_txt)
         with open("../static/main_course_list.json", 'w') as m:
             with open("../static/elec_course_list.json", 'w') as e:
-                
+                m.write(main_data)
+                e.write(elec_data)

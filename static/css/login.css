@@ -1,0 +1,42 @@
+.brand-logo {
+    margin-left: 1%;
+}
+
+#login-panel {
+    z-index: 10;
+    width: 400px;
+    height: 250px;
+
+    margin-left: -200px;
+    margin-top: -150px;
+    left: 50%;
+    top: 60%;
+
+    opacity: 0.85;
+    position: absolute;
+}
+
+#error-box {
+    width: 250px;
+    display: inline-block;
+    font-size: 13px;
+    color: red;
+    font-weight: bold;
+    margin: 0px;
+}
+
+#profile-list-panel {
+    z-index: 10;
+    width: 400px;
+    margin-left: -200px;
+    margin-top: -150px;
+    left: 50%;
+    top: 60%;
+
+    opacity: 0.85;
+    position: absolute;
+}
+
+.slider {
+    z-index: -1;
+}

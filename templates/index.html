@@ -2,9 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Neo-Magellan</title>
+        <title>Neo Magellan</title>
         <base href="static/bower_components/">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript" src="angular/angular.min.js"></script>
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Import Jquery and Jquery-UI -->
@@ -18,121 +18,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-    <body ng-app="magellan-top" ng-controller="ctrl" class="container">
-        <center>
-            <div class = "purple-text text-darken-2">
-                <h1>Neo-Magellan</h1>
-            </div>
-        <div ng-show="!readyToSelectProfile" class="card-panel" style="width: 40%">
-            <form ng-submit="getProfileList()">
-               <!--  <input type="text" placeholder="UTORid" ng-model="username" required>
-                <input type="password" placeholder="password" ng-model="password" required>
-                username:<input type="text" ng-model="username"/>
-                password:<input type="password" ng-model="password"/>
-     -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="text" class="validate" ng-model="username" required>
-                        <label for="text" style="text-align:left">UTORid</label>
+    <body ng-app="NeoMagellanLogin" ng-controller="login">
+        <div ng-include="'/components/header.html'"></div>
+        <div class="slider fullscreen">
+            <ul class="slides">
+                <li>
+                    <img src="/static/imgs/Broken_Top.jpg" alt="Broken Top">
+                    <div class="caption center-align">
+                        <h3>Neo Magellan</h3>
+                        <h5>provides a Neo Magellan experience</h5>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" ng-model="password" required>
-                        <label for="password" style="text-align:left">Password</label>
+                </li>
+                <li>
+                    <img src="/static/imgs/Leaves.jpg" alt="Leaves">
+                    <div class="caption center-align">
+                        <h3>Drag&amp;Drop</h3>
+                        <h5>arrange your courses has never been easier</h5>
                     </div>
-                </div>
-                    <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect purple darken-2'>Login</button>
-                
-            </form>
-            </center>
+                </li>
+            </ul>
         </div>
-        <form ng-show="readyToSelectProfile" action="/course_select" method="post">
-            <h6>Login Success, please select the profile and click "View Profile" to access the profile.</h6>
-            <p ng-repeat="profile in profileList">
-                <input type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile" id="{{profile}}"/>
-                <label for="{{profile}}">{{profile}}</label>
-            </p>
-            <input type="hidden" name="newProfile" value="false">
-            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect red darken-2'>View Profile</button>
-
-          <!--   <label ng-repeat="profile in profileList">
-                <input type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile"/> {{profile}}
-            </label>
-            <input type="hidden" name="newProfile" value="false">
-            <input type="submit" value="submit_select"/> -->
-        </form>
-        <table>
-<!--             <tr>
-                <td ng-bind="username"></td>
-            </tr> -->
-            <tr ng-repeat="(year, courses) in courseTable">
-                <td>{{year}}</td>
-                <td ng-repeat="course in courses">
-                    {{course}}
-                </td>
-            </tr>
-        </table>
-        <table>
-            <tr ng-repeat="(criteria, info) in CEABRequirement">
-                <td>{{criteria}}</td>
-                <td>
-                    <ul>
-                        <li ng-repeat="(name, status) in info">{{name}}-{{status}}</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-        <!-- <button ng-click="newProfile()">new Profile</button><br> -->
-        <!-- <a href="test_modal">go to test modal</a> -->
+        <div ng-show="!readyToSelectProfile" class="card-panel" id="login-panel">
+            <form ng-submit="getProfileList()">
+                <div class="input-field">
+                    <input id="email" type="text" class="validate" ng-model="username" required>
+                    <label for="text" style="text-align:left">UTORid</label>
+                </div>
+                <div class="input-field">
+                    <input id="password" type="password" class="validate" ng-model="password" required>
+                    <label for="password" style="text-align:left">Password</label>
+                </div>
+                <div id="error-box">
+                    {{errorMessage}}
+                </div>
+                <button type='submit' id='btn-login' class='btn btn-large waves-effect'>Login</button>
+            </form>
+        </div>
+        <div class="card-panel" id="profile-list-panel" ng-show="readyToSelectProfile">
+            <form  action="/course_select" method="post">
+                <span color="green" font-weight="bold">Login Success</span>please select the profile and click "View Profile" to access the profile.
+                <div ng-repeat="profile in profileList">
+                    <!-- might need a filter here for id TODO-->
+                    <input class="with-gap" type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile" id="{{profile}}"/>
+                    <label for="{{profile}}">{{profile}}</label>
+                </div>
+                <input type="checkbox" name="newProfile" value="true" id="new-profile">
+                <input type="checkbox" name="newProfile" value="">
+                <label for="new-profile">New Profile</label>
+                <input type="text" name="newProfileName" placeholder="New profile name"/>
+                <button type='submit' class='btn btn-large waves-effect'>Confirm</button>
+            </form>
+        </div>
         <script type="text/javascript">
-            const magellan = angular.module('magellan-top', [])
-            magellan.controller("ctrl", function($scope, $location, $window, $http) {
-                // initialize everything
-                $scope.readyToSelectProfile = false;
-                $scope.getProfileList = function() {
-                    $http({
-                        method: 'POST',
-                        url: '/profile_list',
-                        data: {
-                            "username": $scope.username,
-                            "password": $scope.password
-                        },
-                        headers: {
-                            'Content-Type': "application/json"
-                        }
-                    }).then((response) => {
-                        $scope.profileList = response.data["profileList"];
-                        $scope.readyToSelectProfile = true;
-                    }, (response) => {
-                        alert("something wrong");
-                    })
-                };
-
-                $scope.getProfile = function(){
-                    console.log("getting profile");
-                    $http.post('/course_select', {"profileName": $scope.profileName, "newProfile": "false"}).then(
-                        (response) => {
-                            $window.location.href = '/course_select';
-                        },
-                        (response) => {
-                            console.log("something wrong getting profile");
-                        }
-                    );
-                };
-
-                $scope.newProfile = function() {
-                    console.log("creating new profile");
-                    $http.post('/course_select', {"profileName": "TestNew", "newProfile": "true"}).then(
-                        (response) => {
-                            $location.path('/course_select')
-                        },
-                        (response) => {
-                            console.log("something wrong");
-                        }
-                    );
-                };
+            angular.module('NeoMagellanLogin', []);
+            // initialize slides
+            $(document).ready(function() {
+                $('.slider').slider({full_width: true});
             });
         </script>
+        <script src="/static/js/login_controller.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="/static/css/login.css"/>
     </body>
 </html>

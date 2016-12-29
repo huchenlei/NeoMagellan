@@ -11,7 +11,7 @@ from flask import Flask, send_from_directory, request, session
 from pymongo import MongoClient
 from bson import json_util
 
-from utils.profile_utils import ProfileReportParser, parse_info_page, parse_profile_list_page
+from utils.profile_utils import ProfileReportParser, parse_info_page, parse_profile_list_page, ProfileException
 from utils.course_utils import get_course_info
 
 app = Flask(__name__)
@@ -42,14 +42,25 @@ def get_profile_list():
     session["base_url"] = base_url
 
     # fetch HTML info from Official Magellan
-    info_page = requests.get(base_url + "/student_view.php").text
-    profile_list_page = requests.get(base_url + "/profile_menu.php").text
-
+    try:
+        info_page = requests.get(base_url + "/student_view.php").text
+        profile_list_page = requests.get(base_url + "/profile_menu.php").text
+    except Exception as e:
+        return json.dumps({"status": "500",
+                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
     # parse HTML
-    student_id = parse_info_page(info_page)
+    try:
+        student_id = parse_info_page(info_page)
+        profile_list = parse_profile_list_page(profile_list_page)
+    except ProfileException as e:
+        print("ProfileError: " + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Sorry, something wrong happened, please try again later"})
+
     session["student_id"] = student_id
-    profile_list = parse_profile_list_page(profile_list_page)
-    return json.dumps({"studentId": student_id, "profileList": profile_list})
+    return json.dumps({"studentId": student_id,
+                       "profileList": profile_list,
+                       "status": "200"})
 
 
 @app.route("/course_select", methods=['POST'])
@@ -59,25 +70,35 @@ def course_select():
     handles new profile action
     session["profile_name"]
     """
-    new_profile = request.form["newProfile"]
-    profile_name = request.form["profileName"]
-    if new_profile == 'true':
-        data = {
-            "profile_name": profile_name,
-            "profile_action": "Create New",
-            "profile_new": "new"
-        }
-        m_session = requests.session()
-        requests.post(session["base_url"] + "/profile_edit.php", data=data)
-        data = {
-            "profile_name": profile_name,
-            "profile_action": "Create New",
-            "view_personid": session["student_id"]
-        }
-        m_session.post(session["base_url"] + "/profile_view_report.php", data=data)
-        m_session.post(session["base_url"] + "/profile_edit_save.php", data=data)
+    new_profile = request.form.getlist("newProfile")  # handle checkbox
+    new_profile_name = request.form["newProfileName"]
 
-    session["profile_name"] = profile_name
+    if new_profile:
+        print("new a profile")
+        try:
+            data = {
+                "profile_name": new_profile_name,
+                "profile_action": "Create New",
+                "profile_new": "new"
+            }
+            m_session = requests.session()
+            requests.post(session["base_url"] + "/profile_edit.php", data=data)
+            data = {
+                "profile_name": new_profile_name,
+                "profile_action": "Create New",
+                "view_personid": session["student_id"]
+            }
+            m_session.post(session["base_url"] + "/profile_view_report.php", data=data)
+            m_session.post(session["base_url"] + "/profile_edit_save.php", data=data)
+            session["profile_name"] = new_profile_name
+        except Exception as e:
+            print("[Error] In /course_select:\n" + str(e))
+            # TODO return an error page
+            return json.dumps({"status": "500",
+                               "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+    else:
+        session["profile_name"] = request.form["profileName"]
+
     return send_from_directory('templates', 'course_select.html')  # choose profile
 
 
@@ -86,9 +107,19 @@ def get_profile():
     """ get user profile details based on student_id and profile name, returns json """
     # the POST data to official Magellan server
     data = {"view_personid": session["student_id"], "profile_name": session["profile_name"]}
-    page = requests.post(session["base_url"] +
-                         "/profile_view_report.php", data=data).text
-    return ProfileReportParser(page).parse()
+    try:
+        page = requests.post(session["base_url"] +
+                             "/profile_view_report.php", data=data).text
+    except Exception as e:
+        print("[Error] In /profile:\n" + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+    try:
+        return ProfileReportParser(page).parse()
+    except ProfileException as e:
+        print("ProfileError: " + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Sorry, something wrong happened, please try again later"})
 
 
 @app.route("/submit_profile", methods=['POST'])
@@ -97,19 +128,24 @@ def submit_profile():
     submit the profile to Magellan Server
     :return: json
     """
-    data = json.loads(request.data.decode("utf-8"))
-    student_info = {
-        "view_personid": session["student_id"],
-        "profile_name": session["profile_name"],
-        "profile_action": "Edit Profile"
-    }
-    data.update(student_info)
-    # submit to view page
-    requests.post(session["base_url"] + "/profile_view_report.php", data)
+    try:
+        data = json.loads(request.data.decode("utf-8"))
+        student_info = {
+            "view_personid": session["student_id"],
+            "profile_name": session["profile_name"],
+            "profile_action": "Edit Profile"
+        }
+        data.update(student_info)
+        # submit to view page
+        requests.post(session["base_url"] + "/profile_view_report.php", data)
 
-    m_session = requests.session()
-    m_session.post(session["base_url"] + "/profile_edit_save.php", student_info)
-    return json.dumps({"status": "200"})
+        m_session = requests.session()
+        m_session.post(session["base_url"] + "/profile_edit_save.php", student_info)
+        return json.dumps({"status": "200"})
+    except Exception as e:
+        print("[Error] In /submit_profile:\n" + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
 
 
 @app.route("/check_profile", methods=['POST'])
@@ -167,10 +203,7 @@ def get_test_profile():
 
 @app.route("/test_course_select", methods=['GET'])
 def get_test_course_select():
-<<<<<<< HEAD
-=======
     """ for testing """
->>>>>>> master
     session['profile_name'] = "Test_1"
     return send_from_directory('templates', 'course_select.html')
 

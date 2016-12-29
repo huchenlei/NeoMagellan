@@ -1,0 +1,2203 @@
+[
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "TRN200",
+                "courseLength": "Y1",
+                "courseName": "Modes of Reasoning (formerly TRN200H1)"
+            }
+        ],
+        "areaCode": "TRN"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "RSM220",
+                "courseLength": "H1",
+                "courseName": "Financial Accounting (formerly MGT220H1)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "RSM221",
+                "courseLength": "H1",
+                "courseName": "Intermediate Financial Accounting I (formerly MGT224H1)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "RSM295",
+                "courseLength": "Y0",
+                "courseName": "Special Topics (Summer Abroad)"
+            }
+        ],
+        "areaCode": "RSM"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "UNI202",
+                "courseLength": "H1",
+                "courseName": "Aspects of Quebec Culture"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "UNI211",
+                "courseLength": "H1",
+                "courseName": "Health Policy in Canada (formerly UNI300Y1, 300H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "UNI218",
+                "courseLength": "H1",
+                "courseName": "Voices in Canadian Writing"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "UNI221",
+                "courseLength": "H1",
+                "courseName": "Culture and the Media in Canada"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "UNI230",
+                "courseLength": "H1",
+                "courseName": "Asian Canadian History"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "UNI255",
+                "courseLength": "H1",
+                "courseName": "History and Sexualities"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "UNI256",
+                "courseLength": "H1",
+                "courseName": "Sociology Science of Sexuality"
+            }
+        ],
+        "areaCode": "UNI"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SLA100",
+                "courseLength": "H1",
+                "courseName": "Elementary Russian I"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SLA101",
+                "courseLength": "H1",
+                "courseName": "Elementary Russian II"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA104",
+                "courseLength": "H1",
+                "courseName": "Cities of the Mediterranean"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SLA106",
+                "courseLength": "Y1",
+                "courseName": "Elementary Polish"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA203",
+                "courseLength": "H1",
+                "courseName": "Faking It"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SLA204",
+                "courseLength": "Y1",
+                "courseName": "Intermediate Czech"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SLA210",
+                "courseLength": "H1",
+                "courseName": "Russian for Heritage Speakers"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA212",
+                "courseLength": "H1",
+                "courseName": "The Russian Novel"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA215",
+                "courseLength": "H1",
+                "courseName": "Czech and Slovak Cultures"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA217",
+                "courseLength": "H1",
+                "courseName": "Cultural History of the South Slavs"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA255",
+                "courseLength": "H1",
+                "courseName": "Slavic Languages: Unity and Diversity"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA314",
+                "courseLength": "H1",
+                "courseName": "Dostoevsky"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SLA321",
+                "courseLength": "H1",
+                "courseName": "Conversational Russian"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA330",
+                "courseLength": "Y1",
+                "courseName": "Old Church Slavonic"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SLA337",
+                "courseLength": "H1",
+                "courseName": "Advanced Bosnian, Croatian, and Serbian"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SLA430",
+                "courseLength": "H1",
+                "courseName": "Advanced Russian Writing Skills[48P]"
+            }
+        ],
+        "areaCode": "SLA"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "LIN100",
+                "courseLength": "Y1",
+                "courseName": "Introduction to General Linguistics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "LIN101",
+                "courseLength": "H1",
+                "courseName": "Introduction to Linguistics: Sound Structure (Formerly LIN100Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "LIN102",
+                "courseLength": "H1",
+                "courseName": "Introduction to Linguistics: Sentence Structure and Meaning (Formerly LIN100Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "LIN200",
+                "courseLength": "H1",
+                "courseName": "Introduction to Language"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "LIN201",
+                "courseLength": "H1",
+                "courseName": "Canadian English"
+            }
+        ],
+        "areaCode": "LIN"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "INI227",
+                "courseLength": "H1",
+                "courseName": "Science Fiction Film"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "INI300",
+                "courseLength": "H1",
+                "courseName": "Strategic Writing in Business and the Professions: Theory and Practice (formerly INI300Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "INI337",
+                "courseLength": "H1",
+                "courseName": "Studies in Contemporary Urban Problems"
+            }
+        ],
+        "areaCode": "INI"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS110",
+                "courseLength": "H1",
+                "courseName": "Introduction to Music History and Culture"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS111",
+                "courseLength": "H1",
+                "courseName": "Historical Survey of Western Music"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS200",
+                "courseLength": "H1",
+                "courseName": "Music of the World's Peoples"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS202",
+                "courseLength": "H1",
+                "courseName": "Beethoven"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS204",
+                "courseLength": "H1",
+                "courseName": "The Age of Bach & Handel"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS209",
+                "courseLength": "H1",
+                "courseName": "Performing Arts of South Asia"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS210",
+                "courseLength": "H1",
+                "courseName": "Music in Film"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS211",
+                "courseLength": "H1",
+                "courseName": "The World of Popular Music"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS215",
+                "courseLength": "H1",
+                "courseName": "Performing Arts of East Asia"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS235",
+                "courseLength": "H1",
+                "courseName": "Survivors' Music"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS302",
+                "courseLength": "H1",
+                "courseName": "Symphony"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "MUS306",
+                "courseLength": "H1",
+                "courseName": "Popular Music on North America"
+            }
+        ],
+        "areaCode": "MUS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ECMA01",
+                "courseLength": "H3",
+                "courseName": "Introduction to Microeconomics (UTSC)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ECMA04",
+                "courseLength": "H3",
+                "courseName": "Introduction to Microeconomics: A mathematical approach (UTSC)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ECMA05",
+                "courseLength": "H3",
+                "courseName": "Introduction to Macroeconomics (UTSC)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ECMA06",
+                "courseLength": "H3",
+                "courseName": "Introduction to Macroeconomics: A Mathematical Approach (UTSC)"
+            }
+        ],
+        "areaCode": "ECM"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ANT100",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Anthropology"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ANT200",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Prehistoric Archaelogy"
+            }
+        ],
+        "areaCode": "ANT"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "LAT101",
+                "courseLength": "H1",
+                "courseName": "Introductory Latin I (formerly LAT 100Y1)"
+            }
+        ],
+        "areaCode": "LAT"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGEA01",
+                "courseLength": "H3",
+                "courseName": "Introduction to Microeconomics (UTSC)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGEA02",
+                "courseLength": "H3",
+                "courseName": "Introduction to Microeconomics: A Mathematical Approach (UTSC)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGEA05",
+                "courseLength": "H3",
+                "courseName": "Introduction to Macroeconomics (UTSC)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGEA06",
+                "courseLength": "H3",
+                "courseName": "Introduction to Macroeconomics: A Mathematical Approach (UTSC)"
+            }
+        ],
+        "areaCode": "MGE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CJS200",
+                "courseLength": "H1",
+                "courseName": "Introduction to Jewish Thought"
+            }
+        ],
+        "areaCode": "CJS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CLA160",
+                "courseLength": "H1",
+                "courseName": "Introduction to Classical Studies"
+            }
+        ],
+        "areaCode": "CLA"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "RLG100",
+                "courseLength": "Y1",
+                "courseName": "World Religions"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "RLG101",
+                "courseLength": "H5",
+                "courseName": "Introduction to the Study of Religion"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "RLG200",
+                "courseLength": "H1",
+                "courseName": "The Study of Religion (formerly RLG200Y1"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "RLG202",
+                "courseLength": "Y1",
+                "courseName": "The Jewish Religious Tradition"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "RLG203",
+                "courseLength": "H5",
+                "courseName": "Introduction to Christianity"
+            }
+        ],
+        "areaCode": "RLG"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ABS201",
+                "courseLength": "Y1",
+                "courseName": "Intro to Aboriginal Studies"
+            }
+        ],
+        "areaCode": "ABS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SPA100",
+                "courseLength": "Y1",
+                "courseName": "Spanish for Beginners"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SPA219",
+                "courseLength": "Y1",
+                "courseName": "Spanish for Bilingual and Native Speakers"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "SPA220",
+                "courseLength": "Y1",
+                "courseName": "Intermediate Spanish"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SPA258",
+                "courseLength": "H1",
+                "courseName": "Introduction to Hispanic Literary Studies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SPA259",
+                "courseLength": "H1",
+                "courseName": "Introduction to Hispanic Cultural Studies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SPA384",
+                "courseLength": "H1",
+                "courseName": "Avant-Garde Movements in Spanish America"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SPA452",
+                "courseLength": "H1",
+                "courseName": "Theatre and Representation in Golden Age Spain"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SPA454",
+                "courseLength": "H1",
+                "courseName": "Cervantes and Golden Age Narrative"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SPA486",
+                "courseLength": "H1",
+                "courseName": "Contemporary Caribbean Literatures and Identities"
+            }
+        ],
+        "areaCode": "SPA"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "GGR107",
+                "courseLength": "H1",
+                "courseName": "Environment, Food and People"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "GGR112",
+                "courseLength": "H1",
+                "courseName": "Geographies of Globalization, Development and Inequality"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "GGR124",
+                "courseLength": "H1",
+                "courseName": "Urbanization, Contemporary Cities and Urban Life"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "GGR216",
+                "courseLength": "H1",
+                "courseName": "Global Cities"
+            }
+        ],
+        "areaCode": "GGR"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "POL101",
+                "courseLength": "Y1",
+                "courseName": "Democracy, Dictatorship, War, and Peace: An Introduction"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL200",
+                "courseLength": "Y1",
+                "courseName": "Political Theory: Visions of the Just/Good Society"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL201",
+                "courseLength": "Y1",
+                "courseName": "Politics of Development: Issues and Controversies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL203",
+                "courseLength": "Y1",
+                "courseName": "U.S. Government and Politics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL208",
+                "courseLength": "Y1",
+                "courseName": "Introduction to International Relations"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL214",
+                "courseLength": "Y1",
+                "courseName": "Canadian Government and Politics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL215",
+                "courseLength": "Y1",
+                "courseName": "Politics and Transformation of Asia-Pacific"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "POL224",
+                "courseLength": "Y1",
+                "courseName": "Canada in Comparative Perspective (formerly POL103Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL305",
+                "courseLength": "Y1",
+                "courseName": "Politics and Society in Latin America"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POL320",
+                "courseLength": "Y1",
+                "courseName": "Modern Political Thought"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "POLA84",
+                "courseLength": "H3",
+                "courseName": "Globalization and Governance"
+            }
+        ],
+        "areaCode": "POL"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "EC0105",
+                "courseLength": "Y1",
+                "courseName": "Principles of Economics for Non-specialists"
+            }
+        ],
+        "areaCode": "EC0"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HS3TRF",
+                "courseLength": "H1",
+                "courseName": "HS3TRFH1"
+            }
+        ],
+        "areaCode": "HS3"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "CS1TRF",
+                "courseLength": "H1",
+                "courseName": "CS1TRFH1"
+            }
+        ],
+        "areaCode": "CS1"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "CIV380",
+                "courseLength": "H1",
+                "courseName": "Sustainable Energy Systems"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "CIV488",
+                "courseLength": "H1",
+                "courseName": "same course as ECE488H1 F"
+            }
+        ],
+        "areaCode": "CIV"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HS2TRF",
+                "courseLength": "H1",
+                "courseName": "HS2TRFH1"
+            }
+        ],
+        "areaCode": "HS2"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "WDW244",
+                "courseLength": "H1",
+                "courseName": "Labour Relations"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "WDW260",
+                "courseLength": "H1",
+                "courseName": "Organizational Behaviour"
+            }
+        ],
+        "areaCode": "WDW"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FCS195",
+                "courseLength": "H1",
+                "courseName": "French Culture from Napoleon to Asterix"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FCS292",
+                "courseLength": "H1",
+                "courseName": "Special Topics in French Cultural Studies I: Love, Sex and Desire in French Literature and Cinema"
+            }
+        ],
+        "areaCode": "FCS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "NML110",
+                "courseLength": "Y1",
+                "courseName": "Introductory Standard Arabic (formerly NML210Y1)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "NML230",
+                "courseLength": "H1",
+                "courseName": "Elementary Coptic I"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "NML260",
+                "courseLength": "Y1",
+                "courseName": "Introductory Persian"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "NML270",
+                "courseLength": "Y1",
+                "courseName": "Introductory Turkish"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "NML360",
+                "courseLength": "Y1",
+                "courseName": "Intermediate Persian"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "NML370",
+                "courseLength": "Y1",
+                "courseName": "Intermediate Turkish"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "NML460",
+                "courseLength": "Y1",
+                "courseName": "Classical Persian Literature"
+            }
+        ],
+        "areaCode": "NML"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ENG100",
+                "courseLength": "H1",
+                "courseName": "Effective Writing"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG140",
+                "courseLength": "Y1",
+                "courseName": "Literature for Our Time"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG201",
+                "courseLength": "Y1",
+                "courseName": "Reading Poetry"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG205",
+                "courseLength": "H1",
+                "courseName": "Rhetoric"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG215",
+                "courseLength": "H1",
+                "courseName": "Canadian Short Story"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG220",
+                "courseLength": "Y1",
+                "courseName": "Shakespeare"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG232",
+                "courseLength": "H1",
+                "courseName": "Biography & Autobiography"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG234",
+                "courseLength": "H1",
+                "courseName": "Childrens Literature"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG235",
+                "courseLength": "H1",
+                "courseName": "The Graphic Novel"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG236",
+                "courseLength": "H1",
+                "courseName": "Detective Fiction"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG237",
+                "courseLength": "H1",
+                "courseName": "Science Fiction"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG250",
+                "courseLength": "Y1",
+                "courseName": "American Literature"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG252",
+                "courseLength": "Y1",
+                "courseName": "Canadian Literature"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG270",
+                "courseLength": "Y1",
+                "courseName": "Colonial & Postcolonial Writing"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG280",
+                "courseLength": "H1",
+                "courseName": "Critical Approaches to Literature"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENG287",
+                "courseLength": "H1",
+                "courseName": "The Digital Text"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENGB03",
+                "courseLength": "H3",
+                "courseName": "Critical Thinking about Narrative (UTSC)"
+            }
+        ],
+        "areaCode": "ENG"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS100",
+                "courseLength": "H1",
+                "courseName": "Introduction to History and Philosophy of Science"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS110",
+                "courseLength": "H1",
+                "courseName": "The Science of Human Nature"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "HPS120",
+                "courseLength": "H1",
+                "courseName": "How to think about science"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS200",
+                "courseLength": "H1",
+                "courseName": "Science and Values"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS201",
+                "courseLength": "H1",
+                "courseName": "Origins of Western Technology"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS202",
+                "courseLength": "H1",
+                "courseName": "Technology in the Modern World"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS203",
+                "courseLength": "H1",
+                "courseName": "Making Sense of Uncertainty"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS204",
+                "courseLength": "H1",
+                "courseName": "Public Nudity: History, Law and Science"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HPS210",
+                "courseLength": "H1",
+                "courseName": "Scientific Revolutions I (formerly HPS200Y1)"
+            }
+        ],
+        "areaCode": "HPS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "NMC101",
+                "courseLength": "H1",
+                "courseName": "Near and Middle Eastern Civilizations I: Land of the Pharaohs"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "NMC102",
+                "courseLength": "H1",
+                "courseName": "Near and Middle Eastern Civilizations II: Heartland of Ancient Empires"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "NMC103",
+                "courseLength": "H1",
+                "courseName": "Near and Middle Eastern Civilizations III: The Islamic World"
+            }
+        ],
+        "areaCode": "NMC"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ITA100",
+                "courseLength": "Y1",
+                "courseName": "Italian Language for Beginners"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ITA101",
+                "courseLength": "Y1",
+                "courseName": "Elementary Italian Language"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ITA151",
+                "courseLength": "Y1",
+                "courseName": "Language Practice"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ITA240",
+                "courseLength": "Y1",
+                "courseName": "Italian Cinema"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ITA250",
+                "courseLength": "Y1",
+                "courseName": "Intermediate Italian"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ITA332",
+                "courseLength": "H1",
+                "courseName": "Love in the Renaissance"
+            }
+        ],
+        "areaCode": "ITA"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "IRE240",
+                "courseLength": "H1",
+                "courseName": "Introduction to Employment Relations (formerly WDW240H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "IRE244",
+                "courseLength": "H1",
+                "courseName": "Labour Relations"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "IRE260",
+                "courseLength": "H1",
+                "courseName": "Organizational Behaviour (formerly WDW260H1)"
+            }
+        ],
+        "areaCode": "IRE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JHP304",
+                "courseLength": "Y1",
+                "courseName": "Ukraine: Politics, Economy and Society"
+            }
+        ],
+        "areaCode": "JHP"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JHE353",
+                "courseLength": "H1",
+                "courseName": "History of Evolutionary Biology I"
+            }
+        ],
+        "areaCode": "JHE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGM101",
+                "courseLength": "H5",
+                "courseName": "Introduction to Management Functions (UTM)"
+            }
+        ],
+        "areaCode": "MGM"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "FOR302",
+                "courseLength": "H1",
+                "courseName": "Societal Values and Forest Management"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "FOR303",
+                "courseLength": "H1",
+                "courseName": "Human Dimensions of Global Forests"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FOR308",
+                "courseLength": "H1",
+                "courseName": "Discovering Wood and its Role in Societal Development"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "FOR421",
+                "courseLength": "H1",
+                "courseName": "Green Urban Infrastructure: Sustainable City Forests"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "FOR424",
+                "courseLength": "H1",
+                "courseName": "Innovation and Manufacturing of Sustainable Materials"
+            }
+        ],
+        "areaCode": "FOR"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "GER100",
+                "courseLength": "Y1",
+                "courseName": "Introduction to German I"
+            }
+        ],
+        "areaCode": "GER"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FRE210",
+                "courseLength": "H1",
+                "courseName": "Introduction to Quebec Literature and Culture"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FRE240",
+                "courseLength": "H1",
+                "courseName": "Introduction to Literary Analysis"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FRE250",
+                "courseLength": "H1",
+                "courseName": "French Literature: From its Beginnings to the 21st Century"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FRE272",
+                "courseLength": "H1",
+                "courseName": "Structure of Modern French"
+            }
+        ],
+        "areaCode": "FRE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HST409",
+                "courseLength": "H1",
+                "courseName": "Special Topics on Health Research (formerly UNI409H1)"
+            }
+        ],
+        "areaCode": "HST"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JPH311",
+                "courseLength": "H1",
+                "courseName": "History of Physics"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "JPH441",
+                "courseLength": "H1",
+                "courseName": "Physical Science in Contemporary Society"
+            }
+        ],
+        "areaCode": "JPH"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "JUM205",
+                "courseLength": "H1",
+                "courseName": "Mathematical Personalities (formerly JUM105H1)"
+            }
+        ],
+        "areaCode": "JUM"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "CSC300",
+                "courseLength": "H1",
+                "courseName": "Computers and Society"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "CSC454",
+                "courseLength": "H1",
+                "courseName": "The Business of Software"
+            }
+        ],
+        "areaCode": "CSC"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MIE488",
+                "courseLength": "H1",
+                "courseName": "Entrepreneurship and Business for Engineers"
+            }
+        ],
+        "areaCode": "MIE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "VIC109",
+                "courseLength": "H1",
+                "courseName": "Innovators and Their Ideas"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "VIC112",
+                "courseLength": "Y1",
+                "courseName": "Puzzles, Discovery and the Human Imgaination"
+            }
+        ],
+        "areaCode": "VIC"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JGE321",
+                "courseLength": "H1",
+                "courseName": "Multicultural Perspectives on Environmental Management"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JGE331",
+                "courseLength": "H1",
+                "courseName": "Resource and Environmental Theory (formerly GGR331H1)"
+            }
+        ],
+        "areaCode": "JGE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "LAS200",
+                "courseLength": "Y1",
+                "courseName": "Latin America: History, Civilization and Culture"
+            }
+        ],
+        "areaCode": "LAS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGT120",
+                "courseLength": "H5",
+                "courseName": "Financial Accounting I"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGT201",
+                "courseLength": "H1",
+                "courseName": "Introduction to Financial Accounting (formerly MGT120H1)"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGTA01",
+                "courseLength": "H3",
+                "courseName": "Introduction to Management I"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MGTA03",
+                "courseLength": "H3",
+                "courseName": "Introduction to Management I"
+            }
+        ],
+        "areaCode": "MGT"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CRI205",
+                "courseLength": "H1",
+                "courseName": "Introduction to Criminology (formerly WDW205H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CRI215",
+                "courseLength": "H1",
+                "courseName": "Introduction to Sociolegal Studies (formerly WDW215H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CRI389",
+                "courseLength": "Y0",
+                "courseName": "Topics in Criminology Abroad (formerly WDW389Y0)"
+            }
+        ],
+        "areaCode": "CRI"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS234",
+                "courseLength": "H1",
+                "courseName": "Entrepreneurship and Small Business"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "APS281",
+                "courseLength": "H1",
+                "courseName": "Language and Meaning"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS305",
+                "courseLength": "H1",
+                "courseName": "Energy Policy"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS310",
+                "courseLength": "H0",
+                "courseName": "Defining Energy Futures in India and Canada"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "APS320",
+                "courseLength": "H1",
+                "courseName": "Representing Science on Stage"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "APS321",
+                "courseLength": "H1",
+                "courseName": "Representing Science and Technology in Popular Media"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "APS322",
+                "courseLength": "H1",
+                "courseName": "Language and Power"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS325",
+                "courseLength": "H1",
+                "courseName": "Engineering and Science in the Arts"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS343",
+                "courseLength": "H1",
+                "courseName": "Foundations of Engineering Leadership"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "APS420",
+                "courseLength": "H1",
+                "courseName": "Technology, Engineering and Global Development"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS432",
+                "courseLength": "H1",
+                "courseName": "Entrepreneurship and Business Management"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS442",
+                "courseLength": "H1",
+                "courseName": "Cognitive and Psychological Foundations of Effective Leadership"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS443",
+                "courseLength": "H1",
+                "courseName": "Leadership and Leading for Groups and Organizations"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "APS444",
+                "courseLength": "H1",
+                "courseName": "Positive Psychology for Engineers"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "APS445",
+                "courseLength": "H1",
+                "courseName": "The Power of Story: Discovering Your Leadership Narrative"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS446",
+                "courseLength": "H1",
+                "courseName": "Leadership in Project Management"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "APS510",
+                "courseLength": "H1",
+                "courseName": "Innovative Technologies and Organizations in Global Energy Systems"
+            }
+        ],
+        "areaCode": "APS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "EAS100",
+                "courseLength": "Y1",
+                "courseName": "Modern Standard Chinese I"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "EAS101",
+                "courseLength": "Y1",
+                "courseName": "Modern Chinese I for students with prior background"
+            }
+        ],
+        "areaCode": "EAS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENV100",
+                "courseLength": "H1",
+                "courseName": "Intro to Environmental Studies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENV221",
+                "courseLength": "H1",
+                "courseName": "Multidisciplinary Perspectives on Environment"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ENV222",
+                "courseLength": "H1",
+                "courseName": "Interdiscip Perspectives on Environment"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ENV350",
+                "courseLength": "H1",
+                "courseName": "Energy Policy and Environment"
+            }
+        ],
+        "areaCode": "ENV"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "GRK101",
+                "courseLength": "H1",
+                "courseName": "Introductory Ancient Greek I (formerly GRK100Y)"
+            }
+        ],
+        "areaCode": "GRK"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "EUR200",
+                "courseLength": "Y1",
+                "courseName": "Europe Nat/ Supranat"
+            }
+        ],
+        "areaCode": "EUR"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FIN260",
+                "courseLength": "H1",
+                "courseName": "Scandinavian Cinema"
+            }
+        ],
+        "areaCode": "FIN"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JFP450",
+                "courseLength": "H1",
+                "courseName": "Aboriginal Issues in Health and Healing"
+            }
+        ],
+        "areaCode": "JFP"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JGI216",
+                "courseLength": "H1",
+                "courseName": "Globalization and Urban Change"
+            }
+        ],
+        "areaCode": "JGI"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HIS103",
+                "courseLength": "Y1",
+                "courseName": "Statecraft & Strategy: An Introduction to the History of Intl.. Relations"
+            }
+        ],
+        "areaCode": "HIS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HS4TRF",
+                "courseLength": "H1",
+                "courseName": "HS4TRFH1"
+            }
+        ],
+        "areaCode": "HS4"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JAL328",
+                "courseLength": "H1",
+                "courseName": "Writing Systems"
+            }
+        ],
+        "areaCode": "JAL"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL100",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL101",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Philosophical Problems"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL145",
+                "courseLength": "H5",
+                "courseName": "Critical Reasoning (UTM)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL200",
+                "courseLength": "Y1",
+                "courseName": "Ancient Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL201",
+                "courseLength": "H1",
+                "courseName": "Introductory Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL205",
+                "courseLength": "H1",
+                "courseName": "Early Medieval Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL206",
+                "courseLength": "H1",
+                "courseName": "Later Medieval Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL210",
+                "courseLength": "Y1",
+                "courseName": "17th-and 18th-Century Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL217",
+                "courseLength": "H1",
+                "courseName": "Introduction to Continental Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL232",
+                "courseLength": "H1",
+                "courseName": "Knowledge and Reality"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL235",
+                "courseLength": "H1",
+                "courseName": "Philosophy of Religion"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL237",
+                "courseLength": "H1",
+                "courseName": "History of Chinese Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL240",
+                "courseLength": "H1",
+                "courseName": "Persons, Minds and Bodies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL243",
+                "courseLength": "H1",
+                "courseName": "Philosophy of Human Sexuality"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL244",
+                "courseLength": "H1",
+                "courseName": "Human Nature"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL245",
+                "courseLength": "H1",
+                "courseName": "Modern Symbolic Logic"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL246",
+                "courseLength": "H1",
+                "courseName": "Probability and Inductive Logic"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL265",
+                "courseLength": "H1",
+                "courseName": "Introduction to Political Philosophy"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL271",
+                "courseLength": "H1",
+                "courseName": "Law and Morality"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL273",
+                "courseLength": "H1",
+                "courseName": "Environmental Ethics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL275",
+                "courseLength": "H1",
+                "courseName": "Introduction to Ethics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL281",
+                "courseLength": "H1",
+                "courseName": "Bioethics (formerly PHL281Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL283",
+                "courseLength": "H5",
+                "courseName": "Bioethics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL285",
+                "courseLength": "H1",
+                "courseName": "Aesthetics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL295",
+                "courseLength": "H1",
+                "courseName": "Business Ethics"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL310",
+                "courseLength": "H1",
+                "courseName": "The Rationalists"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PHL319",
+                "courseLength": "H1",
+                "courseName": "Philosophy and Psychoanalytic Theory"
+            }
+        ],
+        "areaCode": "PHL"
+    },
+    {
+        "courseList": [],
+        "areaCode": "\n"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "USA200",
+                "courseLength": "H1",
+                "courseName": "Introduction to American Studies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "USA300",
+                "courseLength": "H1",
+                "courseName": "Theories and Methods in American Studies (formerly USA300Y1)"
+            }
+        ],
+        "areaCode": "USA"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CIN105",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Film Studies (formerly INI115Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CIN210",
+                "courseLength": "H1",
+                "courseName": "Horror Film (formerly INI226H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CIN211",
+                "courseLength": "H1",
+                "courseName": "Science Fiction Film (formerly INI227H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CIN212",
+                "courseLength": "H1",
+                "courseName": "Cinema and Sensation I: Action/Spectacle (formerly INI222H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CIN213",
+                "courseLength": "H1",
+                "courseName": "Cinema and Sensation II: Sex (formerly INI223H1)"
+            }
+        ],
+        "areaCode": "CIN"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "JRE300",
+                "courseLength": "H1",
+                "courseName": "Fundamentals of Accounting and Finance"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "JRE410",
+                "courseLength": "H1",
+                "courseName": "Markets and Competitive Strategy"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "JRE420",
+                "courseLength": "H1",
+                "courseName": "People Management and Organizational Behaviour"
+            }
+        ],
+        "areaCode": "JRE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CDN221",
+                "courseLength": "H1",
+                "courseName": "Culture and the Media in Canada (formerly UNI221H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "CDN307",
+                "courseLength": "H1",
+                "courseName": "Asian Cultures in Canada (formerly UNI307H1)[24S]"
+            }
+        ],
+        "areaCode": "CDN"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "CS2TRF",
+                "courseLength": "H1",
+                "courseName": "CS2TRFH1"
+            }
+        ],
+        "areaCode": "CS2"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MHB155",
+                "courseLength": "H1",
+                "courseName": "Elementary Modern Hebrew I (previously NML155H1)"
+            }
+        ],
+        "areaCode": "MHB"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "NEW150",
+                "courseLength": "Y1",
+                "courseName": "Introduction to African Studies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "NEW224",
+                "courseLength": "Y1",
+                "courseName": "Caribbean Thought"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "NEW232",
+                "courseLength": "Y1",
+                "courseName": "Buddhist Psychology: Theories & Applications"
+            }
+        ],
+        "areaCode": "NEW"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "FAH101",
+                "courseLength": "H1",
+                "courseName": "Monuments Art History"
+            }
+        ],
+        "areaCode": "FAH"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "WGS160",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Women and Gender Studies"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "WGS367",
+                "courseLength": "H1",
+                "courseName": "The Politics of Gender and Health"
+            }
+        ],
+        "areaCode": "WGS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "MSE488",
+                "courseLength": "H1",
+                "courseName": "Entrepreneurship and Business for Engineers"
+            }
+        ],
+        "areaCode": "MSE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "HS1TRF",
+                "courseLength": "H1",
+                "courseName": "HS1TRFH1"
+            }
+        ],
+        "areaCode": "HS1"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ECE488",
+                "courseLength": "H1",
+                "courseName": "Entrepreneurship and Business for Engineers"
+            }
+        ],
+        "areaCode": "ECE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JAV131",
+                "courseLength": "H1",
+                "courseName": "Introduction to Architecture(formerly ARC131H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "JAV132",
+                "courseLength": "H1",
+                "courseName": "Contemporary Architecture (formerly ARC132H1)"
+            }
+        ],
+        "areaCode": "JAV"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ARH309",
+                "courseLength": "H1",
+                "courseName": "Archaeology, Ethics, and the Public"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ARH360",
+                "courseLength": "H1",
+                "courseName": "Prehistory of the Near East (formerly ANT360Y1)"
+            }
+        ],
+        "areaCode": "ARH"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "FSL100",
+                "courseLength": "H1",
+                "courseName": "French for Beginners"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "FSL102",
+                "courseLength": "H1",
+                "courseName": "Introductory French"
+            }
+        ],
+        "areaCode": "FSL"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "CHE488",
+                "courseLength": "H1",
+                "courseName": "Entrepreneurship and Business for Engineers"
+            }
+        ],
+        "areaCode": "CHE"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "ECO100",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Economics"
+            }
+        ],
+        "areaCode": "ECO"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "PRT100",
+                "courseLength": "Y1",
+                "courseName": "Beginners Portuguese"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "PRT110",
+                "courseLength": "Y1",
+                "courseName": "Elementary Portuguese"
+            },
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "PRT220",
+                "courseLength": "Y1",
+                "courseName": "Intermediate Portuguese"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "PRT250",
+                "courseLength": "H1",
+                "courseName": "Portuguese Culture & Civilization"
+            }
+        ],
+        "areaCode": "PRT"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SAS114",
+                "courseLength": "H1",
+                "courseName": "Introduction to South Asian Studies (formerly NEW114Y1, SAS114Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SAS216",
+                "courseLength": "H1",
+                "courseName": "South Asia: Perspectives on Politics and Society (formerly NEW216H1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SAS318",
+                "courseLength": "H1",
+                "courseName": "Colonialism and Tradition"
+            }
+        ],
+        "areaCode": "SAS"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ARC131",
+                "courseLength": "H1",
+                "courseName": "Introduction to Architecture"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ARC132",
+                "courseLength": "H1",
+                "courseName": "Contemporary Architecture"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ARC234",
+                "courseLength": "H1",
+                "courseName": "Architecture & Cultural Difference"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ARC235",
+                "courseLength": "H1",
+                "courseName": "Architectural Criticism"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "ARC237",
+                "courseLength": "H1",
+                "courseName": "Topics in the History and Theory of Landscape Design"
+            }
+        ],
+        "areaCode": "ARC"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "DRM100",
+                "courseLength": "Y1",
+                "courseName": "Drama:  Form & Style"
+            }
+        ],
+        "areaCode": "DRM"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SOC101",
+                "courseLength": "Y1",
+                "courseName": "Introduction to Sociology"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SOC102",
+                "courseLength": "H1",
+                "courseName": "Introduction to Sociology Social Inequalities"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SOC103",
+                "courseLength": "H1",
+                "courseName": "Introduction to Sociology Social Institutions and Processes"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SOC207",
+                "courseLength": "H1",
+                "courseName": "Sociology of Work & Occupations (formerly SOC207Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SOC212",
+                "courseLength": "H1",
+                "courseName": "Sociology of Crime & Deviance (formerly SOC212Y1)["
+            }
+        ],
+        "areaCode": "SOC"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC103",
+                "courseLength": "Y1",
+                "courseName": "Catholicism"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC200",
+                "courseLength": "H1",
+                "courseName": "Christian Imagination I: Visual Arts (formerly SMC200Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC203",
+                "courseLength": "Y1",
+                "courseName": "Christianity Encounters the Secular World"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC206",
+                "courseLength": "H1",
+                "courseName": "Christianity and Music"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC210",
+                "courseLength": "H1",
+                "courseName": "The Early Mediaeval Tradition (Formerly SMC210Y1)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC215",
+                "courseLength": "H1",
+                "courseName": "Varieties of Christian Community"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC219",
+                "courseLength": "Y1",
+                "courseName": "Mass Media in Culture and Society"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC226",
+                "courseLength": "H1",
+                "courseName": "King Arthur"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC233",
+                "courseLength": "H1",
+                "courseName": "Christianity and Science: Disputed Questions"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC240",
+                "courseLength": "Y1",
+                "courseName": "Celtic Cultures Through the Ages"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC308",
+                "courseLength": "H1",
+                "courseName": "Marriage and the Family in the Catholic Tradition (formerly Marriage and the Family in Canon Law)"
+            },
+            {
+                "courseCategory": "(HSS)",
+                "courseCode": "SMC313",
+                "courseLength": "H1",
+                "courseName": "Catholic Education in Ontario"
+            }
+        ],
+        "areaCode": "SMC"
+    },
+    {
+        "courseList": [
+            {
+                "courseCategory": "(CS)",
+                "courseCode": "IMC200",
+                "courseLength": "H1",
+                "courseName": "Innovation and Entrepreneurship"
+            }
+        ],
+        "areaCode": "IMC"
+    }
+]
