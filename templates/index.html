@@ -50,8 +50,8 @@
         <form ng-show="readyToSelectProfile" action="/course_select" method="post">
             <h6>Login Success, please select the profile and click "View Profile" to access the profile.</h6>
             <p ng-repeat="profile in profileList">
-                <input type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile"/>
-                <label for="profileName">{{profile}}</label>
+                <input type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile" id="{{profile}}"/>
+                <label for="{{profile}}">{{profile}}</label>
             </p>
             <input type="hidden" name="newProfile" value="false">
             <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect red darken-2'>View Profile</button>
