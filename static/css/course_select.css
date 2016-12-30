@@ -15,21 +15,22 @@
     overflow-y: scroll;
 }
 
-ul {
-    position: relative;
-}
-
 #course-table ul, #course-table ul li {
-    display: block;
     position: relative;
 }
 
-#course-table ul li {
-    display: block;
+#course-table>ul li {
     margin: 5px;
 }
 
+#course-table>ul {
+    box-shadow: none;
+    border: none;
+}
+
+/*course list item*/
 #session-course-list li {
+    display: inline-block;
     float: left;
 }
 
@@ -62,9 +63,9 @@ ul[dnd-list] {
  */
 
 #course-table .dndDraggingSource {
-    /*little display problem here*/
     display: none;
 }
+
 
 /**
  * An element with .dndPlaceholder class will be added as child of the dnd-list
@@ -72,8 +73,37 @@ ul[dnd-list] {
  */
 
 .dndPlaceholder {
-    background-color: #66ccff;
+    background-color: #b3ccac;
     display: block;
-    min-width: 100px;
-    min-height: 35px;
+    min-width: 125px;
+    min-height: 38px;
+}
+
+#profile-status {
+    height: 200px;
+    overflow: scroll;
+}
+
+#ceab-requirement {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ceab-requirement>ul>li {
+    display: inline-block;
+    float: left;
+    width: 150px;
+    height: 55px;
+    margin: 5px;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.satisfied-true {
+    background-color: #39a69a;
+}
+
+.satisfied-false {
+    background-color: #da696c;
 }

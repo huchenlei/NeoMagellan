@@ -1,19 +1,31 @@
 angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
-    // initialize the navi bar(course database)
-    // may lazy load the electives for speed
-    $http.get('/course_list').then((response) => {
-        $scope.mainAreas = response.data["main"];
-        $scope.elecAreas = response.data["elective"];
-        getProfile();
-        // initialize tabs after everything got initailized
-        $(document).ready(function() {
-            $('ul.tabs').tabs();
-        });
+    // initialize the navi bar course list
+    $http.get('/course_list/main').then(
+        (response) => {
+            $scope.mainAreas = response.data;
+            getProfile();
+            // initialize tabs after everything got initailized
+            $(document).ready(function() {
+                $('ul.tabs').tabs();
+            });
+        }, (response) => {
+            alert("something wrong getting course list");
+        }
+    );
 
-    }, (response) => {
-        alert("something wrong getting course list");
-    });
-
+    // lazy load the elective course list
+    $scope.displayPreloader = true;
+    $scope.getElecAreas = function() {
+        $http.get('/course_list/elective').then(
+            (response) => {
+                $scope.elecAreas = response.data;
+                $scope.displayPreloader = false;
+            },
+            (response) => {
+                alert("something wrong getting elecAreas");
+            }
+        );
+    };
     //initialize profile
     function processCourseTable(response) {
         let courseTable = response.data["courseTable"];
@@ -83,7 +95,34 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         }
 
         $scope.courseTable = courseTable;
+        $scope.CEABRequirement = processCEAB(response.data['CEABRequirement']);
+        if(response.data.hasOwnProperty('prerequisiteErrors')){
+            $scope.hasPrerequisiteError = true;
+            $scope.prerequisiteErrors = response.data['prerequisiteErrors'];
+        }else {
+            $scope.hasPrerequisiteError = false;
+        }
         $scope.yearArray = yearArray;
+    }
+
+    function processCEAB(CEABRequirement) {
+        let CEABProcessed = [];
+        for (const category in CEABRequirement) {
+            if (CEABRequirement.hasOwnProperty(category)) {
+                let categoryObject = {};
+                categoryObject['categoryName'] = category;
+                let currentCategory = CEABRequirement[category];
+                if (currentCategory.outstanding === "OK") {
+                    categoryObject['satisfied'] = true;
+                    categoryObject['relativeAU'] = (parseFloat(currentCategory.projected) - parseFloat(currentCategory.minRequirement)).toFixed(1);
+                } else {
+                    categoryObject['satisfied'] = false;
+                    categoryObject['relativeAU'] = parseFloat(currentCategory.outstanding).toFixed(1);
+                }
+                CEABProcessed.push(categoryObject);
+            }
+        }
+        return CEABProcessed;
     }
 
     function getProfile() {

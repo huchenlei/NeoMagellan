@@ -11,7 +11,8 @@ from flask import Flask, send_from_directory, request, session
 from pymongo import MongoClient
 from bson import json_util
 
-from utils.profile_utils import ProfileReportParser, parse_info_page, parse_profile_list_page, ProfileException
+from utils.profile_utils import ProfileReportParser, parse_info_page, parse_profile_list_page, check_authorization, \
+    ProfileException
 from utils.course_utils import get_course_info
 
 app = Flask(__name__)
@@ -48,6 +49,11 @@ def get_profile_list():
     except Exception as e:
         return json.dumps({"status": "500",
                            "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+
+    # check whether username and password are correct
+    if not check_authorization(info_page):
+        return json.dumps({"status": "500",
+                           "errorMessage": "Sorry, it seems like your username or password are incorrect"})
     # parse HTML
     try:
         student_id = parse_info_page(info_page)
@@ -93,9 +99,7 @@ def course_select():
             session["profile_name"] = new_profile_name
         except Exception as e:
             print("[Error] In /course_select:\n" + str(e))
-            # TODO return an error page
-            return json.dumps({"status": "500",
-                               "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+            return send_from_directory('templates', 'error.html')
     else:
         session["profile_name"] = request.form["profileName"]
 
@@ -164,10 +168,13 @@ def check_profile():
     return ProfileReportParser(page).parse()
 
 
-@app.route("/course_list", methods=['GET'])
-def get_course_list():
+@app.route("/course_list/<course_list_type>", methods=['GET'])
+def get_course_list(course_list_type):
     """return the course list json"""
-    return send_from_directory('static', 'course_list.json')
+    if course_list_type == "main":
+        return send_from_directory('static', 'main_course_list.json')
+    elif course_list_type == "elective":
+        return send_from_directory('static', 'elec_course_list.json')
 
 
 @app.route("/course_detail/<course_code>", methods=['GET'])
@@ -198,7 +205,7 @@ def get_test_profile():
         username = account["username"]
         password = account["password"]
         session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
-    return send_from_directory('static', 'info_blank.json')
+    return send_from_directory('static', 'info_prerequisite.json')
 
 
 @app.route("/test_course_select", methods=['GET'])

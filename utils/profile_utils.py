@@ -7,14 +7,14 @@ Created on Nov 02, 2016
 
 from lxml import etree
 
-import requests
+# import requests
 import json
 import re
 
 
-def cache_page(name, html):
-    with open("../cached_pages/" + name + ".html", 'w') as f:
-        f.write(html)
+# def cache_page(name, html):
+#     with open("../cached_pages/" + name + ".html", 'w') as f:
+#         f.write(html)
 
 
 class ProfileException(Exception):
@@ -36,6 +36,7 @@ class ProfileReportParser(object):
 
     def parse(self):
         json_result = {}
+
         tables = self.page.xpath('//table[starts-with(@style, "width:100%;")]')
         if len(tables) < 10:
             raise ProfileException("Missing info tables in profile!:" + str(len(tables)))
@@ -209,14 +210,22 @@ def parse_profile_list_page(page):
         raise ProfileException("Failed to get profile list")
 
 
-def parse_info_page(page):
+def parse_info_page(raw_page):
     """ returns the student number string"""
-    student_id = etree.HTML(page).xpath('//table[@style="width:100%; margin-top:30px;"]/tr[3]/td[2]/text()')
+    student_id = etree.HTML(raw_page).xpath('//table[@style="width:100%; margin-top:30px;"]/tr[3]/td[2]/text()')
     if student_id:
         return student_id[0].strip()
     else:
         raise ProfileException("Failed to get student id")
 
+
+def check_authorization(raw_page):
+    """checks whether password and username from user is correct"""
+    unauthed = re.match(re.compile('.*<h1>Unauthorized<\/h1>.*', re.S), raw_page)
+    if unauthed:
+        return False
+    else:
+        return True
 
 # Test ProfileReportParser
 
