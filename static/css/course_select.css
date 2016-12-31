@@ -6,8 +6,20 @@
     padding: 10px;
 }
 
-#main-areas, #elective-areas {
-    font-size: 10px;
+#navigator-body {
+    max-height: 1000px;
+    overflow: scroll;
+}
+
+#elective-search-bar {
+    margin: 10px;
+}
+
+#main-areas ul, #elective-areas ul {
+    font-size: 13px;
+}
+#main-areas ul li, #elective-areas ul li {
+    font-size: 11px;
 }
 
 #elective-areas>ul {
@@ -142,4 +154,28 @@ ul[dnd-list] {
 
 #prerequisite {
     color: red;
+}
+
+
+#trash-can {
+    width: 170px;
+    height: 40px;
+    position: fixed;
+    right: 30px;
+    top: 400px;
+}
+
+#trash-can>ul{
+    min-height: 38px;
+    min-width: 125px;
+    display: inline-block;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: black;
+    border-width: 2px;
+    background-color: #da696c;
+}
+
+#trash-can>i{
+    margin: auto;
 }

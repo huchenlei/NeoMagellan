@@ -7,7 +7,6 @@ import json
 
 
 def parse(page, elec_txt):
-
     main_areas = []
     area_list = page.xpath('//table[@style = "width:100%; margin-top:10px;"]')
     for area in area_list[:-6]:
@@ -30,34 +29,24 @@ def parse(page, elec_txt):
                 winter_course_list.append(course_info)
         main_areas.append({"areaName": area_name, "courseLists": [fall_course_list, winter_course_list]})
 
-    elec_areas = []
     elec_list = elec_txt.split('|')
-    elec_area = set()
+    processed_elec_list = []
     elec_courses_pool = set()
     # get all areas of elective
     for elec in elec_list:
-        elec_area.add(elec[:3])
         elec_courses_pool.add(elec[:6])
 
-    for area in elec_area:
-        course_list = []
-        for elec in elec_list:
-            if area == elec[:3]:
-                course_info = elec.split()
-                if len(course_info) == 0:
-                    break
-                if elec[:6] in elec_courses_pool:
-                    elec_courses_pool.remove(elec[:6])
-                else:
-                    break
-                course_list.append({"courseCode": course_info[0][:6],
-                                    "courseLength": elec[6:8],
-                                    "courseName": elec[9:-5].strip(),
-                                    "courseCategory": course_info[-1]})
-        elec_areas.append({"areaCode": area, "courseList": course_list})
-
+    for elec in elec_list:
+        course_info = elec.split()
+        if not len(course_info) == 0:
+            if elec[:6] in elec_courses_pool:
+                elec_courses_pool.remove(elec[:6])
+                processed_elec_list.append({"courseCode": course_info[0][:6],
+                                            "courseLength": elec[6:8],
+                                            "courseName": elec[9:-5].strip(),
+                                            "courseCategory": course_info[-1]})
     main_areas_json = json.dumps(main_areas, indent=4, separators=(',', ': '))
-    elec_areas_json = json.dumps(elec_areas, indent=4, separators=(',', ': '))
+    elec_areas_json = json.dumps(processed_elec_list, indent=4, separators=(',', ': '))
     return main_areas_json, elec_areas_json
 
 
@@ -68,5 +57,5 @@ with open("../cached_pages/main_page.html", 'r') as f:
         main_data, elec_data = parse(page, elec_txt)
         with open("../static/main_course_list.json", 'w') as m:
             with open("../static/elec_course_list.json", 'w') as e:
-                m.write(main_data)
+                # m.write(main_data)
                 e.write(elec_data)

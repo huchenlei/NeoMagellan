@@ -11,15 +11,14 @@
         <script type="text/javascript" src="angular/angular.min.js"></script>
         <!-- Import angular-drag-and-drop-lists -->
         <script type="text/javascript" src="angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
+        <script type="text/javascript" src="fuse.js/src/fuse.min.js"></script>
         <!-- import Materialize.js(depend on jquery) -->
         <script type="text/javascript" src="materialize/dist/js/materialize.min.js"></script>
         <script type="text/javascript" src="angular-materialize/src/angular-materialize.js"></script>
 
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="materialize/dist/css/materialize.min.css" media="screen,projection"/>
-        <!-- Import css -->
         <link rel="stylesheet" href="/static/css/course_select.css">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -40,38 +39,38 @@
                             <a href="#elective-areas" ng-click="getElecAreas()">Elective</a>
                         </li>
                     </ul>
-                    <ul id="main-areas" class="collapsible" data-collapsible="accordion">
-                        <li ng-repeat="mainArea in mainAreas">
-                            <div class="collapsible-header">{{mainArea.areaName}}</div>
-                            <div class="collapsible-body">
-                                <ul class="tabs">
-                                    <li class="tab col s6" ng-repeat="sessionName in ['Fall', 'Winter']">
-                                        <a href="#{{$index | idFormat : $parent.mainArea.areaName}}">{{sessionName}}</a>
-                                    </li>
-                                </ul>
-                                <!-- courseLists contains fallcourses and wintercourses -->
-                                <div ng-repeat="courseList in mainArea.courseLists" id="{{$index | idFormat : mainArea.areaName}}">
-                                    <div ng-include="'navigator_course_list.html'"></div>
+                    <div id="navigator-body">
+                        <ul id="main-areas" class="collapsible" data-collapsible="accordion">
+                            <li ng-repeat="mainArea in mainAreas">
+                                <div class="collapsible-header">{{mainArea.areaName}}</div>
+                                <div class="collapsible-body">
+                                    <ul class="tabs">
+                                        <li class="tab col s6" ng-repeat="sessionName in ['Fall', 'Winter']">
+                                            <a href="#{{$index | idFormat : $parent.mainArea.areaName}}">{{sessionName}}</a>
+                                        </li>
+                                    </ul>
+                                    <!-- courseLists contains fallcourses and wintercourses -->
+                                    <div ng-repeat="courseList in mainArea.courseLists" id="{{$index | idFormat : mainArea.areaName}}">
+                                        <div ng-include="'navigator_course_list.html'"></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div id="elective-areas">
-                        <div id="elective-search-bar">
-                            a search bar //TODO
-                        </div>
-                        <!-- preloader -->
-                        <div class="progress" ng-show="displayPreloader">
-                            <div class="indeterminate"></div>
-                        </div>
-                        <ul>
-                            <li ng-repeat="elecArea in elecAreas | limitTo : 8">
-                                <ul>
-                                    <li ng-repeat="course in elecArea.courseList" dnd-draggable="course" dnd-effect-allowed="copy" ng-include="'navigator_course_item.html'"></li>
-                                </ul>
-                                <div class="divider"></div>
                             </li>
                         </ul>
+                        <div id="elective-areas">
+                            <div id="elective-search-bar">
+                                <input type="text" placeholder="Course Keyword" ng-model="searchKeyword" ng-change="searchElec()">
+                            </div>
+                            <!-- preloader -->
+                            <div class="progress" ng-show="displayPreloader">
+                                <div class="indeterminate"></div>
+                            </div>
+                            <ul ng-show="displayFullElecList">
+                                <li ng-repeat="course in elecAreas" dnd-draggable="course" dnd-effect-allowed="copy" ng-include="'navigator_course_item.html'"></li>
+                            </ul>
+                            <ul ng-show="!displayFullElecList">
+                                <li ng-repeat="course in searchResult" dnd-draggable="course" dnd-effect-allowed="copy" ng-include="'navigator_course_item.html'"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col s8">
@@ -92,11 +91,9 @@
                         </ul>
                     </div>
                     <!-- trash can -->
-                    <div class="trashcan box">
-                        <h3>trash can</h3>
-                        <ul dnd-list="[]">
-                            <li>This is a trash can</li>
-                        </ul>
+                    <div id="trash-can" ng-show="displayTrashCan" ng-mouseleave="hideTrashCan()">
+                        <i class="small material-icons">delete</i>
+                        <ul dnd-list="[]"></ul>
                     </div>
                     <div class="btn" ng-click="checkProfile()">CHECK PROFILE</div>
                     <div class="btn" ng-click="submitProfile()">SUBMIT PROFILE</div>
@@ -114,9 +111,7 @@
         <!-- import controllers -->
         <script type="text/javascript" src="/static/js/course_select_controller.js"></script>
         <script type="text/javascript" src="/static/js/format_filter.js"></script>
-        <script type="text/javascript" src="/static/js/process_filter.js"></script>
         <script type="text/javascript" src="/static/js/comment_panel_controller.js"></script>
-
         <!-- course list model in course table-->
         <script type="text/ng-template" id="table_course_list.html">
             <ul dnd-list="courseTable[sessionTime]" dnd-horizontal-list="true" id="session-course-list">
@@ -132,7 +127,16 @@
         </script>
         <!-- course unit model -->
         <script type="text/ng-template" id="course_item.html">
-            <button tooltipped class="btn" data-position="top" data-delay="3000" data-tooltip="{{course.courseName}}" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
+            <button
+                tooltipped
+                class="btn"
+                data-position="top"
+                data-delay="3000"
+                data-tooltip="{{course.courseName}}"
+                data-target="course-detail-modal"
+                ng-click="getCourseDetail(course.courseCode, course.courseLength)"
+                ng-mousedown="showTrashCan()"
+                ng-mouseleave="hideTrashCan()">
                 {{course.courseCode}}
                 {{course.courseTime}}
             </button>

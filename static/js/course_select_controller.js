@@ -18,12 +18,15 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
     );
 
     // lazy load the elective course list
+    let fuse;
+    $scope.elecAreas = [];
     $scope.displayPreloader = true;
     $scope.getElecAreas = function() {
         $http.get('/course_list/elective').then(
             (response) => {
                 $scope.elecAreas = response.data;
                 $scope.displayPreloader = false;
+                fuse = new Fuse($scope.elecAreas, config);
             },
             (response) => {
                 alert("something wrong getting elecAreas");
@@ -191,7 +194,6 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
                         alert(response.data['errorMessage']);
                     } else {
                         $scope.courseDetail = response.data;
-                        console.log(response.data);
                     }
                 },
                 (response) => {
@@ -234,8 +236,14 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
     $scope.checkProfile = function() {
         $http.post('/check_profile', buildPayload()).then(
             (response) => {
-                $scope.courseArrange = response.data["courseArrange"];
-                // TODO more fields
+                $scope.courseArrange = processCourseArrange(response.data['courseArrange']);
+                $scope.CEABRequirement = processCEAB(response.data['CEABRequirement']);
+                if (response.data.hasOwnProperty('prerequisiteErrors')) {
+                    $scope.hasPrerequisiteError = true;
+                    $scope.prerequisiteErrors = response.data['prerequisiteErrors'];
+                } else {
+                    $scope.hasPrerequisiteError = false;
+                }
             },
             (response) => {
                 alert('something wrong checking profile');
@@ -263,4 +271,31 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         $scope.displayProgramRules = false;
     }
 
+    $scope.displayTrashCan = false;
+    $scope.showTrashCan = function() {
+        $scope.displayTrashCan = true;
+    }
+    $scope.hideTrashCan = function() {
+        $scope.displayTrashCan = false;
+    }
+
+    // sarch bar
+    const config = {
+        shouldSort: true,
+        threshold: 0.6,
+        maxPatternLength: 15,
+        minMatchCharLength: 1,
+        keys: [
+            "courseName"
+        ]
+    };
+    // fuse would be initialized when elec list is loaded
+    $scope.searchResult = [];
+    $scope.searchKeyword = ""
+    $scope.searchElec = function(){
+        $scope.searchResult = fuse.search($scope.searchKeyword);
+        console.log($scope.searchResult);
+        $scope.displayFullElecList = ($scope.searchKeyword.length === 0);
+    };
+    $scope.displayFullElecList = true;
 });
