@@ -836,5 +836,47 @@
                 }
             ]
         ]
+    },
+    {
+        "areaName": "Engineering Economics",
+        "courseLists": [
+            [
+                {
+                    "courseTime": "F",
+                    "courseCode": "ECE472",
+                    "courseLength": "H1",
+                    "courseName": "Engineering Economics"
+                }
+            ],
+            [
+                {
+                    "courseTime": "S",
+                    "courseCode": "ECE472",
+                    "courseLength": "H1",
+                    "courseName": "Engineering Economics"
+                }
+            ]
+        ]
+    },
+    {
+        "areaName": "Capstone",
+        "courseLists": [
+            [
+                {
+                    "courseTime": "Y",
+                    "courseCode": "ECE496",
+                    "courseLength": "Y1",
+                    "courseName": "Design Project"
+                },
+                {
+                    "courseTime": "Y",
+                    "courseCode": "APS490",
+                    "courseLength": "Y1",
+                    "courseName": "Multi-Disciplinary Capstone Design"
+                }
+            ],
+            []
+        ]
     }
+
 ]

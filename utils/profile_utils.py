@@ -10,10 +10,11 @@ from lxml import etree
 import requests
 import json
 import re
+import datetime
 
 
 def cache_page(name, html):
-    with open("../cached_pages/" + name + ".html", 'w') as f:
+    with open("cached_pages/" + name + ".html", 'w') as f:
         f.write(html)
 
 
@@ -32,28 +33,34 @@ class ProfileReportParser(object):
         parse the html string to lxml processable object
         :param page: the html string of view page
         """
+        self.raw_page = page
         self.page = etree.HTML(page)
 
     def parse(self):
         json_result = {}
+        try:
+            tables = self.page.xpath('//table[starts-with(@style, "width:100%;")]')
+            if len(tables) < 10:
+                raise ProfileException("Missing info tables in profile!:" + str(len(tables)))
+            if len(tables) > 12:
+                raise ProfileException("Unexpected tables in profile!:" + str(len(tables)))
+            # if there was prerequisite error, there would be 1 more table, and table after
+            # prerequisite table would be offset by 1
+            # if there was co-requisite error, there would be 1 another more table, and table after
+            # co-requisite table would be offset by 1
+            offset = len(tables) - 10
 
-        tables = self.page.xpath('//table[starts-with(@style, "width:100%;")]')
-        if len(tables) < 10:
-            raise ProfileException("Missing info tables in profile!:" + str(len(tables)))
-        if len(tables) > 11:
-            raise ProfileException("Unexpected tables in profile!:" + str(len(tables)))
-        # if there was prerequisite error, there would be 1 more table, and table after
-        # prerequisite table would be offset by 1
-        offset = 0 if len(tables) == 10 else 1
-
-        json_result.update({"lastUpdated": self.get_update_info(tables[0])})
-        json_result.update({"personalInfo": self.get_personal_info(tables[1])})
-        json_result.update({"courseTable": self.get_course_table(tables[3])})
-        if offset == 1:
-            json_result.update({"prerequisiteErrors": self.get_prerequisite_errors(tables[4])})
-        json_result.update({"courseArrange": self.get_course_arrange(tables[6 + offset])})
-        json_result.update({"CEABRequirement": self.get_ceab_requirment(tables[7 + offset])})
-        json_result.update({"graduationEligibility": self.get_eligibility(tables[9 + offset])})
+            json_result.update({"lastUpdated": self.get_update_info(tables[0])})
+            json_result.update({"personalInfo": self.get_personal_info(tables[1])})
+            json_result.update({"courseTable": self.get_course_table(tables[3])})
+            if offset > 0:
+                json_result.update({"prerequisiteErrors": self.get_prerequisite_errors(tables[4])})
+            json_result.update({"courseArrange": self.get_course_arrange(tables[6 + offset])})
+            json_result.update({"CEABRequirement": self.get_ceab_requirment(tables[7 + offset])})
+            json_result.update({"graduationEligibility": self.get_eligibility(tables[9 + offset])})
+        except ProfileException as e:
+            cache_page(str(e) + datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S"), self.raw_page)
+            raise e
         return json.dumps(json_result, indent=4, separators=(',', ': '))
 
     def get_update_info(self, table):

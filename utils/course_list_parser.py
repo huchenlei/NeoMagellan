@@ -57,5 +57,5 @@ with open("../cached_pages/main_page.html", 'r') as f:
         main_data, elec_data = parse(page, elec_txt)
         with open("../static/main_course_list.json", 'w') as m:
             with open("../static/elec_course_list.json", 'w') as e:
-                # m.write(main_data)
+                m.write(main_data)
                 e.write(elec_data)

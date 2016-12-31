@@ -6,6 +6,7 @@ Created on Dec 09, 2016
 """
 import json
 import os
+import traceback
 import requests
 
 from flask import Flask, send_from_directory, request, session
@@ -166,8 +167,18 @@ def check_profile():
         "profile_name": session["profile_name"],
         "profile_action": "Edit Profile"
     })
-    page = requests.post(session["base_url"] + "/profile_view_report.php").text
-    return ProfileReportParser(page).parse()
+    try:
+        page = requests.post(session["base_url"] + "/profile_view_report.php", data=data).text
+    except Exception as e:
+        print("[Error] In /check_profile:\n" + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+    try:
+        return ProfileReportParser(page).parse()
+    except ProfileException as e:
+        print("ProfileError: " + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Sorry, something wrong happened, please try again later"})
 
 
 @app.route("/course_list/<course_list_type>", methods=['GET'])
@@ -210,13 +221,13 @@ def get_test_profile():
             student_id = account["student_id"]
             session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
             session["student_id"] = student_id
-    return send_from_directory('static', 'info_prerequisite.json')
+    return send_from_directory('static', 'info.json')
 
 
 @app.route("/test_course_select", methods=['GET'])
 def get_test_course_select():
     """ for testing """
-    session['profile_name'] = "Test_1"
+    session['profile_name'] = "Test_4"
     return send_from_directory('templates', 'course_select.html')
 
 

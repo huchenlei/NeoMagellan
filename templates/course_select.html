@@ -25,7 +25,14 @@
     </head>
     <body ng-app="NeoMagellan">
         <div ng-include="'/components/header.html'"></div>
+        <div ng-include="'/components/contact_modal.html'"></div>
+        <div ng-include="'/components/about_modal.html'"></div>
         <div ng-controller="courseSelect">
+            <!-- error message box -->
+            <div id="message-box" class="{{messageType}}" ng-show="displayMessage">
+                {{message}}
+                <span ng-click="hideMessage()">x</span>
+            </div>
             <!-- course_detail_modal -->
             <div ng-include="'/components/course_detail_modal.html'"></div>
             <div class="row">
@@ -48,7 +55,7 @@
                                         <li class="tab col s6" ng-repeat="sessionName in ['Fall', 'Winter']">
                                             <a href="#{{$index | idFormat : $parent.mainArea.areaName}}">{{sessionName}}</a>
                                         </li>
-                                    </ul>
+                                    </ul><br>
                                     <!-- courseLists contains fallcourses and wintercourses -->
                                     <div ng-repeat="courseList in mainArea.courseLists" id="{{$index | idFormat : mainArea.areaName}}">
                                         <div ng-include="'navigator_course_list.html'"></div>
@@ -95,13 +102,14 @@
                         <i class="small material-icons">delete</i>
                         <ul dnd-list="[]"></ul>
                     </div>
-                    <div class="btn" ng-click="checkProfile()">CHECK PROFILE</div>
-                    <div class="btn" ng-click="submitProfile()">SUBMIT PROFILE</div>
+                    <center>
+                        <div class="btn" ng-click="checkProfile()">CHECK PROFILE</div>
+                        <div class="btn" ng-click="submitProfile()">SUBMIT PROFILE</div>
+                    </center>
                 </div>
             </div>
         </div>
-        <div class="divider"></div>
-        <div id="comment-management" ng-controller="commentPanel">comment panel</div>
+        <div id="comment-management" ng-controller="commentPanel"></div>
         <div ng-include="'/components/footer.html'"></div>
 
         <script type="text/javascript">
@@ -129,7 +137,7 @@
         <script type="text/ng-template" id="course_item.html">
             <button
                 tooltipped
-                class="btn"
+                class="btn kernel-{{course.kernel}}"
                 data-position="top"
                 data-delay="3000"
                 data-tooltip="{{course.courseName}}"
@@ -145,13 +153,15 @@
         <script type="text/ng-template" id="navigator_course_item.html">
             <div class="row">
                 <div class="col s5">
-                    <button class="btn" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
+                    <button class="btn kernel-{{course.kernel}}" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
                         {{course.courseCode}}
                         {{course.courseTime}}
                     </button>
                 </div>
                 <div class="col s7">
-                    {{course.courseName}}
+                    <span>
+                        {{course.courseName}}
+                    </span>
                 </div>
             </div>
         </script>

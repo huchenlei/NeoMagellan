@@ -1,0 +1,365 @@
+
+
+<form name='common_studentview' action='student_view.php' method='post'>
+	<input type='hidden' name='view_personid'>
+</form>
+<head>
+<link rel='stylesheet' type='text/css' href='common/style.css' />
+<link rel='stylesheet' href='common/style_print.css' type='text/css' media='print' />
+</head>
+<script src='common/common_functions.js'></script>
+<!--[if lt IE 9]><script language='javascript' type='text/javascript' src='common/jq_plots/excanvas.js'></script><![endif]-->
+<script type='text/javascript' src='common/jquery-current.js'></script>
+<script language='javascript' type='text/javascript' src='common/jq_plots/jquery.jqplot.min.js'></script>
+<link rel='stylesheet' type='text/css' href='common/jq_plots/jquery.jqplot.css' />
+<body>
+
+<form name='logout' action='index.php' method='post'>
+	<input type='hidden' name='logout' value='logout'>
+</form>
+<script type='text/javascript'>
+function logout() {
+	document.logout.submit();
+}
+</script>
+
+<table  class='table_header' cellspacing='0' cellpadding='0' align='center'>
+	<tr><td>
+		<h3>University of Toronto - Faculty of Applied Science &amp; Engineering</h3>
+		<hr>
+	</td></tr>
+
+	<tr><td>
+		<a href='index_s.php'><span class='main_header'>Magellan - </span> <span class='main_header_sub'>Electrical and Computer Engineering</span></a><br/><br/>
+		<hr size='10px' class='header_bar' />
+	</td></tr>
+	<tr><td>
+		<table width='100%'><tr><td>
+			<h3>Profile View (Test_2) - <a href="javascript:goto_studentview('1002030651')">1002030651</a></h3>
+		</td><td align='right'>
+			<h3><a href="index_s.php" style='color:#00204e;'>Home</a></h3>
+		</td><td align='right' width='100px'>
+			<h3><a href="download/online_manual.pdf" style='color:#00204e;' target='_blank'>Help</a></h3>
+		</td><td align='right' width='100px'>
+			<h3><a href="javascript:logout();" style='color:#00204e;'>Logout</a></h3>
+		</td></tr></table>
+	</td></tr>
+
+
+
+<tr><td align='center'>
+	<div align='left' class='hide_print'>
+		<a href="javascript:goto_studentview('1002030651')">View Student Detail</a> |
+		<a href="javascript:view_report('CEAB')">View CEAB Report</a>
+			</div>
+	<table style='width:100%;'>
+		<tr><td colspan='2'>
+			Profile Last Updated: 2016-12-26 13:40:35 (Hu, Chenlei) 
+		</td></tr>
+	</table>
+	<table style='width:100%; margin-top:20px;'>
+		<tr><td colspan='2' class='menu_header'>
+			<span class='header_title'>Personal Information</span>
+		</td></tr>
+	
+	<tr><td>
+		<b>Name</b>
+	</td><td>
+		Chenlei Hu
+	</td></tr>
+	<tr style='background-color:#fff;'><td>
+		<b>Student Number</b>
+	</td><td>
+	  	1002030651
+	</td></tr>
+	<tr><td>
+		<b>Email</b>
+	</td><td>chenlei.hu@mail.utoronto.ca
+	</td></tr>
+	<tr style='background-color:#fff;'><td>
+		<b>Alternative Email</b>
+	</td><td>
+		chenlei.hu@mail.utoronto.ca
+	</td></tr>
+	<tr><td>
+		<b>Gender</b>
+	</td><td>Male
+	</td></tr>
+	<tr style='background-color:#fff;'><td>
+		<b>Degree Post</b>
+	</td><td>
+		AECPEBASC 
+	</td></tr>	</table>
+
+	 
+	<table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+      <tr><td class='menu_header'>
+         <span class='header_title'>Notes (0)</span>
+         <table name='s_notes' id='s_notes' class='hidden_section' border='0' width='100%'>
+         </table>
+      </td></tr>
+	</table>
+		<form name='add_notes' action='add_notes.php' method='post'>
+			<input type='hidden' name='view_personid' value='1002030651'>
+			<input type='hidden' name='delete_keyid'>
+			<input type='hidden' name='rtn_page' value='/profile_view_report.php'>
+		</form>
+		<script type='text/javascript'>
+			function goto_add_notes() {
+				document.add_notes.submit();
+			}
+			function delete_notes(delete_keyid) {
+				if(confirm('Are you sure you want to delete the note.') == true) {
+					document.add_notes.delete_keyid.value = delete_keyid;
+					document.add_notes.submit();
+				}
+			}
+		</script>
+	<span id='grad_error'></span>
+
+	<table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+		<tr><td class='menu_header'>
+			<hr size='4' color='black'>
+			<span class='header_title' style='font-size:20pt;'>Course List <a href="javascript:popup_legend()"><img src='images/question_mark.png' border='0' width='20px' height='20px'></a></span>
+			<table name='s_course' id='s_course' class='show_section' border='0'>
+				<tr><td width='100px'>
+					<b>Session</b>
+				</td>
+
+				</tr><tr ><td>20159</td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('APS100H1','F','2015')" style='text-decoration:none; color:#AAA; text-decoration: line-through;'>APS100H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Orientation to Engineering</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('APS111H1','F','2015')" style='text-decoration:none; color:#000;'>APS111H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Engineering Strategies and Practice I</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('CIV100H1','F','2015')" style='text-decoration:none; color:#000;'>CIV100H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Mechanics</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('MAT186H1','F','2015')" style='text-decoration:none; color:#000;'>MAT186H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Calculus I</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('MAT188H1','F','2015')" style='text-decoration:none; color:#000;'>MAT188H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Linear Algebra</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('MSE101H1','F','2015')" style='text-decoration:none; color:#000;'>MSE101H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Introduction to Materials Science</font></td></tr><tr style='background-color:#fff;'><td>20161</td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('APS106H1','S','2015')" style='text-decoration:none; color:#000;'>APS106H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Fundamentals of Computer Programming</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('APS112H1','S','2015')" style='text-decoration:none; color:#000;'>APS112H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Engineering Strategies and Practice II</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('CHE112H1','S','2015')" style='text-decoration:none; color:#000;'>CHE112H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Physical Chemistry</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE110H1','S','2015')" style='text-decoration:none; color:#000;'>ECE110H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Electrical Fundamentals</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('MAT187H1','S','2015')" style='text-decoration:none; color:#000;'>MAT187H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Calculus II</font></td></tr><tr ><td>20169</td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE201H1','F','2016')" style='text-decoration:none; color:#F90;'>ECE201H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Seminar Course: Electrical and Computer Engineering</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE212H1','F','2016')" style='text-decoration:none; color:#F90;'>ECE212H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Circuit Analysis</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE241H1','F','2016')" style='text-decoration:none; color:#F90;'>ECE241H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Digital Systems</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE244H1','F','2016')" style='text-decoration:none; color:#F90;'>ECE244H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Programming Fundamentals</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('MAT290H1','F','2016')" style='text-decoration:none; color:#F90;'>MAT290H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Advanced Engineering Mathematics</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('MAT291H1','F','2016')" style='text-decoration:none; color:#F90;'>MAT291H1   F</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Calculus III</font></td></tr><tr style='background-color:#fff;'><td>20171</td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE216H1','S','2016')" style='text-decoration:none; color:#F90;'>ECE216H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Signals and Systems</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE221H1','S','2016')" style='text-decoration:none; color:#F90;'>ECE221H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Electric and Magnetic Fields</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE231H1','S','2016')" style='text-decoration:none; color:#F90;'>ECE231H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Introductory Electronics</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE243H1','S','2016')" style='text-decoration:none; color:#F90;'>ECE243H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Computer Organization</font></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><a href="javascript:course_popup('ECE297H1','S','2016')" style='text-decoration:none; color:#F90;'>ECE297H1   S</a><sup style='font-size:6pt;'></sup><br/><font style='font-size:7pt;'>Communication and Design</font></td></tr><tr ><td></td></tr><tr style='background-color:#fff;'><td>20179</td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color: #f90;'><a href="javascript:course_popup('APM384H1','F','2017')" style='text-decoration:none; color:#f90;'>APM384H1   F</a><br/><font style='font-size:7pt;'>Partial Differential Equations</font><br/><div style='font-size:xx-small; font-family: arial;'></div></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color: #f90;'><a href="javascript:course_popup('ECE335H1','F','2017')" style='text-decoration:none; color:#f90;'>ECE335H1   F</a><br/><font style='font-size:7pt;'>Introduction to Electronic Devices</font><br/><div style='font-size:xx-small; font-family: arial;'></div></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color: #f90;'><a href="javascript:course_popup('ECE361H1','F','2017')" style='text-decoration:none; color:#f90;'>ECE361H1   F</a><br/><font style='font-size:7pt;'>Computer Networks I</font><br/><div style='font-size:xx-small; font-family: arial;'></div></td></tr><tr ><td>20181</td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color: #f90;'><a href="javascript:course_popup('ECE451H1','S','2017')" style='text-decoration:none; color:#f90;'>ECE451H1   S</a><br/><font style='font-size:7pt;'>VLSI Systems and Design</font><br/><div style='font-size:xx-small; font-family: arial;'></div></td><td style='width:150px; font-family: arial; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color: #f90;'><a href="javascript:course_popup('ECE466H1','S','2017')" style='text-decoration:none; color:#f90;'>ECE466H1   S</a><br/><font style='font-size:7pt;'>Computer Networks II</font><br/><div style='font-size:xx-small; font-family: arial;'></div></td>
+			</table>
+		</td></tr>
+	</table>
+
+	
+	   <table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+      <tr><td class='menu_header'>
+         <span class='header_title' style='color:red;'>Prerequisite Error</span><br/>
+         <table name='s_course' id='s_course' class='show_section' border='0'>
+		<tr><td>
+			ECE361H1 prerequisite not met: ECE302H1
+		</td></tr>
+         </table>
+      </td></tr>
+   </table>
+	   <table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+      <tr><td class='menu_header'>
+         <span class='header_title' style='color:red;'>Co-requisite Error</span><br/>
+         <table name='s_course' id='s_course' class='show_section' border='0'>
+		<tr><td>
+			ECE361H1 co-requisite not met: ECE302H1
+		</td></tr>
+         </table>
+      </td></tr>
+   </table>
+	<table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+		<tr><td>
+			<hr size='4' color='black'>
+			<span class='header_title' style='font-size:20pt;'>Graduation Requirements</span><br/>
+		</td></tr>
+	</table>
+
+	<table style='width:100%; margin-top:10px;' cellpadding='0' cellspacing='0'>
+		<tr><td class='menu_header'>
+			<span class='header_title'>1. Program Requirements</span><br/><br/>
+			<span class='header_title'>Core Year Courses</span><br/>
+			<table name='s_course' id='s_course' class='show_section' border='0'>
+				<tr><td width='100px'>
+					<b>First Year</b>
+				</td>
+								<tr><td width='100px' colspan='2'>
+					<b>Second Year</b>
+				</td>
+				</tr><tr ><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE201H1','2016')" style='text-decoration:none; color:#F90;'>ECE201H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE212H1','2016')" style='text-decoration:none; color:#F90;'>ECE212H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE241H1','2016')" style='text-decoration:none; color:#F90;'>ECE241H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE244H1','2016')" style='text-decoration:none; color:#F90;'>ECE244H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('MAT290H1','2016')" style='text-decoration:none; color:#F90;'>MAT290H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('MAT291H1','2016')" style='text-decoration:none; color:#F90;'>MAT291H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td></tr><tr ><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE216H1','2016')" style='text-decoration:none; color:#F90;'>ECE216H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE221H1','2016')" style='text-decoration:none; color:#F90;'>ECE221H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE231H1','2016')" style='text-decoration:none; color:#F90;'>ECE231H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE243H1','2016')" style='text-decoration:none; color:#F90;'>ECE243H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;color:#F90;'><a href="javascript:course_popup('ECE297H1','2016')" style='text-decoration:none; color:#F90;'>ECE297H1   *<img src='images/checkmark.png' alt='Pending' title='Pending' border='0'></a></td>			</table>
+		</td></tr>
+	</table>
+
+	<table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+		<tr><td class='menu_header'>
+			<span class='header_title'>Upper Year Courses</span><br/><br/>
+			<span class='header_sub_title'>Kernel/Depth</span><br/>
+			<table name='s_course' id='s_course' class='show_section' border='0'>
+				<tr><td colspan='5'><tr ><td style='width:100px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'>Area 1<td style='width:150px; text-align:center; border-width:1px; border-style:solid solid solid none; border-color:#333; padding: 10px 0px 10px 0px; color:#F90;'>ECE335H1</td></tr><tr ><td style='width:100px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'>Area 5<td style='width:150px; text-align:center; border-width:1px; border-style:solid solid solid none; border-color:#333; padding: 10px 0px 10px 0px; color:#F90;'>ECE361H1</td><td></td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:#F90;'>ECE451H1</td>
+<td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:#F90;'>ECE466H1</td></tr><br/><b><font color='red'>FAILED to meet kernel and Depth requirements for CE designation</font></b><br/></td></tr>			</table>
+		</td></tr>
+		<tr><td class='menu_header'>
+			<table name='s_course' id='s_course' class='show_section' border='0'>
+				<tr><td>
+					<b>Engineering Economics</b>
+				</td>
+					<td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><span style='color:red'>ECE472H1</span></td>				</td></tr>
+				<tr style='background-color:#fff;'><td>
+					<b>Capstone</b>
+				</td>
+					<td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px;'><span style='color:red'>ECE496Y1/APS490Y1/BME498Y1</span></td>				</td></tr>
+				<tr><td>
+					<b>Science/Math</b>
+				</td>
+					<td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:#F90;'>APM384H1  </td>				</td></tr>
+				<tr><td>
+					<b>Technical Electives</b>
+				</td>
+					<td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled</td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled</td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled</td>				</td></tr>
+				<tr style='background-color:#fff;'><td>
+					<b>HSS and CS</b>
+				</td>
+					<td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled<br/>Minimum 2 HSS</td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled<br/>Minimum 2 HSS</td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled<br/>CS/HSS Requirement</td><td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled<br/>CS/HSS Requirement</td>				</td></tr>
+				<tr><td>
+					<b>Free Elective</b>
+				</td>
+					<td style='width:150px; text-align:center; border-width:1px; border-style:solid none solid none; border-color:#333; padding: 10px 0px 10px 0px; color:red;'>Not Fullfilled</td>				</td></tr>
+			</table>
+		</td></tr>
+
+	<tr><td colspan='10' align='center' style='padding-top:8px; padding-bottom:8px; background-color:#F9B;'><font style='color:#F03; font-weight:bold'>You do NOT meet all Program Requirements.</font></td></tr>		<tr><td colspan='10'>
+		</td></tr>
+	</table>
+
+	<table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+		<tr><td class='menu_header'>
+			<span class='header_title'>2. CEAB Requirements</span><br/>
+			<table name='s_course' id='s_course' class='show_section' border='0'>
+				<tr><td><b>Categories</b></td><td style='width:175px; text-align:center;'><b>Minimum Requirement</b></td><td style='width:175px; text-align:center;'><b>Obtained</b></td><td style='width:175px; text-align:center;'><b>Projected</b></td><td style='width:175px; text-align:center;'><b>Outstanding<br/><span style='font-size:7pt;'>Based on Projected</span></b></td><td style='width:50px; text-align:center;'></td></tr><tr style='background-color:#fff;'><td style='width:250px;'>Total Accreditation Units</td><td style='text-align:center;'>1970</td><td style='text-align:center; color:red;'>1062.5</td><td style='text-align:center; color:red;'>1322.6</td><td style='text-align:center; color:red;'>647.4</td></tr><tr><td>Mathematics</td><td style='text-align:center;'>214.5</td><td style='text-align:center; color:green;'>249.3</td><td style='text-align:center; color:green;'>294.1</td><td style='text-align:center; color:green;'>OK</td></tr><tr style='background-color:#fff;'><td>Natural Science</td><td style='text-align:center;'>200</td><td style='text-align:center; color:red;'>198.5</td><td style='text-align:center; color:green;'>213.6</td><td style='text-align:center; color:green;'>OK</td></tr><tr><td>Mathematics and<br/>Natural Science Combined</td><td style='text-align:center;'>462</td><td style='text-align:center; color:red;'>447.8</td><td style='text-align:center; color:green;'>507.7</td><td style='text-align:center; color:green;'>OK</td></tr><tr style='background-color:#fff;'><td>Engineering Science</td><td style='text-align:center;'>247.5</td><td style='text-align:center; color:green;'>391</td><td style='text-align:center; color:green;'>523.9</td><td style='text-align:center; color:green;'>OK</td></tr><tr><td>Engineering Design</td><td style='text-align:center;'>247.5</td><td style='text-align:center; color:red;'>147.7</td><td style='text-align:center; color:red;'>215</td><td style='text-align:center; color:red;'>32.5</td></tr><tr style='background-color:#fff;'><td>Engineering Science and<br/>Engineering Design Combined</td><td style='text-align:center;'>990</td><td style='text-align:center; color:red;'>538.7</td><td style='text-align:center; color:red;'>738.9</td><td style='text-align:center; color:red;'>251.1</td></tr><tr><td>Complementary Studies</td><td style='text-align:center;'>240</td><td style='text-align:center; color:red;'>76</td><td style='text-align:center; color:red;'>76</td><td style='text-align:center; color:red;'>164</td></tr><tr><td colspan='10' align='center' style='padding-top:8px; padding-bottom:8px; background-color:#F9B;'><font style='color:#F03; font-weight:bold'>You do NOT meet all CEAB requirements.</font></td></tr>			</table>
+		</td></tr>
+	</table>
+
+	<table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+		<tr><td class='menu_header'>
+			<span class='header_title'>3. Practical Experience Requirement</span><br/>
+				<tr><td colspan='10' align='center' style='padding-top:8px; padding-bottom:8px; background-color:#F9B;'><font style='color:#F03; font-weight:bold'>You do NOT meet the Practical Experience requirement.</font></td></tr>		</td></tr>
+	</table>
+
+	
+		<table style='width:100%; margin-top:30px;' cellpadding='0' cellspacing='0'>
+			<tr><td class='menu_header' align='center' style='padding-top:8px; padding-bottom:8px; background-color:#F9B;'>
+				<span class='header_title'>Graduation Eligibility</span><br/><br/><font color='red'>Profile does not meet all Program Requirements.</font><br/><font color='red'>Profile does not meet all CEAB Requirements.</font><br/><font color='red'>Profile does not meet the Practical Experience Requirement.</font><br/>
+				<br/><font color='red'>This profile does not meet all requirements, as a result you will not graduate!</font>
+			</td></tr>
+		</table>
+		<script type='text/javascript'>
+			document.getElementById('grad_error').innerHTML = "<table style='width:100%; cellpadding='0' cellspacing='0'><tr><td class='menu_header' align='center' style='background-color:#F9B;'><span class='header_title'>Graduation Eligibility</span><br/><br/><font color='red'>This profile does not meet all requirements, as a result you will not graduate!</font></td></tr></table>";
+		</script>
+	<tr><td style='text-align:center; padding-top:30px;'>
+			<a href='javascript:save_profile()'>Save Profile</a> | 		 <a href='javascript:edit_profile();'>Edit Profile</a>  
+		</td></tr>
+</td></tr>
+
+
+<form name='edit_profile' action='profile_edit.php' method='post'>
+	<input type='hidden' name='view_personid' value='1002030651'>
+	<input type='hidden' name='profile_action' value='Edit Profile'>
+	<input type='hidden' name='profile_name' value='Test_2'>
+</form>
+<form name='profile_view_report' action='profile_view_report.php' method='post'>
+	<input type='hidden' name='view_personid' value='1002030651'>
+	<input type='hidden' name='profile_name' value='Test_2'>
+	<input type='hidden' name='profile_action' value='Edit Profile'>
+	<input type='hidden' name='new_designation'>
+</form>
+<form name='profile_edit_save' action='profile_edit_save.php' method='post'>
+	<input type='hidden' name='view_personid' value='1002030651'>
+	<input type='hidden' name='profile_name' value='Test_2'>
+	<input type='hidden' name='profile_action' value='Edit Profile'>
+	<input type='hidden' name='new_designation'>
+</form>
+<form name='courses_detail' action="course_information.php" method="post" target="course_detail_popup" onSubmit="window.open('about:blank','course_detail_popup','width=300,height=300')">
+   <input type='hidden' name='acad_act_cd'>
+   <input type='hidden' name='section'>
+   <input type='hidden' name='offered'>
+   <input type='hidden' name='mode' value='student'>
+</form>
+
+
+<script type='text/javascript'>
+function edit_profile() {
+	document.edit_profile.submit();
+}
+function edit_profile_test() {
+	document.edit_profile.action = 'profile_edit_test.php';
+	document.edit_profile.submit();
+}
+function change_designation(EECE) {
+	document.profile_view_report.new_designation.value = EECE;
+	document.profile_view_report.submit();
+}
+function save_profile() {
+	document.profile_edit_save.submit();
+}
+function popup_legend() {
+	window.open('legend.php','Legend','height=400,width=600,location=no,menubar=no,scrollbars=no,status=no,titlebar=no,directories=no');
+}
+function course_popup(acad_act_cd, section, offered) {
+	document.courses_detail.acad_act_cd.value = acad_act_cd;
+   document.courses_detail.section.value = section;
+   document.courses_detail.offered.value = offered;
+   document.courses_detail.submit();
+
+}
+</script>
+
+<form name='f_view_report' action='profile_view_report.php' method='post'>
+   <input type='hidden' name='view_personid'>
+   <input type='hidden' name='profile_name'>
+</form>
+<form name='manage_600hours' action='manage_600hours.php' method='post'>
+   <input type='hidden' name='view_personid'>
+</form>
+<form name='manage_1_2_years' action='manage_1_2_years.php' method='post'>
+   <input type='hidden' name='view_personid'>
+</form>
+
+<script type='text/javascript'>
+function view_report(type) {
+   if(type == 'CEAB') {
+      document.f_view_report.action = 'ceab_view_report.php';
+		document.f_view_report.profile_name.value = 'Test_2';
+   } else if(type == 'rosi') {
+      document.f_view_report.action = 'profile_view_report.php';
+   } else if(type == 'profile') {
+      document.f_view_report.profile_name.value = 'main';
+   } else {
+      document.f_view_report.profile_name.value = type;
+	}
+   document.f_view_report.view_personid.value = '1002030651';
+   document.f_view_report.submit();
+}
+function manage_600hours() {
+   document.manage_600hours.view_personid.value = '1002030651';
+   document.manage_600hours.submit();
+}
+function manage_1_2_years() {
+   document.manage_1_2_years.view_personid.value = '1002030651';
+   document.manage_1_2_years.submit();
+}
+
+function expand(to_exp) {
+   if(to_exp == 's_notes') {
+      document.getElementById('s_notes').className= 'show_section';
+      document.getElementById('notes_exp').className = 'hidden_section';
+      document.getElementById('notes_col').className = 'show_section';
+   }
+}
+function collapse(to_col) {
+   if(to_col == 's_notes') {
+      document.getElementById('s_notes').className= 'hidden_section';
+      document.getElementById('notes_exp').className = 'show_section';
+      document.getElementById('notes_col').className = 'hidden_section';
+   }
+}
+
+
+</script>
+
+<tr><td>
+<div class='footer'>
+	<dl>
+	<dt>&copy; University of Toronto</dt>
+	<dd><a href='http://www.utoronto.ca'>www.utoronto.ca</a> | <a href='/contacts.htm'>Contacts</a> | University Switchboard: (416) 978-2011</dd>
+	<dd>University of Toronto, 27 King's College Circle, Toronto, Ontario, Canada M5S 1A1</dd>
+	</dl>
+</div>
+</td</tr>
+</table>
+<body>
+</html>
+
