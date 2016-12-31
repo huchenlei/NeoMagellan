@@ -5,12 +5,7 @@
         <p>{{courseDetail.courseDescription}}</p>
         <table>
             <tr>
-                <td>Math</td>
-                <td>NS</td>
-                <td>CS</td>
-                <td>ES</td>
-                <td>ED</td>
-                <td>Total</td>
+                <th ng-repeat="categoryName in ['Math', 'NS', 'CS', 'ES', 'ED', 'Total']">{{categoryName}}</th>
             </tr>
             <tr>
                 <td>{{courseDetail.auInfo.Math}}</td>
@@ -21,17 +16,11 @@
                 <td>{{courseDetail.auInfo.Total}}</td>
             </tr>
         </table>
-        <p>exclusions:{{courseDetail.exclusions}}</p>
-        <p>co-requisites:{{courseDetail.coRequisites}}</p>
+        <p>prerequisites: {{courseDetail.prerequisites}}</p>
+        <p>exclusions: {{courseDetail.exclusions}}</p>
+        <p>co-requisites: {{courseDetail.coRequisites}}</p>
     </div>
     <div class="modal-footer">
         <div class="modal-action modal-close waves-effect waves-green btn-flat">Close</div>
     </div>
 </div>
-
-<script type="text/javascript">
-    // make modals operate
-    $(document).ready(function() {
-        $('.modal').modal();
-    });
-</script>

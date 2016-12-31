@@ -1,0 +1,58 @@
+<ul class="tabs">
+    <li class="tab col s4">
+        <a href="#program-requirement">Program Requirement</a>
+    </li>
+    <li class="tab col s4">
+        <a href="#ceab-requirement">CEAB Requirement</a>
+    </li>
+    <li class="tab col s4" ng-show="hasPrerequisiteError">
+        <a href="#prerequisite">Prerequisite Error</a>
+    </li>
+</ul>
+<div id="profile-status">
+    <div id="program-requirement">
+        <table class="highlight">
+            <tr>
+                <th class="col s3">
+                    Requirement
+                    <i class="tiny material-icons" ng-mouseover="showProgramRules()" ng-mouseleave="hideProgramRules()">info</i>
+                </th>
+                <th class="col s9">Status</th>
+            </tr>
+            <tr ng-repeat="category in courseArrange">
+                <td class="col s3">
+                    {{category.categoryName}}
+                </td>
+                <td ng-repeat="course in category.courseList" class="col s2 program-satisfied-{{course.satisfied}}">
+                    {{course.courseName}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="ceab-requirement">
+        <ul>
+            <li ng-repeat="category in CEABRequirement" class="card ceab-satisfied-{{category.satisfied}}">
+                {{category.categoryName | auCategoryFormat}}
+                <div class="divider"></div>
+                {{category.relativeAU}}
+            </li>
+        </ul>
+    </div>
+    <div id="prerequisite">
+        <ul>
+            <li ng-repeat="error in prerequisiteErrors">{{error}}</li>
+        </ul>
+    </div>
+</div>
+<div class="card teal lighten-3" id="program-rules" ng-show="displayProgramRules">
+    <b>To graduate, you need:</b>
+    <ul>
+        <li><b>4</b> courses from <b>4</b> different areas</li>
+        <li>2 depth courses in 2 of 4 kernels chosen</li>
+        <li>Engineering Economics (ECE472)</li>
+        <li>Capstone (ECE496/APS490)</li>
+        <li>1 course in Science/Math area</li>
+        <li>1 free elective</li>
+        <li>2 HSS, 2 CS courses</li>
+    </ul>
+</div>

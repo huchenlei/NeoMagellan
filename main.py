@@ -5,6 +5,7 @@ Created on Dec 09, 2016
 @author: Charlie
 """
 import json
+import os
 import requests
 
 from flask import Flask, send_from_directory, request, session
@@ -47,6 +48,7 @@ def get_profile_list():
         info_page = requests.get(base_url + "/student_view.php").text
         profile_list_page = requests.get(base_url + "/profile_menu.php").text
     except Exception as e:
+        print("Error in  /profile+list: " + str(e))
         return json.dumps({"status": "500",
                            "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
 
@@ -200,11 +202,14 @@ def get_course_detail(course_code):
 @app.route("/test_profile", methods=['GET'])
 def get_test_profile():
     """ for testing """
-    with open('config/account.json', 'r') as f:
-        account = json.loads(f.read())
-        username = account["username"]
-        password = account["password"]
-        session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
+    if os.path.exists('config/account.json'):
+        with open('config/account.json', 'r') as f:
+            account = json.loads(f.read())
+            username = account["username"]
+            password = account["password"]
+            student_id = account["student_id"]
+            session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
+            session["student_id"] = student_id
     return send_from_directory('static', 'info_prerequisite.json')
 
 

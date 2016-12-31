@@ -8,6 +8,10 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
             $(document).ready(function() {
                 $('ul.tabs').tabs();
             });
+            // make modals operate
+            $(document).ready(function() {
+                $('.modal').modal();
+            });
         }, (response) => {
             alert("something wrong getting course list");
         }
@@ -95,18 +99,19 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         }
 
         $scope.courseTable = courseTable;
+        $scope.courseArrange = processCourseArrange(response.data['courseArrange']);
         $scope.CEABRequirement = processCEAB(response.data['CEABRequirement']);
-        if(response.data.hasOwnProperty('prerequisiteErrors')){
+        if (response.data.hasOwnProperty('prerequisiteErrors')) {
             $scope.hasPrerequisiteError = true;
             $scope.prerequisiteErrors = response.data['prerequisiteErrors'];
-        }else {
+        } else {
             $scope.hasPrerequisiteError = false;
         }
         $scope.yearArray = yearArray;
     }
 
     function processCEAB(CEABRequirement) {
-        let CEABProcessed = [];
+        let processedCEAB = [];
         for (const category in CEABRequirement) {
             if (CEABRequirement.hasOwnProperty(category)) {
                 let categoryObject = {};
@@ -117,12 +122,49 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
                     categoryObject['relativeAU'] = (parseFloat(currentCategory.projected) - parseFloat(currentCategory.minRequirement)).toFixed(1);
                 } else {
                     categoryObject['satisfied'] = false;
-                    categoryObject['relativeAU'] = parseFloat(currentCategory.outstanding).toFixed(1);
+                    categoryObject['relativeAU'] = -1 * parseFloat(currentCategory.outstanding).toFixed(1);
                 }
-                CEABProcessed.push(categoryObject);
+                processedCEAB.push(categoryObject);
             }
         }
-        return CEABProcessed;
+        processedCEAB.sort((categoryObjectA, categoryObjectB) => {
+            return categoryObjectA.categoryName.localeCompare(categoryObjectB.categoryName);
+        });
+        return processedCEAB;
+    }
+
+    function processCourseArrange(courseArrange) {
+        let processedCourseArrange = [];
+        for (const category in courseArrange) {
+            if (courseArrange.hasOwnProperty(category)) {
+                let categoryObject = {};
+                categoryObject["categoryName"] = category;
+                categoryObject["courseList"] = [];
+                pattern = /^(\w{3}\d{3}[YH]1(?:\s*\((?:CS|HSS)\))?)$/;
+                courseArrange[category].forEach((course) => {
+                    if (course.match(pattern) != null) {
+                        categoryObject["courseList"].push({
+                            "satisfied": true,
+                            "courseName": course
+                        });
+                    } else {
+                        // handle ECE472H1N
+                        if (course.endsWith("N")) {
+                            course = course.slice(0, 8);
+                        }
+                        categoryObject["courseList"].push({
+                            "satisfied": false,
+                            "courseName": course
+                        });
+                    }
+                });
+                processedCourseArrange.push(categoryObject);
+            }
+        }
+        processedCourseArrange.sort((categoryObjectA, categoryObjectB) => {
+            return categoryObjectA.categoryName.localeCompare(categoryObjectB.categoryName);
+        });
+        return processedCourseArrange;
     }
 
     function getProfile() {
@@ -211,6 +253,14 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
                 alert('something wrong submitting profile');
             }
         );
+    }
+
+    $scope.displayProgramRules = false;
+    $scope.showProgramRules = function() {
+        $scope.displayProgramRules = true;
+    }
+    $scope.hideProgramRules = function() {
+        $scope.displayProgramRules = false;
     }
 
 });

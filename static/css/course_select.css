@@ -77,11 +77,13 @@ ul[dnd-list] {
     display: block;
     min-width: 125px;
     min-height: 38px;
+    border-radius: 2px;
 }
 
 #profile-status {
-    height: 200px;
+    height: 175px;
     overflow: scroll;
+    padding: 5px;
 }
 
 #ceab-requirement {
@@ -100,10 +102,44 @@ ul[dnd-list] {
     color: white;
 }
 
-.satisfied-true {
+.ceab-satisfied-true {
     background-color: #39a69a;
 }
 
-.satisfied-false {
+.ceab-satisfied-false {
     background-color: #da696c;
+}
+
+.program-satisfied-true {
+    background-color: #39a69a;
+    color: white;
+}
+
+.program-satisfied-false {
+    background-color: #da696c;
+    color: white;
+}
+
+#program-requirement table tr td {
+    overflow: auto;
+    overflow-y: scroll;
+    height: 25px;
+}
+
+#program-rules {
+    position: fixed;
+    z-index: 12;
+    top: 100px;
+    right: 100px;
+    width: 20%;
+    height: auto;
+    padding: 8px;
+}
+
+#program-rules ul {
+    list-style: circle;
+}
+
+#prerequisite {
+    color: red;
 }

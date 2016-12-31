@@ -7,14 +7,14 @@ Created on Nov 02, 2016
 
 from lxml import etree
 
-# import requests
+import requests
 import json
 import re
 
 
-# def cache_page(name, html):
-#     with open("../cached_pages/" + name + ".html", 'w') as f:
-#         f.write(html)
+def cache_page(name, html):
+    with open("../cached_pages/" + name + ".html", 'w') as f:
+        f.write(html)
 
 
 class ProfileException(Exception):
@@ -57,9 +57,10 @@ class ProfileReportParser(object):
         return json.dumps(json_result, indent=4, separators=(',', ': '))
 
     def get_update_info(self, table):
-        update_string = table.xpath('./tr/td[@colspan = "2"]/text()')
-        if (len(update_string) != 0) & hasattr(update_string[0], 'strip'):
-            return update_string[0].strip()
+        update_string = table.xpath('.//td[@colspan = "2"]/text()')
+        if len(update_string) != 0:
+            if hasattr(update_string[0], 'strip'):
+                return update_string[0].strip()
         else:
             raise ProfileException("Failed to get update info")
 
@@ -102,11 +103,16 @@ class ProfileReportParser(object):
             course_name_list = row.xpath('.//font[@style = "font-size:7pt;"]/text()')
             course_list = []
             if len(course_full_code_list) != len(course_name_list):
-                raise ProfileException(
-                    "Error: unmatched lists. course code list:" +
-                    course_full_code_list + "\n course name list:" + course_name_list)
+                # year course design project would be count twice
+                if ("Design Project" == course_name_list[0]) & \
+                        (len(course_full_code_list) + 1 == len(course_name_list)):
+                    course_name_list = course_name_list[1:]
+                else:
+                    raise ProfileException(
+                        "Error: unmatched lists. course code list:",
+                        course_full_code_list, "\n course name list:", course_name_list)
             for i, full_code in enumerate(course_full_code_list):
-                if re.match(re.compile('\w{3}\d{3}[YH]1\s+[SF]'), full_code) is None:
+                if re.match(re.compile('\w{3}\d{3}[YH]1\s+[SFY]'), full_code) is None:
                     raise ProfileException("Illegal course code!:" + full_code)
                 course_list.append({
                     "courseName": course_name_list[i],
@@ -132,15 +138,6 @@ class ProfileReportParser(object):
 
     def get_course_arrange(self, table):
         json_result = {}
-        requirement_meet = table.xpath('./tr[1]//b/node()')
-        if requirement_meet:
-            requirement_meet = requirement_meet[0]
-        else:
-            raise ProfileException("Failed to get course arrange conclusion")
-
-        if hasattr(requirement_meet, "xpath"):
-            requirement_meet = requirement_meet.xpath('./font/text()')
-        json_result.update({"requirementMeet": requirement_meet})
 
         sub_tables = table.xpath('.//table[@id = "s_course"]')  # 2 tables
 
@@ -165,8 +162,23 @@ class ProfileReportParser(object):
                 area_name = area_name[0]
             else:
                 raise ProfileException("Failed to get area name when getting course arrange(others)")
-            course_list = [text.strip() for text in row.xpath('./td[position() > 1]/text()')]
-            json_result.update({area_name: course_list})
+
+            course_list = row.xpath('./td[position() > 1]/node()')
+            processed_course_list = []
+            for course in course_list:
+                if hasattr(course, 'xpath'):
+                    course = course.xpath('./text()')
+                    if course:
+                        course = course[0].strip()
+                        if course == "ECE472H1":
+                            processed_course_list.append(course + "N")
+                        else:
+                            processed_course_list.append(course)
+                else:
+                    if not len(course.strip()) < 1:
+                        if (course[0:3] != "Min") & (course[0:6] != "CS/HSS"):
+                            processed_course_list.append(course.strip())
+            json_result.update({area_name: processed_course_list})
         return json_result
 
     def get_ceab_requirment(self, table):
@@ -227,6 +239,7 @@ def check_authorization(raw_page):
     else:
         return True
 
+
 # Test ProfileReportParser
 
 # with open('../config/account.json', 'r') as f:
@@ -237,10 +250,10 @@ def check_authorization(raw_page):
 #
 # page = requests.post("https://" + username + ":" + password + "@magellan.ece.toronto.edu/profile_view_report.php",
 #                      data={"view_personid": student_id,
-#                            "profile_name": "Test_4"}).text
-# cache_page("prerequisites_profile", page)
-
-# with open("../cached_pages/blank_profile.html", 'r') as f:
+#                            "profile_name": "Test_1"}).text
+# cache_page("profile", page)
+#
+# with open("../cached_pages/profile.html", 'r') as f:
 #     page = f.read()
 #     p = ProfileReportParser(page)
 #     table_info = ''
@@ -249,7 +262,7 @@ def check_authorization(raw_page):
 #     except ProfileException as e:
 #         print(e)
 #
-#     with open("../static/info_b.json", 'w') as j:
+#     with open("../static/info.json", 'w') as j:
 #         j.write(table_info)
 
 # Test parse profile

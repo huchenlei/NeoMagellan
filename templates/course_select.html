@@ -75,37 +75,8 @@
                     </div>
                 </div>
                 <div class="col s8">
-                    <div id="profile-status">
-                        <ul class="tabs">
-                            <li class="tab col s4" ng-show="hasPrerequisiteError">
-                                <a href="#prerequisite">Prerequisite Error</a>
-                            </li>
-                            <li class="tab col s4">
-                                <a href="#program-requirement">Program Requirement</a>
-                            </li>
-                            <li class="tab col s4">
-                                <a href="#ceab-requirement">CEAB Requirement</a>
-                            </li>
-                        </ul>
-                        <div id="prerequisite">
-                            <ul>
-                                <li ng-repeat="error in prerequisiteErrors">{{error}}</li>
-                            </ul>
-                        </div>
-                        <div id="program-requirement">
-                            program requirements
-                        </div>
-                        <div id="ceab-requirement">
-                            <ul>
-                                <li ng-repeat="category in CEABRequirement" class="card satisfied-{{category.satisfied}}">
-                                    {{category.categoryName | auCategoryFormat}}
-                                    <div class="divider"></div>
-                                    {{category.relativeAU}}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <br>
+                    <!-- include profile-status panel -->
+                    <div ng-include="'/components/profile_status.html'"></div><br>
                     <div class="divider"></div>
                     <div id="course-table">
                         <ul class="collapsible col s12" data-collapsible="expandable">
@@ -132,7 +103,6 @@
                 </div>
             </div>
         </div>
-
         <div class="divider"></div>
         <div id="comment-management" ng-controller="commentPanel">comment panel</div>
         <div ng-include="'/components/footer.html'"></div>
@@ -144,6 +114,7 @@
         <!-- import controllers -->
         <script type="text/javascript" src="/static/js/course_select_controller.js"></script>
         <script type="text/javascript" src="/static/js/format_filter.js"></script>
+        <script type="text/javascript" src="/static/js/process_filter.js"></script>
         <script type="text/javascript" src="/static/js/comment_panel_controller.js"></script>
 
         <!-- course list model in course table-->
@@ -161,7 +132,7 @@
         </script>
         <!-- course unit model -->
         <script type="text/ng-template" id="course_item.html">
-            <button tooltipped class="btn" data-position="top" data-delay="1000" data-tooltip="{{course.courseName}}" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
+            <button tooltipped class="btn" data-position="top" data-delay="3000" data-tooltip="{{course.courseName}}" data-target="course-detail-modal" ng-click="getCourseDetail(course.courseCode, course.courseLength)">
                 {{course.courseCode}}
                 {{course.courseTime}}
             </button>

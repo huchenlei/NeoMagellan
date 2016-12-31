@@ -1,27 +1,285 @@
 {
+    "personalInfo": {
+        "Email": "chenlei.hu@mail.utoronto.ca",
+        "Degree Post": "AECPEBASC",
+        "Gender": "Male",
+        "Student Number": "1002030651",
+        "Alternative Email": "chenlei.hu@mail.utoronto.ca",
+        "Name": "Chenlei Hu"
+    },
+    "courseTable": {
+        "20169": [
+            {
+                "courseCode": "ECE201",
+                "courseName": "Seminar Course: Electrical and Computer Engineering",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE212",
+                "courseName": "Circuit Analysis",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE241",
+                "courseName": "Digital Systems",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE244",
+                "courseName": "Programming Fundamentals",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "MAT290",
+                "courseName": "Advanced Engineering Mathematics",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "MAT291",
+                "courseName": "Calculus III",
+                "courseLength": "H1",
+                "courseTime": "F"
+            }
+        ],
+        "20179": [
+            {
+                "courseCode": "CSC300",
+                "courseName": "Computers and Society",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "CSC467",
+                "courseName": "Compilers and Interpreters",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE302",
+                "courseName": "Probability and Applications",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE344",
+                "courseName": "Operating Systems",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE345",
+                "courseName": "Algorithms & Data Structures",
+                "courseLength": "H1",
+                "courseTime": "F"
+            }
+        ],
+        "20159": [
+            {
+                "courseCode": "APS100",
+                "courseName": "Orientation to Engineering",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "APS111",
+                "courseName": "Engineering Strategies and Practice I",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "CIV100",
+                "courseName": "Mechanics",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "MAT186",
+                "courseName": "Calculus I",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "MAT188",
+                "courseName": "Linear Algebra",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "MSE101",
+                "courseName": "Introduction to Materials Science",
+                "courseLength": "H1",
+                "courseTime": "F"
+            }
+        ],
+        "20161": [
+            {
+                "courseCode": "APS106",
+                "courseName": "Fundamentals of Computer Programming",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "APS112",
+                "courseName": "Engineering Strategies and Practice II",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "CHE112",
+                "courseName": "Physical Chemistry",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE110",
+                "courseName": "Electrical Fundamentals",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "MAT187",
+                "courseName": "Calculus II",
+                "courseLength": "H1",
+                "courseTime": "S"
+            }
+        ],
+        "20191": [
+            {
+                "courseCode": "CSC454",
+                "courseName": "The Business of Software",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE316",
+                "courseName": "Communication Systems",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE516",
+                "courseName": "Intelligent Image Processing",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE521",
+                "courseName": "Inference Algorithms and Machine Learning",
+                "courseLength": "H1",
+                "courseTime": "S"
+            }
+        ],
+        "20189": [
+            {
+                "courseCode": "APS281",
+                "courseName": "Language and Meaning",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "CSC444",
+                "courseName": "Software Engineering",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE320",
+                "courseName": "Fields and Waves",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE472",
+                "courseName": "Engineering Economic Analysis & Entrepreneurship",
+                "courseLength": "H1",
+                "courseTime": "F"
+            },
+            {
+                "courseCode": "ECE496",
+                "courseName": "Design Project",
+                "courseLength": "Y1",
+                "courseTime": "Y"
+            }
+        ],
+        "20171": [
+            {
+                "courseCode": "ECE216",
+                "courseName": "Signals and Systems",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE221",
+                "courseName": "Electric and Magnetic Fields",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE231",
+                "courseName": "Introductory Electronics",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE243",
+                "courseName": "Computer Organization",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE297",
+                "courseName": "Communication and Design",
+                "courseLength": "H1",
+                "courseTime": "S"
+            }
+        ],
+        "20181": [
+            {
+                "courseCode": "APS321",
+                "courseName": "Representing Science and Technology in Popular Media",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "CSC418",
+                "courseName": "Computer Graphics",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE361",
+                "courseName": "Computer Networks I",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE419",
+                "courseName": "Distributed Systems",
+                "courseLength": "H1",
+                "courseTime": "S"
+            },
+            {
+                "courseCode": "ECE568",
+                "courseName": "Computer Security",
+                "courseLength": "H1",
+                "courseTime": "S"
+            }
+        ]
+    },
     "courseArrange": {
-        "Free Elective": [
-            "ECE419H1"
-        ],
-        "Area 6": [
-            "ECE345H1",
-            "ECE344H1",
-            "ECE568H1"
-        ],
-        "Science/Math": [
-            "ECE302H1"
+        "Area 5": [
+            "ECE361H1"
         ],
         "Capstone": [
             "ECE496Y1"
         ],
-        "Engineering Economics": [
-            "ECE472H1"
-        ],
-        "Area 5": [
-            "ECE361H1"
-        ],
-        "Area 2": [
-            "ECE320H1"
+        "Free Elective": [
+            "ECE568H1"
         ],
         "Area 4": [
             "ECE316H1",
@@ -33,341 +291,82 @@
             "CSC444H1",
             "CSC467H1"
         ],
-        "requirementMeet": "Meet Kernel and Depth requirements for CE designation",
+        "Science/Math": [
+            "ECE302H1"
+        ],
+        "Area 6": [
+            "ECE344H1",
+            "ECE345H1",
+            "ECE419H1"
+        ],
+        "Area 2": [
+            "ECE320H1"
+        ],
         "HSS and CS": [
-            "APS281H1 (HSS)",
-            "APS321H1 (HSS)",
-            "CSC300H1 (CS)",
-            "CSC454H1 (CS)"
+            "APS281H1  (HSS)",
+            "APS321H1  (HSS)",
+            "CSC300H1  (CS)",
+            "CSC454H1  (CS)"
+        ],
+        "Engineering Economics": [
+            "ECE472H1"
         ]
     },
-    "lastUpdated": "Profile Last Updated: 2016-09-15 10:50:35 (, )",
-    "personalInfo": {
-        "Alternative Email": "chenlei.hu@mail.utoronto.ca",
-        "Email": "chenlei.hu@mail.utoronto.ca",
-        "Gender": "Male",
-        "Degree Post": "AECPEBASC",
-        "Student Number": "1002030651",
-        "Name": "Chenlei Hu"
-    },
-    "courseTable": {
-        "20169": [
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE201",
-                "courseName": "Seminar Course: Electrical and Computer Engineering",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE212",
-                "courseName": "Circuit Analysis",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE241",
-                "courseName": "Digital Systems",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE244",
-                "courseName": "Programming Fundamentals",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "MAT290",
-                "courseName": "Advanced Engineering Mathematics",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "MAT291",
-                "courseName": "Calculus III",
-                "courseTime": "F"
-            }
-        ],
-        "20171": [
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE216",
-                "courseName": "Signals and Systems",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE221",
-                "courseName": "Electric and Magnetic Fields",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE231",
-                "courseName": "Introductory Electronics",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE243",
-                "courseName": "Computer Organization",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE297",
-                "courseName": "Communication and Design",
-                "courseTime": "S"
-            }
-        ],
-        "20189": [
-            {
-                "courseLength": "H1",
-                "courseCode": "APS281",
-                "courseName": "Language and Meaning",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "CSC444",
-                "courseName": "Software Engineering",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE320",
-                "courseName": "Fields and Waves",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE472",
-                "courseName": "Engineering Economic Analysis & Entrepreneurship",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "Y1",
-                "courseCode": "ECE496",
-                "courseName": "Design Project",
-                "courseTime": "Y"
-            }
-        ],
-        "20159": [
-            {
-                "courseLength": "H1",
-                "courseCode": "APS100",
-                "courseName": "Orientation to Engineering",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "APS111",
-                "courseName": "Engineering Strategies and Practice I",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "CIV100",
-                "courseName": "Mechanics",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "MAT186",
-                "courseName": "Calculus I",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "MAT188",
-                "courseName": "Linear Algebra",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "MSE101",
-                "courseName": "Introduction to Materials Science",
-                "courseTime": "F"
-            }
-        ],
-        "20191": [
-            {
-                "courseLength": "H1",
-                "courseCode": "CSC454",
-                "courseName": "Design Project",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE316",
-                "courseName": "The Business of Software",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE516",
-                "courseName": "Communication Systems",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE521",
-                "courseName": "Intelligent Image Processing",
-                "courseTime": "S"
-            }
-        ],
-        "20179": [
-            {
-                "courseLength": "H1",
-                "courseCode": "CSC300",
-                "courseName": "Computers and Society",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "CSC467",
-                "courseName": "Compilers and Interpreters",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE302",
-                "courseName": "Probability and Applications",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE344",
-                "courseName": "Operating Systems",
-                "courseTime": "F"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE345",
-                "courseName": "Algorithms & Data Structures",
-                "courseTime": "F"
-            }
-        ],
-        "20181": [
-            {
-                "courseLength": "H1",
-                "courseCode": "APS321",
-                "courseName": "Representing Science and Technology in Popular Media",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "CSC418",
-                "courseName": "Computer Graphics",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE361",
-                "courseName": "Computer Networks I",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE419",
-                "courseName": "Distributed Systems",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE568",
-                "courseName": "Computer Security",
-                "courseTime": "S"
-            }
-        ],
-        "20161": [
-            {
-                "courseLength": "H1",
-                "courseCode": "APS106",
-                "courseName": "Fundamentals of Computer Programming",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "APS112",
-                "courseName": "Engineering Strategies and Practice II",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "CHE112",
-                "courseName": "Physical Chemistry",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "ECE110",
-                "courseName": "Electrical Fundamentals",
-                "courseTime": "S"
-            },
-            {
-                "courseLength": "H1",
-                "courseCode": "MAT187",
-                "courseName": "Calculus II",
-                "courseTime": "S"
-            }
-        ]
+    "lastUpdated": "Profile Last Updated: 2016-12-27 14:53:20 (Hu, Chenlei)",
+    "CEABRequirement": {
+        "Mathematics": {
+            "outstanding": "OK",
+            "projected": "299.7",
+            "obtained": "249.3",
+            "minRequirement": "214.5"
+        },
+        "Engineering Science": {
+            "outstanding": "OK",
+            "projected": "809.3",
+            "obtained": "391",
+            "minRequirement": "247.5"
+        },
+        "Mathematics and Natural Science Combined": {
+            "outstanding": "OK",
+            "projected": "530.2",
+            "obtained": "447.8",
+            "minRequirement": "462"
+        },
+        "Complementary Studies": {
+            "outstanding": "OK",
+            "projected": "263.2",
+            "obtained": "76",
+            "minRequirement": "240"
+        },
+        "Engineering Design": {
+            "outstanding": "OK",
+            "projected": "419.9",
+            "obtained": "147.7",
+            "minRequirement": "247.5"
+        },
+        "Total Accreditation Units": {
+            "outstanding": "OK",
+            "projected": "2022.6",
+            "obtained": "1062.5",
+            "minRequirement": "1970"
+        },
+        "Natural Science": {
+            "outstanding": "OK",
+            "projected": "230.5",
+            "obtained": "198.5",
+            "minRequirement": "200"
+        },
+        "Engineering Science and Engineering Design Combined": {
+            "outstanding": "OK",
+            "projected": "1229.2",
+            "obtained": "538.7",
+            "minRequirement": "990"
+        }
     },
     "graduationEligibility": {
         "eligibilityList": [
             "Profile does not meet the Practical Experience Requirement."
         ],
         "conclusion": "This profile does not meet all requirements, as a result you will not graduate!"
-    },
-    "CEABRequirement": {
-        "Engineering Design": {
-            "minRequirement": "247.5",
-            "projected": "419.9",
-            "obtained": "147.7",
-            "outstanding": "OK"
-        },
-        "Engineering Science and Engineering Design Combined": {
-            "minRequirement": "990",
-            "projected": "1229.2",
-            "obtained": "538.7",
-            "outstanding": "OK"
-        },
-        "Natural Science": {
-            "minRequirement": "200",
-            "projected": "230.5",
-            "obtained": "198.5",
-            "outstanding": "OK"
-        },
-        "Total Accreditation Units": {
-            "minRequirement": "1970",
-            "projected": "2022.6",
-            "obtained": "1062.5",
-            "outstanding": "OK"
-        },
-        "Mathematics and Natural Science Combined": {
-            "minRequirement": "462",
-            "projected": "530.2",
-            "obtained": "447.8",
-            "outstanding": "OK"
-        },
-        "Complementary Studies": {
-            "minRequirement": "240",
-            "projected": "263.2",
-            "obtained": "76",
-            "outstanding": "OK"
-        },
-        "Mathematics": {
-            "minRequirement": "214.5",
-            "projected": "299.7",
-            "obtained": "249.3",
-            "outstanding": "OK"
-        },
-        "Engineering Science": {
-            "minRequirement": "247.5",
-            "projected": "809.3",
-            "obtained": "391",
-            "outstanding": "OK"
-        }
     }
 }

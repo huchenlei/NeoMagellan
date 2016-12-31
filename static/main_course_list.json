@@ -8,7 +8,8 @@
                     "courseId": "dd_ECE335H1_1",
                     "courseCode": "ECE335",
                     "courseLength": "H1",
-                    "courseName": "Introduction to Electronic Devices"
+                    "courseName": "Introduction to Electronic Devices",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
@@ -52,7 +53,8 @@
                     "courseId": "dd_ECE318H1_7",
                     "courseCode": "ECE318",
                     "courseLength": "H1",
-                    "courseName": "Fundamentals of Optics"
+                    "courseName": "Fundamentals of Optics",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
@@ -101,14 +103,16 @@
                     "courseId": "dd_ECE314H1_13",
                     "courseCode": "ECE314",
                     "courseLength": "H1",
-                    "courseName": "Fundamentals of Electrical Energy Systems"
+                    "courseName": "Fundamentals of Electrical Energy Systems",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
                     "courseId": "dd_ECE320H1_14",
                     "courseCode": "ECE320",
                     "courseLength": "H1",
-                    "courseName": "Fields and Waves"
+                    "courseName": "Fields and Waves",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
@@ -187,14 +191,16 @@
                     "courseId": "dd_ECE331H1_24",
                     "courseCode": "ECE331",
                     "courseLength": "H1",
-                    "courseName": "Analog Electronics"
+                    "courseName": "Analog Electronics",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
                     "courseId": "dd_ECE334H1_25",
                     "courseCode": "ECE334",
                     "courseLength": "H1",
-                    "courseName": "Digital Electronics"
+                    "courseName": "Digital Electronics",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
@@ -245,14 +251,16 @@
                     "courseId": "dd_ECE331H1_32",
                     "courseCode": "ECE331",
                     "courseLength": "H1",
-                    "courseName": "Analog Electronics"
+                    "courseName": "Analog Electronics",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
                     "courseId": "dd_ECE334H1_33",
                     "courseCode": "ECE334",
                     "courseLength": "H1",
-                    "courseName": "Digital Electronics"
+                    "courseName": "Digital Electronics",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
@@ -294,14 +302,16 @@
                     "courseId": "dd_ECE311H1_38",
                     "courseCode": "ECE311",
                     "courseLength": "H1",
-                    "courseName": "Dynamic Systems & Control"
+                    "courseName": "Dynamic Systems & Control",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
                     "courseId": "dd_ECE316H1_39",
                     "courseCode": "ECE316",
                     "courseLength": "H1",
-                    "courseName": "Communication Systems"
+                    "courseName": "Communication Systems",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
@@ -366,14 +376,16 @@
                     "courseId": "dd_ECE311H1_48",
                     "courseCode": "ECE311",
                     "courseLength": "H1",
-                    "courseName": "Dynamic Systems and Control"
+                    "courseName": "Dynamic Systems and Control",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
                     "courseId": "dd_ECE316H1_49",
                     "courseCode": "ECE316",
                     "courseLength": "H1",
-                    "courseName": "Communication Systems"
+                    "courseName": "Communication Systems",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
@@ -471,7 +483,8 @@
                     "courseId": "dd_ECE361H1_62",
                     "courseCode": "ECE361",
                     "courseLength": "H1",
-                    "courseName": "Computer Networks I"
+                    "courseName": "Computer Networks I",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
@@ -494,14 +507,16 @@
                     "courseId": "dd_ECE342H1_65",
                     "courseCode": "ECE342",
                     "courseLength": "H1",
-                    "courseName": "Computer Hardware"
+                    "courseName": "Computer Hardware",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
                     "courseId": "dd_ECE361H1_66",
                     "courseCode": "ECE361",
                     "courseLength": "H1",
-                    "courseName": "Computer Networks I"
+                    "courseName": "Computer Networks I",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
@@ -543,14 +558,16 @@
                     "courseId": "dd_ECE344H1_71",
                     "courseCode": "ECE344",
                     "courseLength": "H1",
-                    "courseName": "Operating Systems"
+                    "courseName": "Operating Systems",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
                     "courseId": "dd_ECE345H1_72",
                     "courseCode": "ECE345",
                     "courseLength": "H1",
-                    "courseName": "Algorithms & Data Structures"
+                    "courseName": "Algorithms & Data Structures",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "F",
@@ -629,14 +646,16 @@
                     "courseId": "dd_ECE344H1_83",
                     "courseCode": "ECE344",
                     "courseLength": "H1",
-                    "courseName": "Operating Systems"
+                    "courseName": "Operating Systems",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
                     "courseId": "dd_ECE345H1_84",
                     "courseCode": "ECE345",
                     "courseLength": "H1",
-                    "courseName": "Algorithms & Data Structures"
+                    "courseName": "Algorithms & Data Structures",
+                    "kernel": "true"
                 },
                 {
                     "courseTime": "S",
