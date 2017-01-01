@@ -26,7 +26,8 @@ db_client = MongoClient()  # default max 100 connections good enough for ECEs
 @app.route("/")
 @app.route("/index")
 def root():
-    return send_from_directory('templates', 'index.html')
+    return send_from_directory(os.path.join(app.root_path, 'templates'), 'index.html')
+#    return "hello, world!"
 
 
 # user login
@@ -102,11 +103,11 @@ def course_select():
             session["profile_name"] = new_profile_name
         except Exception as e:
             print("[Error] In /course_select:\n" + str(e))
-            return send_from_directory('templates', 'error.html')
+            return send_from_directory(os.path.join(app.root_path, 'templates'), 'error.html')
     else:
         session["profile_name"] = request.form["profileName"]
 
-    return send_from_directory('templates', 'course_select.html')  # choose profile
+    return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')  # choose profile
 
 
 @app.route("/profile", methods=['GET'])
@@ -185,9 +186,9 @@ def check_profile():
 def get_course_list(course_list_type):
     """return the course list json"""
     if course_list_type == "main":
-        return send_from_directory('static', 'main_course_list.json')
+        return send_from_directory(os.path.join(app.root_path, 'static'), 'main_course_list.json')
     elif course_list_type == "elective":
-        return send_from_directory('static', 'elec_course_list.json')
+        return send_from_directory(os.path.join(app.root_path, 'static'), 'elec_course_list.json')
 
 
 @app.route("/course_detail/<course_code>", methods=['GET'])
@@ -228,14 +229,13 @@ def get_test_profile():
 def get_test_course_select():
     """ for testing """
     session['profile_name'] = "Test_4"
-    return send_from_directory('templates', 'course_select.html')
+    return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')
 
 
 @app.route("/components/<component_name>")
 def get_component(component_name):
-    return send_from_directory('templates', component_name)
+    return send_from_directory(os.path.join(app.root_path, 'templates'), component_name)
 
 
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 if __name__ == "__main__":
     app.run()
