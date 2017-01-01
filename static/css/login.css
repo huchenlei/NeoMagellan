@@ -37,6 +37,11 @@
     position: absolute;
 }
 
+#profile-list-panel span {
+    color: green;
+    font-weight: bold;
+}
+
 .slider {
     z-index: -1;
 }

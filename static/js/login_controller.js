@@ -2,6 +2,8 @@ angular.module('NeoMagellanLogin').controller('login', ($scope, $http) => {
     // initialize everything
     $scope.readyToSelectProfile = false;
     $scope.errorMessage = null;
+
+
     $scope.getProfileList = function() {
         $http({
             method: 'POST',
@@ -17,7 +19,7 @@ angular.module('NeoMagellanLogin').controller('login', ($scope, $http) => {
             if (response.data["status"] === "200") {
                 $scope.profileList = response.data["profileList"];
                 $scope.readyToSelectProfile = true;
-            } else if(response.data["status"] === "500"){
+            } else if (response.data["status"] === "500") {
                 $scope.errorMessage = response.data["errorMessage"];
             }
         }, (response) => {

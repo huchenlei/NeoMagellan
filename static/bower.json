@@ -24,7 +24,8 @@
   "dependencies": {
     "angular-materialize": "^0.2.1",
     "angular-drag-and-drop-lists": "^1.4.0",
-    "angular-toArrayFilter": "^1.0.1"
+    "angular-toArrayFilter": "^1.0.1",
+    "fuse.js": "^2.6.1"
   },
   "resolutions": {
     "angular-drag-and-drop-lists": "^1.4.0"
