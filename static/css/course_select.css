@@ -1,3 +1,8 @@
+/*hide the scroll bar*/
+.element::-webkit-scrollbar {
+    display: none;
+}
+
 .brand-logo {
     margin-left: 1%;
 }
@@ -173,7 +178,6 @@ ul[dnd-list] {
 
 #program-requirement table tr td {
     overflow: auto;
-    overflow-y: scroll;
     height: 25px;
 }
 
