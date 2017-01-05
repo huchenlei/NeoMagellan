@@ -34,9 +34,10 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         shouldSort: true,
         threshold: 0.6,
         maxPatternLength: 15,
-        minMatchCharLength: 1,
+        minMatchCharLength: 3,
         keys: [
-            "courseName"
+            "courseName",
+            "courseCode"
         ]
     };
     // fuse would be initialized when elec list is loaded
