@@ -26,6 +26,7 @@
         <div ng-include="'/components/header.html'"></div>
         <div ng-include="'/components/contact_modal.html'"></div>
         <div ng-include="'/components/about_modal.html'"></div>
+
         <div ng-controller="courseSelect">
             <!-- error message box -->
             <div id="message-box" class="{{messageType}}" ng-show="displayMessage">
@@ -34,6 +35,8 @@
             </div>
             <!-- course_detail_modal -->
             <div ng-include="'/components/course_detail_modal.html'"></div>
+            <!-- submit share modal -->
+            <div ng-include="'/components/submit_modal.html'"></div>
             <div class="row">
                 <div class="col s3" id="navigator">
                     <ul class="tabs">
@@ -118,6 +121,7 @@
         <!-- import controllers -->
         <script type="text/javascript" src="/static/js/course_select_controller.js"></script>
         <script type="text/javascript" src="/static/js/format_filter.js"></script>
+        <script type="text/javascript" src="/static/js/course_table_service.js"></script>
         <script type="text/javascript" src="/static/js/comment_panel_controller.js"></script>
         <!-- course list model in course table-->
         <script type="text/ng-template" id="table_course_list.html">
@@ -159,7 +163,7 @@
                 </div>
                 <div class="col s7">
                     <span>
-                        {{course.courseName}}
+                        {{course.courseName}} {{course.courseCategory}}
                     </span>
                 </div>
             </div>

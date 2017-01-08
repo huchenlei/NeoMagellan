@@ -6,7 +6,6 @@ Created on Dec 09, 2016
 """
 import json
 import os
-import traceback
 import requests
 
 from flask import Flask, send_from_directory, request, session
@@ -27,7 +26,6 @@ db_client = MongoClient()  # default max 100 connections good enough for ECEs
 @app.route("/index")
 def root():
     return send_from_directory(os.path.join(app.root_path, 'templates'), 'index.html')
-#    return "hello, world!"
 
 
 # user login
@@ -123,7 +121,7 @@ def get_profile():
         return json.dumps({"status": "500",
                            "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
     try:
-        return ProfileReportParser(page).parse()
+        return json.dumps(ProfileReportParser(page).parse())
     except ProfileException as e:
         print("ProfileError: " + str(e))
         return json.dumps({"status": "500",
@@ -138,18 +136,34 @@ def submit_profile():
     """
     try:
         data = json.loads(request.data.decode("utf-8"))
+        # save profile to database
+        profiles = db_client.NeoMagellan.profiles
+        existing_profile = profiles.find_one(
+            {"personalInfo": data['personalInfo'], "shareOptions.description": data["shareOptions"]["description"]})
+        # prevent multiple submit of same profile
+        if existing_profile is None:
+            profiles.insert_one(data)
+
+        payload = data['payload']
         student_info = {
             "view_personid": session["student_id"],
             "profile_name": session["profile_name"],
             "profile_action": "Edit Profile"
         }
-        data.update(student_info)
+        payload.update(student_info)
         # submit to view page
-        requests.post(session["base_url"] + "/profile_view_report.php", data)
+        page = requests.post(session["base_url"] + "/profile_view_report.php", payload).text
 
         m_session = requests.session()
         m_session.post(session["base_url"] + "/profile_edit_save.php", student_info)
-        return json.dumps({"status": "200"})
+
+        result = ProfileReportParser(page).parse()
+        result.update({"status": "200"})
+        return json.dumps(result)
+    except ProfileException as e:
+        print("ProfileError: " + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Sorry, something wrong happened, please try again later"})
     except Exception as e:
         print("[Error] In /submit_profile:\n" + str(e))
         return json.dumps({"status": "500",
@@ -175,7 +189,7 @@ def check_profile():
         return json.dumps({"status": "500",
                            "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
     try:
-        return ProfileReportParser(page).parse()
+        return json.dumps(ProfileReportParser(page).parse())
     except ProfileException as e:
         print("ProfileError: " + str(e))
         return json.dumps({"status": "500",
@@ -236,6 +250,9 @@ def get_test_course_select():
 def get_component(component_name):
     return send_from_directory(os.path.join(app.root_path, 'templates'), component_name)
 
+
+# for local testing
+app.secret_key = "1sdfsdfsdfsabasewfwae324"
 
 if __name__ == "__main__":
     app.run()

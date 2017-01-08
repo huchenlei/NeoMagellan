@@ -1,0 +1,17 @@
+<div id="submit-modal" class="modal">
+    <div class="modal-content">
+        <span>Almost done</span><br>
+        <p>Would you like to share your course table with others? The short description could help your friend find your course table</p>
+        <form ng-submit="shareProfile()" ng-model="shareOptions">
+            <input type="checkbox" ng-model="shareOptions.share" ng-true-valu="true" ng-false-value="false" id="share">
+            <label for="share">Share course table</label><br>
+            <input type="checkbox" ng-model="shareOptions.anonymous" ng-true-valu="true" ng-false-value="false" id="anonymous">
+            <label for="anonymous">Keep anonymous</label>
+            <input type="text" ng-model="shareOptions.description" placeholder="Short Description">
+            <input type="submit" class="btn" value="Submit">
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="modal-action modal-close waves-effect waves-green btn-flat">Close</div>
+    </div>
+</div>

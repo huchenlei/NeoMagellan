@@ -1,5 +1,6 @@
 /*hide the scroll bar*/
-.element::-webkit-scrollbar {
+
+::-webkit-scrollbar {
     display: none;
 }
 
@@ -49,6 +50,7 @@
 #main-areas ul, #elective-areas ul {
     font-size: 13px;
 }
+
 #main-areas ul li, #elective-areas ul li {
     font-size: 11px;
 }
@@ -84,7 +86,9 @@
     border: none;
 }
 
+
 /*course list item*/
+
 #session-course-list li {
     display: inline-block;
     float: left;
@@ -199,7 +203,6 @@ ul[dnd-list] {
     color: red;
 }
 
-
 #trash-can {
     width: 170px;
     height: 40px;
@@ -208,7 +211,7 @@ ul[dnd-list] {
     top: 400px;
 }
 
-#trash-can>ul{
+#trash-can>ul {
     min-height: 38px;
     min-width: 125px;
     display: inline-block;
@@ -219,6 +222,6 @@ ul[dnd-list] {
     background-color: #da696c;
 }
 
-#trash-can>i{
+#trash-can>i {
     margin: auto;
 }

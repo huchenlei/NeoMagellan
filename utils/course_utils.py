@@ -6,12 +6,9 @@ Created on Dec 05, 2016
 """
 
 import json
-import datetime
 import requests
-import pymongo
 
 from lxml import etree
-from pymongo import MongoClient
 
 
 def get_course_info(full_course_code, db, base_url):

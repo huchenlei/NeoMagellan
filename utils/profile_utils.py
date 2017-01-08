@@ -24,7 +24,7 @@ class ProfileException(Exception):
 
 class ProfileReportParser(object):
     """
-    this class parse the edit profile page(html) to a course table json object
+    this class parse the edit profile page(html) to a course table dictionary
     the object is available at static/info.json
     """
 
@@ -61,7 +61,7 @@ class ProfileReportParser(object):
         except ProfileException as e:
             cache_page(str(e) + datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S"), self.raw_page)
             raise e
-        return json.dumps(json_result, indent=4, separators=(',', ': '))
+        return json_result
 
     def get_update_info(self, table):
         update_string = table.xpath('.//td[@colspan = "2"]/text()')

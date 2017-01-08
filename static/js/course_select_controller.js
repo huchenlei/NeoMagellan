@@ -1,4 +1,4 @@
-angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
+angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseTableService) => {
     // initialize the navi bar course list
     $http.get('/course_list/main').then(
         (response) => {
@@ -40,6 +40,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
             "courseCode"
         ]
     };
+
     // fuse would be initialized when elec list is loaded
     $scope.searchResult = [];
     $scope.searchKeyword = ""
@@ -49,152 +50,24 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
     };
     $scope.displayFullElecList = true;
 
-    //initialize profile
-    function processCourseTable(response) {
-        let courseTable = response.data["courseTable"];
-        let courseArrange = response.data["courseArrange"];
-        // bind CS HSS field
-        courseArrange['HSS and CS'].forEach((elective) => {
-            courseCode = elective.split(' ')[0];
-            courseCategory = elective.split(' ')[1];
-            // find the elective in courseTable
-            // and inject 'courseCategory' field
-            for (const year of Object.keys(courseTable)) {
-                courseTable[year].forEach((course) => {
-                    if ((course.courseCode + course.courseLength) === courseCode) {
-                        course['courseCategory'] = courseCategory;
-                    }
-                });
-            }
-        });
-        // bind Course id field
-        for (const year of Object.keys(courseTable)) {
-            courseTable[year].forEach((course) => {
-                let BreakException = {};
-                try {
-                    $scope.mainAreas.forEach((mainArea) => {
-                        mainArea.courseLists.forEach((courseList) => {
-                            courseList.forEach((mainCourse) => {
-                                if (mainCourse.courseCode === course.courseCode) {
-                                    if (mainCourse.hasOwnProperty("courseId"))
-                                        course['courseId'] = mainCourse.courseId;
-                                    if (mainCourse.hasOwnProperty('kernel')) {
-                                        course['kernel'] = true;
-                                        // console.log('kernel ' + mainCourse.courseCode);
-                                    }
-                                    // console.log("matching success:" + course['courseId']);
-                                    throw BreakException;
-                                }
-                            });
-                        });
-                    });
-                } catch (e) {
-                    if (e !== BreakException) throw e;
-                }
-            });
-        }
-
-        // complete the year options
-        // find the min session sessions are in form (e.g. 20159, 20161)
-        let minYear = null;
-        // build a year array for the convenience of course table display
-        // in the form (e.g. [{"fallSession": "20159", "winterSession": "20161"} ...])
-        yearArray = [];
-        for (const year of Object.keys(courseTable)) {
-            intYear = parseInt(year);
-            if (minYear === null)
-                minYear = intYear;
-            if (minYear > intYear)
-                minYear = intYear;
-        }
-        minYear = Math.floor(minYear / 10);
-
-        for (let i = 0; i < 5; i++) { // max 10 sessions
-            fallSession = (minYear + i).toString() + "9";
-            winterSession = (minYear + i + 1).toString() + "1";
-            yearArray.push({
-                "fallSession": fallSession,
-                "winterSession": winterSession
-            });
-            if (!(courseTable.hasOwnProperty(fallSession)))
-                courseTable[fallSession] = [];
-            if (!(courseTable.hasOwnProperty(winterSession)))
-                courseTable[winterSession] = [];
-        }
-
-        $scope.courseTable = courseTable;
-        $scope.courseArrange = processCourseArrange(response.data['courseArrange']);
-        $scope.CEABRequirement = processCEAB(response.data['CEABRequirement']);
+    function processUserInfo(response) {
+        $scope.yearArray = [];
+        $scope.courseTable = courseTableService.processCourseTable(response.data['courseTable'], response.data['courseArrange'], $scope.mainAreas, $scope.yearArray);
+        $scope.courseArrange = courseTableService.processCourseArrange(response.data['courseArrange']);
+        $scope.CEABRequirement = courseTableService.processCEAB(response.data['CEABRequirement']);
         if (response.data.hasOwnProperty('prerequisiteErrors')) {
             $scope.hasPrerequisiteError = true;
             $scope.prerequisiteErrors = response.data['prerequisiteErrors'];
         } else {
             $scope.hasPrerequisiteError = false;
         }
-        $scope.yearArray = yearArray;
-    }
-
-    function processCEAB(CEABRequirement) {
-        let processedCEAB = [];
-        for (const category in CEABRequirement) {
-            if (CEABRequirement.hasOwnProperty(category)) {
-                let categoryObject = {};
-                categoryObject['categoryName'] = category;
-                let currentCategory = CEABRequirement[category];
-                if (currentCategory.outstanding === "OK") {
-                    categoryObject['satisfied'] = true;
-                    categoryObject['relativeAU'] = (parseFloat(currentCategory.projected) - parseFloat(currentCategory.minRequirement)).toFixed(1);
-                } else {
-                    categoryObject['satisfied'] = false;
-                    categoryObject['relativeAU'] = -1 * parseFloat(currentCategory.outstanding).toFixed(1);
-                }
-                processedCEAB.push(categoryObject);
-            }
-        }
-        processedCEAB.sort((categoryObjectA, categoryObjectB) => {
-            return categoryObjectA.categoryName.localeCompare(categoryObjectB.categoryName);
-        });
-        return processedCEAB;
-    }
-
-    function processCourseArrange(courseArrange) {
-        let processedCourseArrange = [];
-        for (const category in courseArrange) {
-            if (courseArrange.hasOwnProperty(category)) {
-                let categoryObject = {};
-                categoryObject["categoryName"] = category;
-                categoryObject["courseList"] = [];
-                pattern = /^(\w{3}\d{3}[YH]1(?:\s*\((?:CS|HSS)\))?)$/;
-                courseArrange[category].forEach((course) => {
-                    if (course.match(pattern) != null) {
-                        categoryObject["courseList"].push({
-                            "satisfied": true,
-                            "courseName": course
-                        });
-                    } else {
-                        // handle ECE472H1N
-                        if (course.endsWith("N")) {
-                            course = course.slice(0, 8);
-                        }
-                        categoryObject["courseList"].push({
-                            "satisfied": false,
-                            "courseName": course
-                        });
-                    }
-                });
-                processedCourseArrange.push(categoryObject);
-            }
-        }
-        processedCourseArrange.sort((categoryObjectA, categoryObjectB) => {
-            return categoryObjectA.categoryName.localeCompare(categoryObjectB.categoryName);
-        });
-        return processedCourseArrange;
+        $scope.personalInfo = response.data['personalInfo'];
     }
 
     function getProfile() {
         // mocking getting profile info from server
-        $http.get('/profile').then(
-            processCourseTable,
+        $http.get('/test_profile').then( // TODO change back to /profile
+            processUserInfo,
             serverError
         )
     }
@@ -267,37 +140,51 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http) => {
         return payload;
     }
 
+    function updateRequirementPanel(response) {
+        if (response.hasOwnProperty('errorMessage')) {
+            $scope.message = response.data["errorMessage"];
+            $scope.messageType = "error";
+            $scope.displayMessage = true;
+        } else {
+            $scope.courseArrange = courseTableService.processCourseArrange(response.data['courseArrange']);
+            $scope.CEABRequirement = courseTableService.processCEAB(response.data['CEABRequirement']);
+            if (response.data.hasOwnProperty('prerequisiteErrors')) {
+                $scope.hasPrerequisiteError = true;
+                $scope.prerequisiteErrors = response.data['prerequisiteErrors'];
+            } else {
+                $scope.hasPrerequisiteError = false;
+            }
+        }
+    }
+
     $scope.checkProfile = function() {
-        $http.post('/check_profile', buildPayload()).then(
-            (response) => {
-                if (response.hasOwnProperty('errorMessage')) {
-                    $scope.message = response.data["errorMessage"];
-                    $scope.messageType = "error";
-                } else {
-                    $scope.courseArrange = processCourseArrange(response.data['courseArrange']);
-                    $scope.CEABRequirement = processCEAB(response.data['CEABRequirement']);
-                    if (response.data.hasOwnProperty('prerequisiteErrors')) {
-                        $scope.hasPrerequisiteError = true;
-                        $scope.prerequisiteErrors = response.data['prerequisiteErrors'];
-                    } else {
-                        $scope.hasPrerequisiteError = false;
-                    }
-                }
-            }, serverError
-        );
+        $http.post('/check_profile', buildPayload()).then(nupdateRequirementPanel, serverError);
     }
 
     $scope.submitProfile = function() {
-        $http.post('/submit_profile', buildPayload()).then(
+        $('#submit-modal').modal('open');
+    }
+
+    $scope.shareOptions = {
+        "share": false,
+        "anonymous": false,
+        "description": ""
+    }
+    $scope.shareProfile = function() {
+        const payload = {
+            "payload": buildPayload(),
+            "shareOptions": $scope.shareOptions,
+            "personalInfo": $scope.personalInfo
+        };
+        $http.post('/submit_profile', payload).then(
             (response) => {
-                if (response.data["status"] === "200") {
-                    $scope.message = "Submit Success";
+                updateRequirementPanel(response);
+                if (response.data['status'] === "200") {
+                    $scope.message = "Submit is successful";
                     $scope.messageType = "success";
-                } else if (response.data["status"] === "500") {
-                    $scope.message = response.data["errorMessage"];
-                    $scope.messageType = "error";
+                    $scope.displayMessage = true;
                 }
-                $scope.displayMessage = true;
+                $('#submit-modal').modal('close');
             }, serverError
         );
     }
