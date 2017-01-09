@@ -66,7 +66,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
 
     function getProfile() {
         // mocking getting profile info from server
-        $http.get('/test_profile').then( // TODO change back to /profile
+        $http.get('/profile').then( // TODO change back to /profile
             processUserInfo,
             serverError
         )

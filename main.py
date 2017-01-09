@@ -13,7 +13,7 @@ from pymongo import MongoClient
 from bson import json_util
 
 from utils.profile_utils import ProfileReportParser, parse_info_page, parse_profile_list_page, check_authorization, \
-    ProfileException
+    ProfileException, create_new_profile, check_submit_profile
 from utils.course_utils import get_course_info
 
 app = Flask(__name__)
@@ -71,41 +71,66 @@ def get_profile_list():
                        "status": "200"})
 
 
-@app.route("/course_select", methods=['POST'])
-def course_select():
+@app.route("/shared_profile_list/<page_number>", methods=['GET'])
+def get_shared_profile_list(page_number):
+    """return shared profile list"""
+    page_number = int(page_number)
+    if page_number < 1:
+        return
+    item_per_page = 5
+    profiles = db_client.NeoMagellan.profiles
+    result = profiles.find({"shareOptions.share": True}, {"shareOptions": True, "personalInfo": True}).skip(
+        item_per_page * (page_number - 1)).limit(item_per_page)
+    return json.dumps(list(result), default=json_util.default)
+
+
+@app.route("/existing_profile", methods=['POST'])
+def use_existing_profile():
     """
     go to course selecting page, returns HTML,
-    handles new profile action
-    session["profile_name"]
+    save to session: profile_name
     """
-    new_profile = request.form.getlist("newProfile")  # handle checkbox
-    new_profile_name = request.form["newProfileName"]
-
-    if new_profile:
-        print("new a profile")
-        try:
-            data = {
-                "profile_name": new_profile_name,
-                "profile_action": "Create New",
-                "profile_new": "new"
-            }
-            m_session = requests.session()
-            requests.post(session["base_url"] + "/profile_edit.php", data=data)
-            data = {
-                "profile_name": new_profile_name,
-                "profile_action": "Create New",
-                "view_personid": session["student_id"]
-            }
-            m_session.post(session["base_url"] + "/profile_view_report.php", data=data)
-            m_session.post(session["base_url"] + "/profile_edit_save.php", data=data)
-            session["profile_name"] = new_profile_name
-        except Exception as e:
-            print("[Error] In /course_select:\n" + str(e))
-            return send_from_directory(os.path.join(app.root_path, 'templates'), 'error.html')
-    else:
-        session["profile_name"] = request.form["profileName"]
-
+    session["profile_name"] = request.form["profileName"]
     return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')  # choose profile
+
+
+@app.route("/new_profile", methods=['POST'])
+def use_new_profile():
+    """
+    create new profile
+    save to session: profile_name
+    """
+    session["profile_name"] = request.form["newProfileName"]
+    try:
+        create_new_profile(session["profile_name"], session["base_url"], session["student_id"])
+        return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')
+    except Exception as e:
+        print("[Error] In /new_profile:\n" + str(e))
+        return send_from_directory(os.path.join(app.root_path, 'templates'), 'error.html')
+
+
+@app.route("/shared_profile", methods=['POST'])
+def use_shared_profile():
+    """
+    load shared profile
+    save to session: profile_name
+    """
+    session["profile_name"] = request.form["newProfileName"]
+    profile_id = request.form["profileId"]
+    profiles = db_client.NeoMagellan.profiles
+    profile_to_use = profiles.find_one({"_id": profile_id})
+    try:
+        if profile_to_use is None:
+            raise Exception("GOT ATTACKED!")  # if got attacked, the server won't crash
+
+        create_new_profile(session["profile_name"], session["base_url"], session["student_id"])
+        check_submit_profile(profile_to_use["payload"], session["student_id"], session["profile_name"],
+                             session["base_url"], method="submit")
+
+        return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')
+    except Exception as e:
+        print("[Error] In /shared_profile:\n" + str(e))
+        return send_from_directory(os.path.join(app.root_path, 'templates'), 'error.html')
 
 
 @app.route("/profile", methods=['GET'])
@@ -134,8 +159,8 @@ def submit_profile():
     submit the profile to Magellan Server
     :return: json
     """
+    data = json.loads(request.data.decode("utf-8"))
     try:
-        data = json.loads(request.data.decode("utf-8"))
         # save profile to database
         profiles = db_client.NeoMagellan.profiles
         existing_profile = profiles.find_one(
@@ -145,21 +170,8 @@ def submit_profile():
             profiles.insert_one(data)
 
         payload = data['payload']
-        student_info = {
-            "view_personid": session["student_id"],
-            "profile_name": session["profile_name"],
-            "profile_action": "Edit Profile"
-        }
-        payload.update(student_info)
-        # submit to view page
-        page = requests.post(session["base_url"] + "/profile_view_report.php", payload).text
-
-        m_session = requests.session()
-        m_session.post(session["base_url"] + "/profile_edit_save.php", student_info)
-
-        result = ProfileReportParser(page).parse()
-        result.update({"status": "200"})
-        return json.dumps(result)
+        return check_submit_profile(payload, session["student_id"], session["profile_name"], session["base_url"],
+                                    method="submit")
     except ProfileException as e:
         print("ProfileError: " + str(e))
         return json.dumps({"status": "500",
@@ -177,23 +189,17 @@ def check_profile():
     :return: json(the same structure as get profile)
     """
     data = json.loads(request.data.decode("utf-8"))
-    data.update({
-        "view_personid": session["student_id"],
-        "profile_name": session["profile_name"],
-        "profile_action": "Edit Profile"
-    })
     try:
-        page = requests.post(session["base_url"] + "/profile_view_report.php", data=data).text
-    except Exception as e:
-        print("[Error] In /check_profile:\n" + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
-    try:
-        return json.dumps(ProfileReportParser(page).parse())
+        return check_submit_profile(data, session["student_id"], session["profile_name"], session["base_url"],
+                                    method="check")
     except ProfileException as e:
         print("ProfileError: " + str(e))
         return json.dumps({"status": "500",
                            "errorMessage": "Sorry, something wrong happened, please try again later"})
+    except Exception as e:
+        print("[Error] In /check_profile:\n" + str(e))
+        return json.dumps({"status": "500",
+                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
 
 
 @app.route("/course_list/<course_list_type>", methods=['GET'])

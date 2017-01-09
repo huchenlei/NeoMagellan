@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8">
         <title>Neo Magellan</title>
         <base href="static/bower_components/">
+        <!-- Import Jquery -->
+        <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="angular/angular.min.js"></script>
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Import Jquery -->
-        <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
         <!-- import Materialize.js(depend on jquery) -->
         <script type="text/javascript" src="materialize/dist/js/materialize.min.js"></script>
         <script type="text/javascript" src="angular-materialize/src/angular-materialize.js"></script>
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="materialize/dist/css/materialize.min.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="materialize/dist/css/materialize.min.css" media="screen,projection" />
         <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
 
     <body ng-app="NeoMagellanLogin" ng-controller="login">
@@ -57,32 +58,54 @@
             </form>
         </div>
         <div class="card-panel" id="profile-list-panel" ng-show="readyToSelectProfile">
-            <form action="/course_select" method="post">
-                <span>Login Success</span>
-                <p>please select existing profile or create new.</p>
+            <span>Login Successful</span>
+            <div class="row">
+                <ul class="tabs">
+                    <li class="tab col s4" tooltipped data-position="top" data-delay="400" data-tooltip="Your existing profiles"><a href="#profile-list">Existing</a></li>
+                    <li class="tab col s4" tooltipped data-position="top" data-delay="400" data-tooltip="Create new profile"><a href="#new-profile">New</a></li>
+                    <li class="tab col s4 disabled" tooltipped data-position="top" data-delay="400" data-tooltip="Choose from shared profile"><a href="#shared-profile" ng-click="getSharedProfileList(1)">Shared</a></li>
+                </ul>
+            </div>
+            <form action="/existing_profile" method="post" id="profile-list">
                 <div ng-repeat="profile in profileList">
                     <!-- might need a filter here for id TODO-->
-                    <input class="with-gap" type="radio" name="profileName" ng-model="$parent.profileName" ng-value="profile" id="{{profile}}"/>
+                    <input class="with-gap" type="radio" name="profileName" ng-value="profile" id="{{profile}}" />
                     <label for="{{profile}}">{{profile}}</label>
-                </div>
-                <input type="checkbox" name="newProfile" value="true" id="new-profile">
-                <label for="new-profile">New Profile</label>
-                <input type="text" name="newProfileName" placeholder="New profile name"/>
+                </div><br>
+                <button type='submit' class='btn btn-large waves-effect'>Confirm</button>
+            </form>
+            <form action="/new_profile" method="post" id="new-profile">
+                <input type="text" name="newProfileName" placeholder="New profile name" />
+                <button type='submit' class='btn btn-large waves-effect'>Confirm</button>
+            </form>
+            <form action="/shared_profile" method="post" id="shared-profile">
+                <input type="text" name="newProfileName" placeholder="New profile name" />
+                <ul>
+                    <li ng-repeat="profile in sharedProfileList">
+                        <input class="with-gap" type="radio" name="profileId" ng-value="profile._id" id="{{profile._id}}">
+                        <label for="{{profile._id}}">{{profile.shareOptions.description}}</label>
+                    </li>
+                </ul>
                 <button type='submit' class='btn btn-large waves-effect'>Confirm</button>
             </form>
         </div>
         <script type="text/javascript">
-            angular.module('NeoMagellanLogin', []);
-            // initialize slides
+            angular.module('NeoMagellanLogin', ['ui.materialize']);
             $(document).ready(function() {
-                $('.slider').slider({full_width: true});
+                $('.slider').slider({
+                    full_width: true
+                });
             });
-            // make modals operate (picture load to slow)
+            // make modals operate (picture load too slow)
             setTimeout(function() {
                 $('.modal').modal();
             }, 1000);
+            setTimeout(function() {
+                $('ul.tabs').tabs();
+            }, 1000);
         </script>
         <script src="/static/js/login_controller.js" charset="utf-8"></script>
-        <link rel="stylesheet" href="/static/css/login.css"/>
+        <link rel="stylesheet" href="/static/css/login.css" />
     </body>
+
 </html>

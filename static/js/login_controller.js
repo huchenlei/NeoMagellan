@@ -3,7 +3,6 @@ angular.module('NeoMagellanLogin').controller('login', ($scope, $http) => {
     $scope.readyToSelectProfile = false;
     $scope.errorMessage = null;
 
-
     $scope.getProfileList = function() {
         $http({
             method: 'POST',
@@ -26,15 +25,16 @@ angular.module('NeoMagellanLogin').controller('login', ($scope, $http) => {
             $scope.errorMessage = "Opps! something unexpected happended!";
         })
     };
-    $scope.newProfile = function() {
-        console.log("creating new profile");
-        $http.post('/course_select', {
-            "profileName": "TestNew",
-            "newProfile": "true"
-        }).then((response) => {
-            $location.path('/course_select')
-        }, (response) => {
-            console.log("something wrong");
-        });
+
+    $scope.getSharedProfileList = function(pageNumber){
+        $http.get('/shared_profile_list/' + pageNumber).then(
+            (response) => {
+                console.log(response.data);
+                $scope.sharedProfileList = response.data;
+            },
+            (response) => {
+                alert("something wrong with shared profile list");
+            }
+        );
     };
 });

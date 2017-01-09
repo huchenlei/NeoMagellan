@@ -247,6 +247,36 @@ def check_authorization(raw_page):
         return True
 
 
+def create_new_profile(new_profile_name, base_url, student_id):
+    data = {
+        "profile_name": new_profile_name,
+        "profile_action": "Create New",
+        "profile_new": "new"
+    }
+    m_session = requests.session()
+    requests.post(base_url + "/profile_edit.php", data=data)
+    data = {
+        "profile_name": new_profile_name,
+        "profile_action": "Create New",
+        "view_personid": student_id
+    }
+    m_session.post(base_url + "/profile_view_report.php", data=data)
+    m_session.post(base_url + "/profile_edit_save.php", data=data)
+
+
+def check_submit_profile(data, student_id, profile_name, base_url, method="submit"):
+    student_info = {
+        "view_personid": student_id,
+        "profile_name": profile_name,
+        "profile_action": "Edit Profile"
+    }
+    data.update(student_info)
+    page = requests.post(base_url + "/profile_view_report.php", data=data).text
+    if method == "submit":
+        m_session = requests.session()
+        m_session.post(base_url + "/profile_edit_save.php", student_info)
+    return json.dumps(ProfileReportParser(page).parse().update({"status": "200"}))
+
 # Test ProfileReportParser
 
 # with open('../config/account.json', 'r') as f:
