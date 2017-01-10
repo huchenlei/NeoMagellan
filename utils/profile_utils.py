@@ -277,7 +277,9 @@ def check_submit_profile(data, student_id, profile_name, base_url, method="submi
     if method == "submit":
         m_session = requests.session()
         m_session.post(base_url + "/profile_edit_save.php", student_info)
-    return json.dumps(ProfileReportParser(page).parse().update({"status": "200"}))
+    result = ProfileReportParser(page).parse()
+    result.update({"status": "200"})
+    return json.dumps(result)
 
 # Test ProfileReportParser
 
