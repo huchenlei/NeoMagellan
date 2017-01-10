@@ -158,7 +158,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
     }
 
     $scope.checkProfile = function() {
-        $http.post('/check_profile', buildPayload()).then(nupdateRequirementPanel, serverError);
+        $http.post('/check_profile', buildPayload()).then(updateRequirementPanel, serverError);
     }
 
     $scope.submitProfile = function() {

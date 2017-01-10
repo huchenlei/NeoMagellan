@@ -1,0 +1,15 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper" id="header-bar">
+            <a href="/" class="brand-logo">Neo Magellan Project (Alpha 1.0)</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <a href="#contact-modal">Contact us</a>
+                </li>
+                <li>
+                    <a href="#about-modal">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

@@ -258,7 +258,7 @@ def get_component(component_name):
 
 
 # for local testing
-app.secret_key = "1sdfsdfsdfsabasewfwae324"
+# app.secret_key = "1sdfsdfsdfsabasewfwae324"
 
 if __name__ == "__main__":
     app.run()

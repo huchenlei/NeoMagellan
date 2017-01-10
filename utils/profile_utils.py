@@ -14,7 +14,7 @@ import datetime
 
 
 def cache_page(name, html):
-    with open("cached_pages/" + name + ".html", 'w') as f:
+    with open("/var/www/NeoMagellan/cached_pages/" + name + ".html", 'w') as f:
         f.write(html)
 
 
@@ -152,6 +152,8 @@ class ProfileReportParser(object):
             raise ProfileException("Failed to get course arrange sub tables:" + str(sub_tables))
 
         area_row_list = sub_tables[0].xpath('./tr[position() > 1]')
+        if len(area_row_list) > 4:
+            area_row_list = area_row_list[0:3]
         for row in area_row_list:
             area_name = row.xpath('./td[1]/text()')
             if area_name:
