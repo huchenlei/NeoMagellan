@@ -19,7 +19,11 @@ from utils.course_utils import get_course_info
 app = Flask(__name__)
 app.debug = True
 
-db_client = MongoClient()  # default max 100 connections good enough for ECEs
+with open("/var/www/NeoMagellan/config/dbAccount.json", 'r') as f:
+    db_account = json.loads(f.read())
+    db_username = db_account["username"]
+    db_password = db_account["password"]
+db_client = MongoClient("mongodb://"+db_username+":"+db_password+"@localhost:27017/")  # default max 100 connections good enough for ECEs
 
 
 @app.route("/")
