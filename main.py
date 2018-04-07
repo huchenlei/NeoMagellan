@@ -23,22 +23,26 @@ with open("/var/www/NeoMagellan/config/dbAccount.json", 'r') as f:
     db_account = json.loads(f.read())
     db_username = db_account["username"]
     db_password = db_account["password"]
-db_client = MongoClient("mongodb://"+db_username+":"+db_password+"@localhost:27017/")  # default max 100 connections good enough for ECEs
+db_client = MongoClient(
+    "mongodb://" + db_username + ":" + db_password +
+    "@localhost:27017/")  # default max 100 connections good enough for ECEs
 
 
 @app.route("/")
 @app.route("/index")
 def root():
-    return send_from_directory(os.path.join(app.root_path, 'templates'), 'index.html')
+    return send_from_directory(
+        os.path.join(app.root_path, 'templates'), 'index.html')
 
 
 # user login
 @app.route("/profile_list", methods=['POST'])
 def get_profile_list():
-    """ with username and password posted
-    return the user profile list
+    """With username and password posted return the user profile list.
+
     session["base_url"]
     session["student_id"]
+    summary
     """
     data = json.loads(request.data.decode("utf-8"))
     username = data["username"]
@@ -53,26 +57,37 @@ def get_profile_list():
         profile_list_page = requests.get(base_url + "/profile_menu.php").text
     except Exception as e:
         print("Error in  /profile+list: " + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Connection Error: Unable to reach School Magellan Server"
+        })
 
     # check whether username and password are correct
     if not check_authorization(info_page):
-        return json.dumps({"status": "500",
-                           "errorMessage": "Sorry, it seems like your username or password are incorrect"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Sorry, it seems like your username or password are incorrect"
+        })
     # parse HTML
     try:
         student_id = parse_info_page(info_page)
         profile_list = parse_profile_list_page(profile_list_page)
     except ProfileException as e:
         print("ProfileError: " + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Sorry, something wrong happened, please try again later"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Sorry, something wrong happened, please try again later"
+        })
 
     session["student_id"] = student_id
-    return json.dumps({"studentId": student_id,
-                       "profileList": profile_list,
-                       "status": "200"})
+    return json.dumps({
+        "studentId": student_id,
+        "profileList": profile_list,
+        "status": "200"
+    })
 
 
 @app.route("/shared_profile_list/<page_number>", methods=['GET'])
@@ -83,8 +98,11 @@ def get_shared_profile_list(page_number):
         return
     item_per_page = 5
     profiles = db_client.NeoMagellan.profiles
-    result = profiles.find({"shareOptions.share": True}, {"shareOptions": True, "personalInfo": True}).skip(
-        item_per_page * (page_number - 1)).limit(item_per_page)
+    result = profiles.find({
+        "shareOptions.share": True
+    }, {"shareOptions": True,
+        "personalInfo":
+        True}).skip(item_per_page * (page_number - 1)).limit(item_per_page)
     return json.dumps(list(result), default=json_util.default)
 
 
@@ -95,28 +113,33 @@ def use_existing_profile():
     save to session: profile_name
     """
     session["profile_name"] = request.form["profileName"]
-    return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')  # choose profile
+    return send_from_directory(
+        os.path.join(app.root_path, 'templates'),
+        'course_select.html')  # choose profile
 
 
 @app.route("/new_profile", methods=['POST'])
 def use_new_profile():
-    """
-    create new profile
+    """Create new profile.
+
     save to session: profile_name
     """
     session["profile_name"] = request.form["newProfileName"]
     try:
-        create_new_profile(session["profile_name"], session["base_url"], session["student_id"])
-        return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')
+        create_new_profile(session["profile_name"], session["base_url"],
+                           session["student_id"])
+        return send_from_directory(
+            os.path.join(app.root_path, 'templates'), 'course_select.html')
     except Exception as e:
         print("[Error] In /new_profile:\n" + str(e))
-        return send_from_directory(os.path.join(app.root_path, 'templates'), 'error.html')
+        return send_from_directory(
+            os.path.join(app.root_path, 'templates'), 'error.html')
 
 
 @app.route("/shared_profile", methods=['POST'])
 def use_shared_profile():
-    """
-    load shared profile
+    """Load shared profile.
+
     save to session: profile_name
     """
     session["profile_name"] = request.form["newProfileName"]
@@ -125,36 +148,53 @@ def use_shared_profile():
     profile_to_use = profiles.find_one({"_id": profile_id})
     try:
         if profile_to_use is None:
-            raise Exception("GOT ATTACKED!")  # if got attacked, the server won't crash
+            raise Exception(
+                "GOT ATTACKED!")  # if got attacked, the server won't crash
 
-        create_new_profile(session["profile_name"], session["base_url"], session["student_id"])
-        check_submit_profile(profile_to_use["payload"], session["student_id"], session["profile_name"],
-                             session["base_url"], method="submit")
+        create_new_profile(session["profile_name"], session["base_url"],
+                           session["student_id"])
+        check_submit_profile(
+            profile_to_use["payload"],
+            session["student_id"],
+            session["profile_name"],
+            session["base_url"],
+            method="submit")
 
-        return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')
+        return send_from_directory(
+            os.path.join(app.root_path, 'templates'), 'course_select.html')
     except Exception as e:
         print("[Error] In /shared_profile:\n" + str(e))
-        return send_from_directory(os.path.join(app.root_path, 'templates'), 'error.html')
+        return send_from_directory(
+            os.path.join(app.root_path, 'templates'), 'error.html')
 
 
 @app.route("/profile", methods=['GET'])
 def get_profile():
     """ get user profile details based on student_id and profile name, returns json """
     # the POST data to official Magellan server
-    data = {"view_personid": session["student_id"], "profile_name": session["profile_name"]}
+    data = {
+        "view_personid": session["student_id"],
+        "profile_name": session["profile_name"]
+    }
     try:
-        page = requests.post(session["base_url"] +
-                             "/profile_view_report.php", data=data).text
+        page = requests.post(
+            session["base_url"] + "/profile_view_report.php", data=data).text
     except Exception as e:
         print("[Error] In /profile:\n" + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Connection Error: Unable to reach School Magellan Server"
+        })
     try:
         return json.dumps(ProfileReportParser(page).parse())
     except ProfileException as e:
         print("ProfileError: " + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Sorry, something wrong happened, please try again later"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Sorry, something wrong happened, please try again later"
+        })
 
 
 @app.route("/submit_profile", methods=['POST'])
@@ -167,23 +207,35 @@ def submit_profile():
     try:
         # save profile to database
         profiles = db_client.NeoMagellan.profiles
-        existing_profile = profiles.find_one(
-            {"personalInfo": data['personalInfo'], "shareOptions.description": data["shareOptions"]["description"]})
+        existing_profile = profiles.find_one({
+            "personalInfo": data['personalInfo'],
+            "shareOptions.description": data["shareOptions"]["description"]
+        })
         # prevent multiple submit of same profile
         if existing_profile is None:
             profiles.insert_one(data)
 
         payload = data['payload']
-        return check_submit_profile(payload, session["student_id"], session["profile_name"], session["base_url"],
-                                    method="submit")
+        return check_submit_profile(
+            payload,
+            session["student_id"],
+            session["profile_name"],
+            session["base_url"],
+            method="submit")
     except ProfileException as e:
         print("ProfileError: " + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Sorry, something wrong happened, please try again later"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Sorry, something wrong happened, please try again later"
+        })
     except Exception as e:
         print("[Error] In /submit_profile:\n" + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Connection Error: Unable to reach School Magellan Server"
+        })
 
 
 @app.route("/check_profile", methods=['POST'])
@@ -194,25 +246,37 @@ def check_profile():
     """
     data = json.loads(request.data.decode("utf-8"))
     try:
-        return check_submit_profile(data, session["student_id"], session["profile_name"], session["base_url"],
-                                    method="check")
+        return check_submit_profile(
+            data,
+            session["student_id"],
+            session["profile_name"],
+            session["base_url"],
+            method="check")
     except ProfileException as e:
         print("ProfileError: " + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Sorry, something wrong happened, please try again later"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Sorry, something wrong happened, please try again later"
+        })
     except Exception as e:
         print("[Error] In /check_profile:\n" + str(e))
-        return json.dumps({"status": "500",
-                           "errorMessage": "Connection Error: Unable to reach School Magellan Server"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage":
+            "Connection Error: Unable to reach School Magellan Server"
+        })
 
 
 @app.route("/course_list/<course_list_type>", methods=['GET'])
 def get_course_list(course_list_type):
     """return the course list json"""
     if course_list_type == "main":
-        return send_from_directory(os.path.join(app.root_path, 'static'), 'main_course_list.json')
+        return send_from_directory(
+            os.path.join(app.root_path, 'static'), 'main_course_list.json')
     elif course_list_type == "elective":
-        return send_from_directory(os.path.join(app.root_path, 'static'), 'elec_course_list.json')
+        return send_from_directory(
+            os.path.join(app.root_path, 'static'), 'elec_course_list.json')
 
 
 @app.route("/course_detail/<course_code>", methods=['GET'])
@@ -228,7 +292,10 @@ def get_course_detail(course_code):
         result = get_course_info(course_code, db, session["base_url"])
     except ValueError:
         # the course is not available(wrong course code or year)
-        return json.dumps({"status": "500", "errorMessage": "The course description is unavailable right now"})
+        return json.dumps({
+            "status": "500",
+            "errorMessage": "The course description is unavailable right now"
+        })
     except Exception as e:
         return json.dumps({"status": "500", "errorMessage": str(e)})
     result.update({"status": "200"})
@@ -237,28 +304,32 @@ def get_course_detail(course_code):
 
 @app.route("/test_profile", methods=['GET'])
 def get_test_profile():
-    """ for testing """
+    """For testing."""
     if os.path.exists('config/account.json'):
         with open('config/account.json', 'r') as f:
             account = json.loads(f.read())
             username = account["username"]
             password = account["password"]
             student_id = account["student_id"]
-            session["base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
+            session[
+                "base_url"] = "https://" + username + ":" + password + "@magellan.ece.toronto.edu"
             session["student_id"] = student_id
     return send_from_directory('static', 'info.json')
 
 
 @app.route("/test_course_select", methods=['GET'])
 def get_test_course_select():
-    """ for testing """
+    """For testing."""
     session['profile_name'] = "Test_4"
-    return send_from_directory(os.path.join(app.root_path, 'templates'), 'course_select.html')
+    return send_from_directory(
+        os.path.join(app.root_path, 'templates'), 'course_select.html')
 
 
 @app.route("/components/<component_name>")
 def get_component(component_name):
-    return send_from_directory(os.path.join(app.root_path, 'templates'), component_name)
+    """Provide access to static components."""
+    return send_from_directory(
+        os.path.join(app.root_path, 'templates'), component_name)
 
 
 # for local testing

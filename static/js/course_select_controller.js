@@ -43,7 +43,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
 
     // fuse would be initialized when elec list is loaded
     $scope.searchResult = [];
-    $scope.searchKeyword = ""
+    $scope.searchKeyword = "";
     $scope.searchElec = function() {
         $scope.searchResult = fuse.search($scope.searchKeyword);
         $scope.displayFullElecList = ($scope.searchKeyword.length === 0);
@@ -69,7 +69,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
         $http.get('/profile').then( // TODO change back to /profile
             processUserInfo,
             serverError
-        )
+        );
     }
 
     // course detail search
@@ -92,6 +92,7 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
         "exclusions": "N/A",
         "coRequisites": "N/A"
     };
+
     $scope.getCourseDetail = function(courseCode, courseLength) {
         // only request the server if there is a change in course code
         if (!(courseCode === $scope.courseDetail.courseCode)) {
@@ -106,9 +107,9 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
                 (response) => {
                     $scope.courseDetail = errorCourseDetail;
                 }
-            )
+            );
         }
-    }
+    };
 
     // submitting and checking profile
     function buildPayload() {
@@ -159,17 +160,17 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
 
     $scope.checkProfile = function() {
         $http.post('/check_profile', buildPayload()).then(updateRequirementPanel, serverError);
-    }
+    };
 
     $scope.submitProfile = function() {
         $('#submit-modal').modal('open');
-    }
+    };
 
     $scope.shareOptions = {
         "share": false,
         "anonymous": false,
         "description": ""
-    }
+    };
     $scope.shareProfile = function() {
         const payload = {
             "payload": buildPayload(),
@@ -187,29 +188,29 @@ angular.module('NeoMagellan').controller('courseSelect', ($scope, $http, courseT
                 $('#submit-modal').modal('close');
             }, serverError
         );
-    }
+    };
 
     $scope.displayProgramRules = false;
     $scope.showProgramRules = function() {
         $scope.displayProgramRules = true;
-    }
+    };
     $scope.hideProgramRules = function() {
         $scope.displayProgramRules = false;
-    }
+    };
 
     $scope.displayTrashCan = false;
     $scope.showTrashCan = function() {
         $scope.displayTrashCan = true;
-    }
+    };
     $scope.hideTrashCan = function() {
         $scope.displayTrashCan = false;
-    }
+    };
 
     $scope.displayMessage = false;
     $scope.message = "";
     $scope.hideMessage = function() {
         $scope.displayMessage = false;
-    }
+    };
 
     function serverError(response) {
         $scope.message = "Opps! something might be wrong with the server";
